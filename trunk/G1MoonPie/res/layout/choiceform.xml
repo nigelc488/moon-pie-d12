@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.16"
+        android:columnCount="3" >
+
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="left"
+            android:layout_row="0"
+            android:text="Example Question"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/choice1Label"
+            android:layout_column="0"
+            android:layout_gravity="bottom|right"
+            android:layout_row="1"
+            android:text="Choice 1:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/choice1TB"
+            android:layout_column="1"
+            android:layout_gravity="bottom|right"
+            android:layout_row="1"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/choice2Label"
+            android:layout_column="0"
+            android:layout_gravity="bottom|right"
+            android:layout_row="2"
+            android:text="Choice 2:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/choice2TB"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="2"
+            android:ems="10" />
+
+        <EditText
+            android:id="@+id/EditText01"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="3"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_column="1"
+            android:layout_gravity="right"
+            android:layout_row="4"
+            android:text="Next" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="54dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_vertical"
+            android:layout_row="0" />
+
+        <TextView
+            android:id="@+id/choice3Label"
+            android:layout_column="0"
+            android:layout_gravity="right"
+            android:layout_row="3"
+            android:text="Choice 3:"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="262dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_horizontal"
+            android:layout_row="3" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="74dp"
+            android:layout_column="0"
+            android:layout_gravity="fill_vertical"
+            android:layout_row="4" />
+
+        <Space
+            android:layout_width="120dp"
+            android:layout_height="1dp"
+            android:layout_column="1"
+            android:layout_gravity="fill_vertical"
+            android:layout_row="0" />
+    </GridLayout>
+
+</LinearLayout>
