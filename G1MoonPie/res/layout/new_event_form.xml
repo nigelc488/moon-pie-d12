@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello"
+         />
+
+    
+            <TextView
+        android:id="@+id/questionView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question:" 
+        android:paddingTop="10dp"
+        android:paddingBottom="2dp"
+        android:layout_weight = "1"
+        />
+
+    <EditText
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" 
+        android:layout_weight = "1"
+        >
+
+        <requestFocus />
+    </EditText>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight = "1"
+             >
+
+            <RadioGroup 
+                android:id="@+id/availability"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight = "1"
+                >
+                
+              <RadioButton
+                android:id="@+id/openEvent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Open Event"
+                 />
+
+            <RadioButton
+                android:id="@+id/closedEvent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Closed Event"
+                 />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/numChoicesView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Choices:"
+            android:layout_weight = "1"
+             />
+
+        <Spinner
+            android:id="@+id/numChoices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="N@string/choicesPrompt"
+            android:layout_weight = "1"
+             />
+
+        <TextView
+            android:id="@+id/numRoundsView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Rounds:"
+            android:layout_weight = "1"
+             />
+
+        <Spinner
+            android:id="@+id/numRounds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/roundsPrompt"
+            android:layout_weight = "1"
+             />
+
+        <TextView
+            android:id="@+id/usernameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username:"
+            android:layout_weight = "1"
+             />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_weight = "1"
+             />
+        
+
+        <TextView
+            android:id="@+id/passwordView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password:"
+            android:layout_weight = "1"
+             />
+        
+            <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Next" />
+
+</LinearLayout>

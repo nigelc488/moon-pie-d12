@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, G1MoonPieActivity!</string>
-    <string name="app_name">G1MoonPie</string>
+    <string name="hello">DecisionLines</string>
+    <string name="app_name">MoonPie</string>
     <string name="aTestString">Hello</string>
+    
+        <string name = "choicesPrompt">Select Number of Choices</string>
+    <string-array name="choices_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    
+        <string name = "roundsPrompt">Select Number of Rounds</string>
+    <string-array name="rounds_array">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
 
 </resources>
