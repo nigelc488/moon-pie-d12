@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, G1MoonPieActivity!</string>
     <string name="app_name">G1MoonPie</string>
+    <string name="aTestString">Hello</string>
 
 </resources>
