@@ -1,8 +1,12 @@
+package g1.MoonPie.clientServer;
+
 
 import java.util.Scanner;
 
-import client.ServerAccess;
-import xml.Message;
+//import client.ServerAccess;
+//import xml.Message;
+import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.client.*;
 
 /** Launch command-line Client to show minimal access needs. */
 public class ClientLauncher {
@@ -14,10 +18,15 @@ public class ClientLauncher {
 	public ClientLauncher() throws Exception {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
+		
+		System.out.println("before if");
 		if (!Message.configure("MoonPie.xsd")) {
+			System.out.println("before exit");
 			System.exit(0);
 		}
 		
+		
+		System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess("localhost", 9200);
 		sa.connect(new MoonPieClientMessageHandler());
 		
