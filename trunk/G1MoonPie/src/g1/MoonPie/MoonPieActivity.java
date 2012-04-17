@@ -23,16 +23,16 @@ public class MoonPieActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         try{
-        System.out.println("try thread");
+        //System.out.println("try thread");
         	communicationThread = new Thread(new ThreadActivity());
         	communicationThread.start();
         	
         }
         catch (Exception e){
-        	System.out.println("thread failed");
+        	//System.out.println("thread failed");
         	e.printStackTrace();
         }
-        System.out.println("after thread");
+        //System.out.println("after thread");
         
         /*try {
         	System.out.println("try connect");
