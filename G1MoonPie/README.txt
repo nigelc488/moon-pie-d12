@@ -13,7 +13,7 @@ Find the IP address of your computer (cmd then ipconfig /all for Windows).
 Open MoonPie then src then g1.MoonPie then clientServer then ClientLauncher.
 Replace the host IP address to be your IP address (in the " " in the line: ServerAccess sa = new ServerAccess("130.215.29.32", 9371);) as the server will be located on your computer.
 
-Open MoonPieServer then src then default package then launch MoonPieServerLauncher.  This should open a local server.
+Open MoonPieServer then src then default package then run MoonPieServerLauncher.  This should open a local server.
 
 Open MoonPie then src then g1.MoonPie then launch MoonPieActivity.
 This will connect to the server and then display the welcome screen.
