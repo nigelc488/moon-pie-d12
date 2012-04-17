@@ -13,7 +13,7 @@ public class MoonPieServerLauncher {
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
 		if (!Message.configure("decisionlines.xsd")) {
 			System.exit(0);
-			System.out.println("fail");
+			System.out.println("Failed.");
 		}
 		
 		// Start server and have ProtocolHandler be responsible for all XML messages.
