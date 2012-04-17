@@ -69,6 +69,13 @@ public class ServerAccess {
 	 * When server messages are received, they are handled by the given handler object. 
 	 */
 	public boolean connect(final IMessageHandler handler) {
+//		try {
+//			Socket s = new Socket ("http://www.wpi.edu", 80);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 		try {
 			server = new Socket (host, serverPort);
 			toServer = new PrintWriter (server.getOutputStream(), true);
