@@ -25,9 +25,9 @@ public class ClientLauncher {
 			System.exit(0);
 		}
 		
-		
+		//InetAddress test = 
 		System.out.println("before new server acess");
-		ServerAccess sa = new ServerAccess("localhost", 9200);
+		ServerAccess sa = new ServerAccess("127.0.0.1", 9200);
 		sa.connect(new MoonPieClientMessageHandler());
 		
 		// send an introductory connect request 
