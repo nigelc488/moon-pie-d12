@@ -77,10 +77,14 @@ public class ServerAccess {
 //		}
 //		
 		try {
+			System.out.println("try socket");
 			server = new Socket (host, serverPort);
+			System.out.println("try convert");
 			toServer = new PrintWriter (server.getOutputStream(), true);
+			System.out.println("convert worked");
 		} catch (Exception e) {
 			System.err.println("Unable to connect to server: " + e.getMessage());
+			System.out.println("the client failed");
 			return false;
 		}
 
@@ -99,10 +103,10 @@ public class ServerAccess {
 
 		try {
 			// Terminate connection to server and (by implication) stop FromServer thread
-			server.close();
-			toServer = null;
-			server = null;
-		} catch (IOException e) {
+			//server.close();
+			//toServer = null;
+			//server = null;
+		} catch (Exception e) { //IOException e
 			System.err.println("Unable to closer server:" + e.getMessage());
 		}
 	}
