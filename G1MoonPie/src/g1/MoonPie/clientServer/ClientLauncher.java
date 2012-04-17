@@ -19,30 +19,31 @@ public class ClientLauncher {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
 		
-		System.out.println("before if");
-		if (!Message.configure("MoonPie.xsd")) {
-			System.out.println("before exit");
+		//System.out.println("before if");
+		if (!Message.configure("decisionlines.xsd")) {
+			//System.out.println("before exit");
 			System.exit(0);
 		}
 		
-		//InetAddress test = 
-		System.out.println("before new server acess");
-		ServerAccess sa = new ServerAccess("127.0.0.1", 9200);
+		//System.out.println("before new server acess");
+		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1", "130.215.29.32"
 		sa.connect(new MoonPieClientMessageHandler());
 		
 		// send an introductory connect request 
-		Message m = new Message ("<request><connectRequest/></request>");
-		
+		//System.out.println("try message");
+		Message m = new Message ("<connectRequest/>");
+		//System.out.println("message created, try sending");
 		sa.sendRequest(m);
-		
+		System.out.println(sa.sendRequest(m));
+		//System.out.println("message sent");
 		// await response. If we don't stop ServerAccess manually, there will be a background thread
 		// the continually runs and the program will never terminate. 
 		// This problem is not as noticeable in GUI-based clients.
-		System.err.println("Press Return to terminate client.");
-		Scanner sc = new Scanner (System.in);
-		sc.nextLine();
+		//System.err.println("Press Return to terminate client.");
+		//Scanner sc = new Scanner (System.in);
+		//sc.nextLine();
 		
-		System.out.println("Client disconnected.");
-		sa.disconnect();
+		//System.out.println("Client disconnected.");
+		//sa.disconnect();
 	} 
 }
