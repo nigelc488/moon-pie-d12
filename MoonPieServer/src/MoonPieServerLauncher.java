@@ -11,12 +11,13 @@ public class MoonPieServerLauncher {
 	public static void main(String[] args) {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
-		if (!Message.configure("MoonPie.xsd")) {
+		if (!Message.configure("decisionlines.xsd")) {
 			System.exit(0);
+			System.out.println("fail");
 		}
 		
 		// Start server and have ProtocolHandler be responsible for all XML messages.
-		Server server = new Server(new MoonPieProtocolHandler(), 9200);
+		Server server = new Server(new MoonPieProtocolHandler(), 9371);	
 	
 		try {
 			server.bind();
