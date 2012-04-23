@@ -7,7 +7,7 @@ import g1.MoonPie.clientServer.xml.*;
 public class ResponseHandler implements IMessageHandler {
 
 	// process messages coming back from the server
-	public void process(Message response) {
+	public void process(MessageXML response) {
 		String type = response.contents.getFirstChild().getLocalName();
 
 		// handle loginResponse specially

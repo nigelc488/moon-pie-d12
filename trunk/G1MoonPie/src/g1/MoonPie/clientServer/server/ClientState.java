@@ -11,7 +11,7 @@ public interface ClientState {
 	 * Send the given message to the client on whose behalf this thread is executing and return true
 	 * on success, false on error. 
 	 */
-	boolean sendMessage (Message m);
+	boolean sendMessage (MessageXML m);
 	
 	/**
 	 * Associate new object data as the user-defined data for the thread and return the old previous value.

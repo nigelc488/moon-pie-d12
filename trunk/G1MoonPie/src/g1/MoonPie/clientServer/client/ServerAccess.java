@@ -14,7 +14,7 @@ import g1.MoonPie.clientServer.server.*;
  * To communicate with a remote server, construct a ServerAccess object (using 
  * the default port or one of your own specification) and invoke the 
  * {@link #connect(IMessageHandler)} method. Once connected, you can send a message
- * request to the server through the {@link #sendRequest(Message)} message. All 
+ * request to the server through the {@link #sendRequest(MessageXML)} message. All 
  * responses to these requests from the server are processed by a 
  * {@link IMessageHandler} object.
  * <p>
@@ -41,10 +41,10 @@ public class ServerAccess {
 
 	class Tuple {
 		IController  controller;
-		Message      request;
+		MessageXML      request;
 		String       id;
 
-		Tuple (IController c, Message r, String i) {
+		Tuple (IController c, MessageXML r, String i) {
 			controller = c;
 			request = r;
 			id = i;
@@ -77,11 +77,11 @@ public class ServerAccess {
 //		}
 //		
 		try {
-			System.out.println("try socket");
+			//System.out.println("try socket");
 			server = new Socket (host, serverPort);
-			System.out.println("try convert");
+			//System.out.println("try convert");
 			toServer = new PrintWriter (server.getOutputStream(), true);
-			System.out.println("convert worked");
+			//System.out.println("convert worked");
 		} catch (Exception e) {
 			System.err.println("Unable to connect to server: " + e.getMessage());
 			System.out.println("the client failed");
@@ -112,7 +112,7 @@ public class ServerAccess {
 	}
 
 	/** Send request to the server. Return success or failure */
-	public synchronized boolean sendRequest(Message r) {
+	public synchronized boolean sendRequest(MessageXML r) {
 		if (!isActive) { return false; }
 
 		toServer.println(r);
@@ -126,7 +126,7 @@ public class ServerAccess {
 	 * The given IController object is going to be responsible for processing the
 	 * response that comes back.
 	 */
-	public synchronized boolean sendRequest(IController c, Message m) {
+	public synchronized boolean sendRequest(IController c, MessageXML m) {
 		if (!isActive) { return false; }
 
 		toServer.println(m);
@@ -159,7 +159,7 @@ public class ServerAccess {
 				fromBuffer = new BufferedReader (new InputStreamReader(server.getInputStream()));
 
 				while (isActive) {
-					Message m = Parser.extractResponse(fromBuffer);
+					MessageXML m = Parser.extractResponse(fromBuffer);
 					if (m == null) {
 						disconnect();
 						break;

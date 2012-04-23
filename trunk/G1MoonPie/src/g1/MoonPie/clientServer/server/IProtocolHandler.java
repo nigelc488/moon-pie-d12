@@ -18,8 +18,8 @@ public interface IProtocolHandler {
 	 * Use this object to write back a response.
 	 * <p>
 	 * Classes that implement this interface must make sure that the
-	 * {@link #process(ClientState, Message)} method is synchronized, 
+	 * {@link #process(ClientState, MessageXML)} method is synchronized, 
 	 * otherwise 
 	 */
-	Message process(ClientState state, Message request);
+	MessageXML process(ClientState state, MessageXML request);
 }

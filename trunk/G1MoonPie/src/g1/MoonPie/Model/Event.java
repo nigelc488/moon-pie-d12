@@ -45,4 +45,14 @@ public class Event {
 	public void calculateSolution(){
 		//Need to write
 	}
+
+	public String getID() {
+		return ID;
+	}
+
+	public void setID(String iD) {
+		ID = iD;
+	}
+	
+	
 }

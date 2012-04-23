@@ -12,7 +12,7 @@ import org.w3c.dom.*;
 import org.xml.sax.*;
 
 /** Support class for XML parsing of requests and responses. */
-public class Message {
+public class MessageXML {
 	static DocumentBuilder builder = null;              // builder for parsing XML strings
 	static XMLHandler errorHandler = new XMLHandler();  // we must provide an error handler
 	static Transformer transformer;                     // to convert to string
@@ -45,7 +45,7 @@ public class Message {
 	}
 
 	/** Parse XML and construct Message object only if it succeeds. */
-	public Message (String xmlSource) throws IllegalArgumentException {
+	public MessageXML (String xmlSource) throws IllegalArgumentException {
 		if (builder == null) {
 			throw new RuntimeException ("XML Protocol not configured.");
 		}
