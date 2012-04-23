@@ -6,5 +6,5 @@ import g1.MoonPie.clientServer.xml.*;
 public interface IMessageHandler {
 	
   /** Process the protocol response*/
-  void process(Message response);
+  void process(MessageXML response);
 }

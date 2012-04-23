@@ -3,6 +3,8 @@ package g1.MoonPie.clientServer;
 
 import java.util.Scanner;
 
+import android.os.Handler;
+
 //import client.ServerAccess;
 //import xml.Message;
 import g1.MoonPie.clientServer.xml.*;
@@ -15,26 +17,36 @@ public class ClientLauncher {
 	 * Note that to simplify the coding of this command-client, it declares that it can throw an Exception,
 	 * which is typically the failed connection to a server.
 	 */
-	public ClientLauncher() throws Exception {
+	
+	/**
+	 * Different from his:
+	 * pass it a Handler so can send messages between threads
+	 * need the actual ip address of where the server is (localhost doesnt work)
+	 * doesnt have any of the checking or closing of stuff
+	 * @param handler
+	 * @throws Exception
+	 */
+	public ClientLauncher(Handler handler) throws Exception {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
 		
 		//System.out.println("before if");
-		if (!Message.configure("decisionlines.xsd")) {
+		if (!MessageXML.configure("decisionlines.xsd")) {
 			//System.out.println("before exit");
 			System.exit(0);
 		}
 		
 		//System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1", "130.215.29.32"
-		sa.connect(new MoonPieClientMessageHandler());
+		sa.connect(new MoonPieClientMessageHandler(handler));
+		ServerAccessManager.setAccess(sa);
 		
 		// send an introductory connect request 
-		//System.out.println("try message");
-		Message m = new Message ("<connectRequest/>");
+		System.out.println("try message");
+		MessageXML m = new MessageXML (MessageXML.requestHeader() + "<connectRequest/></request>");
 		//System.out.println("message created, try sending");
 		sa.sendRequest(m);
-		System.out.println(sa.sendRequest(m));
+		//System.out.println(sa.sendRequest(m));
 		//System.out.println("message sent");
 		// await response. If we don't stop ServerAccess manually, there will be a background thread
 		// the continually runs and the program will never terminate. 

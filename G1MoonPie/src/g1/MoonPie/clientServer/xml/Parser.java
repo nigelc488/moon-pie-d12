@@ -16,12 +16,12 @@ public class Parser {
 	public final static String connectResponse = "connectResponse";
 
 	/** Return extracted request. */
-	public static Message extractRequest(BufferedReader in) {
+	public static MessageXML extractRequest(BufferedReader in) {
 		return extractMessage(in, "</request>");
 	}
 
 	/** Return extracted response. */
-	public static Message extractResponse(BufferedReader in) {
+	public static MessageXML extractResponse(BufferedReader in) {
 		return extractMessage(in, "</response>");
 	}
 
@@ -30,7 +30,7 @@ public class Parser {
 	 * the terminator string (either "</request>" or "</response>"). Returns 
 	 * null if communication is interrupted in any way.
 	 */
-	static Message extractMessage(BufferedReader in, String terminator) {
+	static MessageXML extractMessage(BufferedReader in, String terminator) {
 		try {
 			String line = in.readLine();
 			if (line == null) { return null; }
@@ -41,7 +41,7 @@ public class Parser {
 				buf.append(line);
 			}
 
-			return new Message (buf.toString());
+			return new MessageXML (buf.toString());
 		} catch (IOException ioe) {
 			return null;
 		}

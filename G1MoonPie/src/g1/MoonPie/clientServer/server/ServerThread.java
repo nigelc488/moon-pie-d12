@@ -39,15 +39,15 @@ public class ServerThread extends Thread implements ClientState {
 	 */
 	public void run() {
 		// Initial connect request comes in
-		Message m = Parser.extractRequest(fromClient);
+		MessageXML m = Parser.extractRequest(fromClient);
 		Node child = m.contents.getFirstChild();
 		if (!child.getLocalName().equals (Parser.connectRequest)) {
 			return;
 		}
 
 		// Return connect response with our (statistically) unique ID.
-		String xmlString = Message.responseHeader(m.id()) + "<connectResponse id='" + id + "'/></response>";
-		Message r = new Message (xmlString);
+		String xmlString = MessageXML.responseHeader(m.id()) + "<connectResponse id='" + id + "'/></response>";
+		MessageXML r = new MessageXML (xmlString);
 		if (!sendMessage (r)) {
 			System.err.println("Unable to respond to connect Request from remote Client.");
 			return;
@@ -59,7 +59,7 @@ public class ServerThread extends Thread implements ClientState {
 		// have handler manage the protocol until it decides it is done.
 		while ((m = Parser.extractRequest(fromClient)) != null) {
 			
-			Message response = handler.process(this, m);
+			MessageXML response = handler.process(this, m);
 			if (!sendMessage(response)) {
 				break;
 			}
@@ -101,7 +101,7 @@ public class ServerThread extends Thread implements ClientState {
 	 * Send the given message to the client on whose behalf this thread is executing and return true
 	 * on success, false on error. 
 	 */
-	public boolean sendMessage (Message m) {
+	public boolean sendMessage (MessageXML m) {
 		if (m == null) { return false; }
 		
 		toClient.println(m.toString());

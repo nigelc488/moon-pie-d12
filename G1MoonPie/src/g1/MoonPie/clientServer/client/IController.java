@@ -17,5 +17,5 @@ public interface IController {
 	 * @param  request    The message that this client had originally sent
 	 * @param  response   The response received in response to the request.
 	 */
-	void process (Message request, Message response);
+	void process (MessageXML request, MessageXML response);
 }
