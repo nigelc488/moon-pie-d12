@@ -1,7 +1,7 @@
 package g1.MoonPie.Controller;
 
 import g1.MoonPie.View.NewEventView;
-import g1.MoonPie.clientServer.SendMessageController;
+import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;

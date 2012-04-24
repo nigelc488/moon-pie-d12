@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer;
+package g1.MoonPie.clientServer.receiveMessages;
 
 //import xml.Message;
 //import client.IMessageHandler;
