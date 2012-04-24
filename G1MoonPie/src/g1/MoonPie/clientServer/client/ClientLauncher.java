@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer;
+package g1.MoonPie.clientServer.client;
 
 
 import java.util.Scanner;
@@ -7,6 +7,8 @@ import android.os.Handler;
 
 //import client.ServerAccess;
 //import xml.Message;
+import g1.MoonPie.clientServer.receiveMessages.MoonPieClientMessageHandler;
+import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
 import g1.MoonPie.clientServer.xml.*;
 import g1.MoonPie.clientServer.client.*;
 

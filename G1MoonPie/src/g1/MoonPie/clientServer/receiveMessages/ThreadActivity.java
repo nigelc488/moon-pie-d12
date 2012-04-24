@@ -1,5 +1,6 @@
-package g1.MoonPie.clientServer;
+package g1.MoonPie.clientServer.receiveMessages;
 
+import g1.MoonPie.clientServer.client.ClientLauncher;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -23,7 +24,7 @@ public class ThreadActivity implements Runnable{
 	@Override
 	public void run() {
 		//System.out.println("inside thread");
-		new ProcessResponseController();
+		//new AddChoiceResponseController();
 		Looper.prepare();
 		try {
         	//System.out.println("try connect");

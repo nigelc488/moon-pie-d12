@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer;
+package g1.MoonPie.clientServer.sendMessages;
 
 import g1.MoonPie.clientServer.client.ServerAccess;
 
