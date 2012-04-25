@@ -20,6 +20,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 	}
 
 	public synchronized Message process (ClientState st, Message request) {
+		System.out.println("request to server=" + request);
 		Node child = request.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 
@@ -29,10 +30,12 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 		}
 		else if (child.getLocalName().equals ("addChoiceRequest")) {
 			System.out.println(child.getLocalName());
-			String id = map.getNamedItem("id").getNodeValue();
+			String id = (map.getNamedItem("id").getNodeValue());
+			System.out.println(id);
 			String number = map.getNamedItem("number").getNodeValue();
-			String choice = map.getNamedItem("choice").getNodeValue();
+			String choice = (map.getNamedItem("choice").getNodeValue());
 			String xmlString = Message.responseHeader(request.id()) + "<addChoiceResponse id='" + id + "' " + "number='" + number + "' " + "choice='" + choice + "'/></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
@@ -42,11 +45,15 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			String left = map.getNamedItem("left").getNodeValue();
 			String right = map.getNamedItem("right").getNodeValue();
 			String height = map.getNamedItem("height").getNodeValue();
-			String xmlString = Message.responseHeader(request.id()) + "addEdgeResponse id='" + id + "' " + "left='" + left + "' " + "right ='" + right + "' " + "height='" + height + "'/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<addEdgeResponse id='" + id + "' " + "left='" + left + "' " + "right ='" + right + "' " + "height='" + height + "'/></response>";
 			Message r = new Message(xmlString);
+			return r;
 		}
 		else if (child.getLocalName().equals ("adminRequest")) {
 			System.out.println(child.getLocalName());
+			String xmlString = Message.responseHeader(request.id()) + "<adminResponse key='" +  "abc123" + "'/></response>";
+			Message r = new Message(xmlString);
+			return r;
 			//cat is doing this one
 		}
 		else if (child.getLocalName().equals ("chatRequest")) {
@@ -55,33 +62,54 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 		}
 		else if (child.getLocalName().equals ("closeRequest")) {
 			System.out.println(child.getLocalName());
-			String xmlString = Message.responseHeader(request.id()) + "closeResponse" + "/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<closeResponse" + "/></response>";
 			Message r = new Message(xmlString);
 			return r;
 		}
-		else if (child.getLocalName().equals ("creatRequest")) {
+		else if (child.getLocalName().equals ("createRequest")) {
 			System.out.println(child.getLocalName());
 			String id = "1234";
-			String xmlString = Message.responseHeader(request.id()) + "createResponse id='" + id + "'/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<createResponse id='" + id + "'/></response>";
 			Message r = new Message(xmlString);
 			return r;
 		}
 		else if (child.getLocalName().equals ("forceRequest")) {
 			System.out.println(child.getLocalName());
 			String numberAffected = "5";
-			String xmlString = Message.responseHeader(request.id()) + "forceResponse numberAffected='" + numberAffected + "'/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<forceResponse numberAffected='" + numberAffected + "'/></response>";
 			Message r = new Message(xmlString);
 			return r;
 		}
 		else if (child.getLocalName().equals ("removeRequest")) {
 			System.out.println(child.getLocalName());
 			String numberAffected = "3";
-			String xmlString = Message.responseHeader(request.id()) + "removeResponse numberAffected='" + numberAffected + "'/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<removeResponse numberAffected='" + numberAffected + "'/></response>";
 			Message r = new Message(xmlString);
 			return r;
 		}
 		else if(child.getLocalName().equals("reportRequest")){
-			//cat does this
+			System.out.println(child.getLocalName());
+			String id = "myid";
+			String type = "open";
+			String question = "question";
+			int numChoices = 5;
+			int numRounds = 3;
+			String created = "a date?";
+			boolean completed = false;
+			String entry = "<entry id='" + id +"' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "created='" + created + "' " + "completed='" + completed + "'/>";
+			
+			id = "myid2";
+			type = "open";
+			question = "question2";
+			numChoices = 5;
+			numRounds = 3;
+			created = "a date?2";
+			completed = false;
+			String entry2 = "<entry id='" + id +"' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "created='" + created + "' " + "completed='" + completed + "'/>";
+			
+			String xmlString = Message.responseHeader(request.id()) + "<reportResponse>" + entry + entry2 + "</reportResponse></response>";
+			Message r = new Message(xmlString);
+			return r;
 		}
 		else if (child.getLocalName().equals ("signInRequest")) {
 			System.out.println(child.getLocalName());
@@ -91,7 +119,9 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			int numChoices = 5;
 			int numRounds = 3;
 			int position = 4;
-			String xmlString = Message.responseHeader(request.id()) + "signInResponse id='" + id + "' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "position='" + position + "'/></response>";
+			String xmlString = Message.responseHeader(request.id()) + "<signInResponse id='" + id + "' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "position='" + position + "'/></response>";
+			Message r = new Message(xmlString);
+			return r;
 		}
 
 		// unknown? no idea what to do
