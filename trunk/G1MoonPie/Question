@@ -3,3 +3,7 @@ Questions:
 What is the id for in the connect response?
 
 How should we be handling the ' in a message?
+
+What is position in sign in response?
+
+How do you do the SHA1 hashed password?
