@@ -68,7 +68,7 @@ public class SendMessageController {
 	}
 	
 	public void removeRequest(String key, String id, boolean completed, int daysOld){
-		String xmlString = MessageXML.requestHeader() + "<forceRequest key='" + key + "' " + "id='" + id + "' " + "completed='" + completed + "' " + "daysOld='" + daysOld + "'/></request>";
+		String xmlString = MessageXML.requestHeader() + "<removeRequest key='" + key + "' " + "id='" + id + "' " + "completed='" + completed + "' " + "daysOld='" + daysOld + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
 		ServerAccessManager.getAccess().sendRequest(req);
 	}

@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.receiveMessages;
+package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -7,11 +7,11 @@ import android.app.Activity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
-public class AdminResponseController {
+public class TurnResponseController {
 	Event event;
 	Activity activity;
 	
-	public AdminResponseController(Event event, Activity activity){
+	public TurnResponseController(Event event, Activity activity){
 		this.event = event;
 		this.activity = activity;
 	}
@@ -20,11 +20,11 @@ public class AdminResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		String key = map.getNamedItem("key").getNodeValue();
+		boolean completed = Boolean.parseBoolean(map.getNamedItem("completed").getNodeValue());
 		
-		System.out.println("Admin with key=" + key);
-		//new AdminController(event, activity, key);
+		System.out.println("Turn completed?=" + completed);
 		
+		//new TurnController(event, activity, completed);
 		
 	}
 

@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.receiveMessages;
+package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.xml.MessageXML;

@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.receiveMessages;
+package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
