@@ -17,6 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+/**
+ * This is the main function for the applicaiton.
+ * It creates a new event, the child thread used for communicating with the server, the classes to perform communication, and launches the welcome screen.
+ * @author ncochran
+ *
+ */
 public class MoonPieActivity extends Activity {
 	Thread communicationThread;
 	SendMessageController send;

@@ -5,6 +5,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+/**
+ * This class is used as a listener for the drop down menu for the number of rounds.
+ * @author ncochran
+ *
+ */
 public class NumRoundsListener implements OnItemSelectedListener {
 
 	@Override

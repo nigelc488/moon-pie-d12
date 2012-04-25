@@ -3,6 +3,11 @@ package g1.MoonPie.clientServer.client;
 //import xml.*;
 import g1.MoonPie.clientServer.xml.*;
 
+/**
+ * This class is unmodified from Professor Heineman's code.
+ * @author heineman
+ */
+
 /** Respond to server responses. */
 public class ResponseHandler implements IMessageHandler {
 

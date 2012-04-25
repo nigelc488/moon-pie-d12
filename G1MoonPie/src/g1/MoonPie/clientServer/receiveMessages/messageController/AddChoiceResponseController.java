@@ -12,15 +12,29 @@ import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
+/**
+ * This controller is used to parse the addChoiceResponse and call the necessary controller.
+ * @author ncochran
+ *
+ */
 public class AddChoiceResponseController {
 	Activity activity;
 	Event event;
 	
+	/**
+	 * This constructor creates the controller with an event and activity which can be passed to other controllers.
+	 * @param event Event The event used to access model objects
+	 * @param activity The activity used to access GUI objects
+	 */
 	public AddChoiceResponseController(Event event, Activity activity){
 		this.event = event;
 		this.activity = activity;
 	}
 
+	/**
+	 * This method is used to do the actual processing of the message and calling of the controller.
+	 * @param response MessageXML The message to be processed and reacted to.
+	 */
 	public void process(MessageXML response){
 		System.out.println("response: " + response );
 		Node child = response.contents.getFirstChild();

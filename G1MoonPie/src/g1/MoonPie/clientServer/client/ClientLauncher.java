@@ -1,7 +1,6 @@
 package g1.MoonPie.clientServer.client;
 
 
-import java.util.Scanner;
 
 import android.os.Handler;
 
@@ -10,54 +9,38 @@ import android.os.Handler;
 import g1.MoonPie.clientServer.receiveMessages.MoonPieClientMessageHandler;
 import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
 import g1.MoonPie.clientServer.xml.*;
-import g1.MoonPie.clientServer.client.*;
 
-/** Launch command-line Client to show minimal access needs. */
+/**
+ * This Class is a modified form of the ClientLauncher provided by Professor Heineman to allow integration with Android.
+ * Th modifications are: the need for a static ip address for the server (localhost is not valid when running on same machine),
+ * the use of a Handler the send internal Android messages,
+ * the removal of all xml checking as it is incompatible with Android.
+ * @author ncochran, heineman
+ *
+ */
 public class ClientLauncher {
 
 	/**
-	 * Note that to simplify the coding of this command-client, it declares that it can throw an Exception,
-	 * which is typically the failed connection to a server.
+	 * This method handles the action of launching the client and establishing a connection with the server.
+	 * @param handler Handler the Android Message Handler used to send messages to the main thread.
+	 * @throws Exception If it cannot connect, it throws an exception.
 	 */
 	
-	/**
-	 * Different from his:
-	 * pass it a Handler so can send messages between threads
-	 * need the actual ip address of where the server is (localhost doesnt work)
-	 * doesnt have any of the checking or closing of stuff
-	 * @param handler
-	 * @throws Exception
-	 */
 	public ClientLauncher(Handler handler) throws Exception {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
-		
-		//System.out.println("before if");
 		if (!MessageXML.configure("decisionlines.xsd")) {
-			//System.out.println("before exit");
 			System.exit(0);
 		}
 		
 		//System.out.println("before new server acess");
-		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1", "130.215.29.32"
+		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1"/localhost doesnt work
 		sa.connect(new MoonPieClientMessageHandler(handler));
 		ServerAccessManager.setAccess(sa);
 		
 		// send an introductory connect request 
 		System.out.println("try message");
 		MessageXML m = new MessageXML (MessageXML.requestHeader() + "<connectRequest/></request>");
-		//System.out.println("message created, try sending");
 		sa.sendRequest(m);
-		//System.out.println(sa.sendRequest(m));
-		//System.out.println("message sent");
-		// await response. If we don't stop ServerAccess manually, there will be a background thread
-		// the continually runs and the program will never terminate. 
-		// This problem is not as noticeable in GUI-based clients.
-		//System.err.println("Press Return to terminate client.");
-		//Scanner sc = new Scanner (System.in);
-		//sc.nextLine();
-		
-		//System.out.println("Client disconnected.");
-		//sa.disconnect();
 	} 
 }
