@@ -11,6 +11,7 @@ import android.widget.EditText;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Entry;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class ReportResponseController {
@@ -34,12 +35,12 @@ public class ReportResponseController {
 			Node node = list.item(i);
 			NamedNodeMap map2 = node.getAttributes();
 			
-			String id = map2.getNamedItem("id").getNodeValue();
+			String id = EncodeXML.decodeString(map2.getNamedItem("id").getNodeValue());
 			System.out.println(id);
-			String type = map2.getNamedItem("type").getNodeValue();
+			String type = EncodeXML.decodeString(map2.getNamedItem("type").getNodeValue());
 			int numChoices = Integer.parseInt(map2.getNamedItem("numChoices").getNodeValue());
 			int numRounds = Integer.parseInt(map2.getNamedItem("numRounds").getNodeValue());
-			String created = map2.getNamedItem("created").getNodeValue();
+			String created = EncodeXML.decodeString(map2.getNamedItem("created").getNodeValue());
 			boolean completed = Boolean.parseBoolean(map2.getNamedItem("completed").getNodeValue());
 			entries.add(new Entry(id, type, numChoices, numRounds, created, completed));
 			
