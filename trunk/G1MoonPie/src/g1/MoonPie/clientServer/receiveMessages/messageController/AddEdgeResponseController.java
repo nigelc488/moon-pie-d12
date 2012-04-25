@@ -1,6 +1,7 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 import org.w3c.dom.NamedNodeMap;
@@ -20,7 +21,7 @@ public class AddEdgeResponseController {
 	public void process(MessageXML response){
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
-		String id = map.getNamedItem("id").getNodeValue();
+		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
 		int left = Integer.parseInt(map.getNamedItem("left").getNodeValue());
 		int right = Integer.parseInt(map.getNamedItem("right").getNodeValue());
 		int height = Integer.parseInt(map.getNamedItem("height").getNodeValue());

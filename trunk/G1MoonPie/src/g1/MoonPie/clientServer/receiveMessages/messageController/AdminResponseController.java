@@ -5,6 +5,7 @@ import org.w3c.dom.Node;
 
 import android.app.Activity;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class AdminResponseController {
@@ -20,7 +21,7 @@ public class AdminResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		String key = map.getNamedItem("key").getNodeValue();
+		String key = EncodeXML.decodeString(map.getNamedItem("key").getNodeValue());
 		
 		System.out.println("Admin with key=" + key);
 		//new AdminController(event, activity, key);

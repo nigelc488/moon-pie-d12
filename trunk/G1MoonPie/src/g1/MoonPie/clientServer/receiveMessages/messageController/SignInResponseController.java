@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.widget.EditText;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class SignInResponseController {
@@ -22,9 +23,9 @@ public class SignInResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		String id = map.getNamedItem("id").getNodeValue();
-		String type = map.getNamedItem("type").getNodeValue();
-		String question = map.getNamedItem("question").getNodeValue();
+		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
+		String type = EncodeXML.decodeString(map.getNamedItem("type").getNodeValue());
+		String question = EncodeXML.decodeString(map.getNamedItem("question").getNodeValue());
 		int numChoices = Integer.parseInt(map.getNamedItem("numChoices").getNodeValue());
 		int numRounds = Integer.parseInt(map.getNamedItem("numRounds").getNodeValue());
 		int position = Integer.parseInt(map.getNamedItem("position").getNodeValue());

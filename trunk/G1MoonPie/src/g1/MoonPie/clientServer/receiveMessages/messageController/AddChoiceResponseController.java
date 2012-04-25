@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class AddChoiceResponseController {
@@ -26,7 +27,7 @@ public class AddChoiceResponseController {
 		NamedNodeMap map = child.getAttributes();
 		
 		int line = Integer.parseInt(map.getNamedItem("number").getNodeValue());
-		String choice = map.getNamedItem("choice").getNodeValue();
+		String choice = EncodeXML.decodeString(map.getNamedItem("choice").getNodeValue());
 		System.out.println("Add Choice: Line: " + line + " choice: " + choice);
 		
 		//This is where you should call the addChoiceController
