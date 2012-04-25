@@ -11,6 +11,10 @@ import javax.xml.validation.*;
 import org.w3c.dom.*;
 import org.xml.sax.*;
 
+/**
+ * Only the name of this has been changed from Message to MessageXML from Professor Heineman's code.  This was done to avoid 
+ * complications with the built in Android Message which is sometimes used at the same time as MessageXML.
+ */
 /** Support class for XML parsing of requests and responses. */
 public class MessageXML {
 	static DocumentBuilder builder = null;              // builder for parsing XML strings

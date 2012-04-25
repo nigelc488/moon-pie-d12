@@ -32,21 +32,28 @@ public class ProcessThreadMessages extends Handler{
 	Event event;
 	Activity activity;
 	
-	// I think this constructor will be needed to play nice with updating the layouts
+	/**
+	 * This constructor us used so that the event and activity can be later sent to other controllers that will be called.
+	 * @param event Event The Event for the application used to access model objects
+	 * @param activity Activity The activity for the application used to access GUI objects
+	 */
 	public ProcessThreadMessages(Event event, Activity activity){
 		this.event = event;
 		this.activity = activity;
 	}
 	
-	public ProcessThreadMessages(Activity activity){
+/*	public ProcessThreadMessages(Activity activity){
 		this.activity = activity;
-	}
+	}*/
 	
-	//This is just for right now
-	public ProcessThreadMessages(){
+/*	public ProcessThreadMessages(){
 		
-	}
+	}*/
 	
+	/**
+	 * This method is used for the logic of processing the xml message to see which message it is and which controller should be called.
+	 * @param response MessageXML The message received from the server.
+	 */
 	public void process(MessageXML response){
 		Node child = response.contents.getFirstChild();
 		String type = child.getLocalName();

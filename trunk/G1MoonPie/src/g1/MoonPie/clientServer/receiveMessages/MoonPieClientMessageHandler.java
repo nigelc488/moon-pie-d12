@@ -1,19 +1,12 @@
 package g1.MoonPie.clientServer.receiveMessages;
 
-//import xml.Message;
-//import client.IMessageHandler;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 import android.os.Handler;
 import android.os.Message;
 
 import g1.MoonPie.clientServer.xml.*;
 import g1.MoonPie.clientServer.client.*;
-/**
- * Sample implementation of a protocol handler to respond to messages received from the server.
- * You should follow this template when designing YOUR message handler.
- */
+
 
 /**
  * This class is really only a go-between.  It is called in the communications thread and simply forwards the message to the main thread for processing.
@@ -23,6 +16,10 @@ import g1.MoonPie.clientServer.client.*;
 public class MoonPieClientMessageHandler implements IMessageHandler {
 	Handler childHandler;
 	
+	/**
+	 * This method is used to create a new MoonPieClientMessageHandler with the Handler used to communicate to the parent thread.
+	 * @param handler Handler The handler used to send messages to the parent thread.
+	 */
 	public MoonPieClientMessageHandler(Handler handler){
 		childHandler = handler;
 	}

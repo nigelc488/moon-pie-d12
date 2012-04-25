@@ -1,7 +1,17 @@
 package g1.MoonPie.clientServer;
 
+/**
+ * This class is used to encrypt and convert passwords to hex using SHA1.
+ * @author ncochran
+ *
+ */
 public class EncryptPassword {
 	
+	/**
+	 * This method is used to perform the encryption of passwords using SHA1.
+	 * @param value String The original password
+	 * @return String The encrypted password
+	 */
 	public static String getSuperSecrectPassword(String value){
 		byte[] bytes = value.getBytes();
 		String defaultPassword = "ffffffffffffffffffffffffffffffff";

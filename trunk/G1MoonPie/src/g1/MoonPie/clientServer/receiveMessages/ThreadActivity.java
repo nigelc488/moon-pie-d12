@@ -6,7 +6,7 @@ import android.os.Looper;
 
 /**
  * The thread used for communication with the server.  Needed because android didn't allow doing the communication in the main thread.  
- * Constructor has a handler simply to pass it to the clien launcher which then passes it to protocol handler.
+ * Constructor has a handler simply to pass it to the client launcher which then passes it to protocol handler.
  * Need to find way to stop looper.
  * @author ncochran
  *
@@ -16,6 +16,10 @@ public class ThreadActivity implements Runnable{
 	//Thread communicationThread;
 	Handler handler;
 	
+	/**
+	 * This method is used to create a new ThreadActivity using the handler it will use to send messages to the parent thread.
+	 * @param handler Handler The handler used to send messages
+	 */
 	public ThreadActivity(Handler handler){
 		this.handler = handler;
 	}
