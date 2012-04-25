@@ -4,6 +4,17 @@ import org.w3c.dom.Node;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.AddEdgeResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.AdminResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.CloseResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.ConnectResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.CreateResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.ForceResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.RemoveResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.ReportResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.SignInResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.TurnResponseController;
 import g1.MoonPie.clientServer.xml.MessageXML;
 import android.app.Activity;
 import android.os.Handler;
@@ -94,6 +105,7 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("reportResponse")){
 			//cat is doing this one
 			System.out.println(type);
+			new ReportResponseController(event, activity).process(response);
 		}
 		else if(type.equals("chatResponse")){
 			//optional and we aren't doing it
@@ -101,7 +113,7 @@ public class ProcessThreadMessages extends Handler{
 		}
 		else System.out.println("Not a valid message: " + type);
 
-		System.out.println("Received in main thread:" + response);
+		//System.out.println("Received in main thread:" + response);
 	}
 	
 	
