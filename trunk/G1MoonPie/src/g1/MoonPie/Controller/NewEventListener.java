@@ -17,7 +17,8 @@ public class NewEventListener implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		//this part only for testing sending messages
+		
+/*		//this part only for testing sending messages
 		SendMessageController send = new SendMessageController();
 		send.addChoiceRequest("id'number", 1, "the & ring");
 		send.addEdgeRequest("id'number2", 2, 3, 75);
@@ -33,8 +34,8 @@ public class NewEventListener implements OnClickListener {
 		send.removeRequest("key'key", "idt'ime", true, 60);
 		send.signInRequest("idn'umber", "cathe'rine", "past ten'se");
 		send.reportRequest("key'here", "closed");
-		System.out.println("sent message");
 		//end this part
+*/		
 		NewEventView view = new NewEventView(activity);
 		
 	}

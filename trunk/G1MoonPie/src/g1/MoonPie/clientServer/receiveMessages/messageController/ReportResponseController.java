@@ -30,13 +30,12 @@ public class ReportResponseController {
 		ArrayList<Entry> entries = new ArrayList<Entry>();
 		
 		NodeList list = child.getChildNodes();
-		System.out.println(list.getLength());
+
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
 			NamedNodeMap map2 = node.getAttributes();
 			
 			String id = EncodeXML.decodeString(map2.getNamedItem("id").getNodeValue());
-			System.out.println(id);
 			String type = EncodeXML.decodeString(map2.getNamedItem("type").getNodeValue());
 			int numChoices = Integer.parseInt(map2.getNamedItem("numChoices").getNodeValue());
 			int numRounds = Integer.parseInt(map2.getNamedItem("numRounds").getNodeValue());
@@ -49,8 +48,6 @@ public class ReportResponseController {
 
 
 		//}
-		
-		System.out.println("time to stop");
 		
 		
 //		int line = Integer.parseInt(map.getNamedItem("number").getNodeValue());
