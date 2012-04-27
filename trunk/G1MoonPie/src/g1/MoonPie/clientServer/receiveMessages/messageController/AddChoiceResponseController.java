@@ -50,8 +50,10 @@ public class AddChoiceResponseController {
 		
 		//______________________________________________________
 		//This code is just for testing but it shows how to retrieve text from a text field and also how to set the text.
-		EditText text1 = (EditText)activity.findViewById(R.id.choice1TB);
-		text1.getText();
+		
+		//SAMPLE CODE FOR JEREMY
+		//EditText text1 = (EditText)activity.findViewById(R.id.choice1TB);
+		//text1.getText();
 		
 		
 		EditText text = (EditText)activity.findViewById(R.id.question);
