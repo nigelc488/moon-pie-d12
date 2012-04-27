@@ -44,6 +44,7 @@ public class AddEdgeResponseController {
 		
 		//This is where you should call the addEdgeController
 		//new AddEdgeController(left, right, height);
+		// new AddEdgeController().addEdgeReceived(event, activity, left, right, height);
 		
 		//need to update the view so will need to know about the panel or whatever that is being drawn on
 	}
