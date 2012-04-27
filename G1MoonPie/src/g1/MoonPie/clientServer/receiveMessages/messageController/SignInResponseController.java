@@ -6,9 +6,9 @@ import org.w3c.dom.Node;
 import android.app.Activity;
 import android.widget.EditText;
 import g1.MoonPie.R;
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.EncodeXML;
-import g1.MoonPie.clientServer.xml.MessageXML;
+import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * this class is used to process signInResponse xml messages and call the necessary controller.

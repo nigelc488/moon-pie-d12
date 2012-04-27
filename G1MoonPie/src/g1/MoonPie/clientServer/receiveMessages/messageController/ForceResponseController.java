@@ -5,7 +5,7 @@ import org.w3c.dom.Node;
 
 import android.app.Activity;
 import g1.MoonPie.Model.Event;
-import g1.MoonPie.clientServer.xml.MessageXML;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * This class is used to process forceResponse xml messages and call the necessary controller.

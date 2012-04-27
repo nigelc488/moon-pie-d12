@@ -1,7 +1,7 @@
-package g1.MoonPie.clientServer.server;
+package g1.MoonPie.clientServer.heineman.server;
 
 //import xml.Message;
-import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 
 
 /** Server-side interface to per-client state. Exposes only the methods of ServerThread that are safe. */

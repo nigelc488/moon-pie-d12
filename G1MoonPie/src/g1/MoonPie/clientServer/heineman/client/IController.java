@@ -1,7 +1,7 @@
-package g1.MoonPie.clientServer.client;
+package g1.MoonPie.clientServer.heineman.client;
 
 //import xml.*;
-import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 /**
  * This method is unmodified from Professor Heineman's code but needs to be local to the project because the Android project cannot be 
  * dependent on a pure Java project.

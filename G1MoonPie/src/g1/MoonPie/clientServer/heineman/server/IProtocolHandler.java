@@ -1,7 +1,7 @@
-package g1.MoonPie.clientServer.server;
+package g1.MoonPie.clientServer.heineman.server;
 
 //import xml.*;
-import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 
 /** 
  * ServerThread outsources processing of protocol to implementors 

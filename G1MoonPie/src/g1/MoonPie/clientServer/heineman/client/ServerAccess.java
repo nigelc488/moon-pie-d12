@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.client;
+package g1.MoonPie.clientServer.heineman.client;
 
 import java.io.*;
 import java.net.*;
@@ -6,8 +6,8 @@ import java.util.*;
 
 //import server.ServerThread;
 //import xml.*;
-import g1.MoonPie.clientServer.xml.*;
-import g1.MoonPie.clientServer.server.*;
+import g1.MoonPie.clientServer.heineman.server.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 /** 
  * Responsible for all communication to/from server.
  * <p>
@@ -81,16 +81,17 @@ public class ServerAccess {
 			server = new Socket (host, serverPort);
 			//System.out.println("try convert");
 			toServer = new PrintWriter (server.getOutputStream(), true);
+			//System.out.println("after printWriter");
 			//System.out.println("convert worked");
 		} catch (Exception e) {
 			System.err.println("Unable to connect to server: " + e.getMessage());
-			System.out.println("the client failed");
 			return false;
 		}
 
 		// start connection by starting reader thread and send proper LOGIN request.
 		isActive = true;
 		new FromServer(handler).start();
+		//System.out.println("basically last line");
 		return true;
 	}
 

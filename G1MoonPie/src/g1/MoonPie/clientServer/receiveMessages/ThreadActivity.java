@@ -1,8 +1,9 @@
 package g1.MoonPie.clientServer.receiveMessages;
 
-import g1.MoonPie.clientServer.client.ClientLauncher;
+import g1.MoonPie.clientServer.heineman.client.ClientLauncher;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 
 /**
  * The thread used for communication with the server.  Needed because android didn't allow doing the communication in the main thread.  
@@ -35,9 +36,14 @@ public class ThreadActivity implements Runnable{
 			ClientLauncher client = new ClientLauncher(handler);
 			//System.out.println("Connected");
 		} catch (Exception e) {
+			Message msg = Message.obtain();
+			msg.obj = new String("Connection Failed");
+			boolean worked = handler.sendMessage(msg);
+			System.out.println("sent failure message? " + worked);
 			e.printStackTrace();
-			System.out.println("Connection Failed");
+			System.out.println("Connection Failed in thread");
 		}
+		System.out.println("begin looper");
 		Looper.loop();
 		
 		

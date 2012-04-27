@@ -8,9 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import g1.MoonPie.R;
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.EncodeXML;
-import g1.MoonPie.clientServer.xml.MessageXML;
+import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * This controller is used to parse the addChoiceResponse and call the necessary controller.
@@ -36,7 +36,7 @@ public class AddChoiceResponseController {
 	 * @param response MessageXML The message to be processed and reacted to.
 	 */
 	public void process(MessageXML response){
-		System.out.println("response: " + response );
+		//System.out.println("response: " + response );
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		

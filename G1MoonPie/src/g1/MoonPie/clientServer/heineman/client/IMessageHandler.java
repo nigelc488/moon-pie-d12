@@ -1,6 +1,6 @@
-package g1.MoonPie.clientServer.client;
+package g1.MoonPie.clientServer.heineman.client;
 
-import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 
 /**
  * This interface is unmodified from Professor Heineman's code.

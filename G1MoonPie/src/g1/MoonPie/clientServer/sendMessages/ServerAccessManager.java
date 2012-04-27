@@ -1,6 +1,11 @@
 package g1.MoonPie.clientServer.sendMessages;
 
-import g1.MoonPie.clientServer.client.ServerAccess;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import g1.MoonPie.R;
+import g1.MoonPie.clientServer.heineman.client.ServerAccess;
 
 /**
  * This class is used to ensure that there is only one ServerAccess and that it can be called from anywhere in the program.
@@ -10,6 +15,7 @@ import g1.MoonPie.clientServer.client.ServerAccess;
 public class ServerAccessManager {
 
 	static ServerAccess access;
+	static Activity activity;
 	
 	/**
 	 * This method is used to set the ServerAccess and can only be used once.
@@ -24,7 +30,19 @@ public class ServerAccessManager {
 	 * @param sa ServerAccess The object used to communicate with the server.
 	 */
 	public static ServerAccess getAccess(){
-		return access;
+		try{
+		if(access == null)throw new Exception("Unable to Connect");
+		else return access;
+		}catch(Exception e){
+			
+			Toast.makeText(activity.getApplicationContext(), "Could not Connect to Server.", Toast.LENGTH_LONG).show();
+			activity.finish();
+			return new ServerAccess("no host");
+		}
+	}
+	
+	public static void setActivity(Activity active){
+		activity = active;
 	}
 	
 }

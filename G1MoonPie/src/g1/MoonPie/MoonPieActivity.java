@@ -4,11 +4,13 @@ import g1.MoonPie.Controller.*;
 import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.NewEventView;
-import g1.MoonPie.clientServer.client.ClientLauncher;
+import g1.MoonPie.clientServer.heineman.client.ClientLauncher;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.receiveMessages.ThreadActivity;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
+import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * This is the main function for the applicaiton.
@@ -41,6 +44,7 @@ public class MoonPieActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         event = new Event();
+        ServerAccessManager.setActivity(this);
         
         try{
         //System.out.println("try thread");
@@ -50,12 +54,12 @@ public class MoonPieActivity extends Activity {
         	
         }
         catch (Exception e){
-        	//System.out.println("thread failed");
         	e.printStackTrace();
         }
         setContentView(R.layout.welcome);
-        send = new SendMessageController();
         Button existingButton = (Button) findViewById(R.id.newButton);
         existingButton.setOnClickListener(new NewEventListener(this)); 
     }
+    
+    
 }
