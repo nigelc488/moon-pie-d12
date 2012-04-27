@@ -59,6 +59,7 @@ public class MoonPieActivity extends Activity {
         setContentView(R.layout.welcome);
         Button existingButton = (Button) findViewById(R.id.newButton);
         existingButton.setOnClickListener(new NewEventListener(this)); 
+       
     }
     
     

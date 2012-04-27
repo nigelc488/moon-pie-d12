@@ -20,6 +20,7 @@ import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
  */
 public class ClientLauncher {
 	boolean connected;
+	String server;
 
 	/**
 	 * This method handles the action of launching the client and establishing a connection with the server.
@@ -34,8 +35,11 @@ public class ClientLauncher {
 			System.exit(0);
 		}
 		
+		String nigel = "130.215.29.32";
+		server = nigel;
+		
 		//System.out.println("before new server acess");
-		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1"/localhost doesnt work
+		ServerAccess sa = new ServerAccess(server, 9371); //"127.0.0.1"/localhost doesnt work
 		//System.out.println("after new server, before connect");
 		connected = sa.connect(new MoonPieClientMessageHandler(handler));
 		//System.out.println("did we connect? " + connected);
