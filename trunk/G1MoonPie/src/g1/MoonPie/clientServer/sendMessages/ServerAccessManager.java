@@ -35,7 +35,7 @@ public class ServerAccessManager {
 		else return access;
 		}catch(Exception e){
 			
-			Toast.makeText(activity.getApplicationContext(), "Could not Connect to Server.", Toast.LENGTH_LONG).show();
+			Toast.makeText(activity.getApplicationContext(), "Could not Connect to Server.", Toast.LENGTH_SHORT).show();
 			activity.finish();
 			return new ServerAccess("no host");
 		}
