@@ -31,8 +31,6 @@ public class NewEventListener implements OnClickListener {
 		//this part only for testing sending messages
 		//SendMessageController send = new SendMessageController();
 		
-//		activity.setContentView(R.layout.results);
-//		Toast.makeText(activity.getApplicationContext(), "send messages", Toast.LENGTH_LONG);
 		
 		SendMessageController.addChoiceRequest("id'number", 1, "the & ring");
 		SendMessageController.addEdgeRequest("id'number2", 2, 3, 75);
