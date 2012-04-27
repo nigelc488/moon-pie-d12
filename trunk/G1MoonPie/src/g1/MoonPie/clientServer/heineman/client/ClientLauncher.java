@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.client;
+package g1.MoonPie.clientServer.heineman.client;
 
 
 
@@ -6,9 +6,9 @@ import android.os.Handler;
 
 //import client.ServerAccess;
 //import xml.Message;
+import g1.MoonPie.clientServer.heineman.xml.*;
 import g1.MoonPie.clientServer.receiveMessages.MoonPieClientMessageHandler;
 import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
-import g1.MoonPie.clientServer.xml.*;
 
 /**
  * This Class is a modified form of the ClientLauncher provided by Professor Heineman to allow integration with Android.
@@ -19,6 +19,7 @@ import g1.MoonPie.clientServer.xml.*;
  *
  */
 public class ClientLauncher {
+	boolean connected;
 
 	/**
 	 * This method handles the action of launching the client and establishing a connection with the server.
@@ -35,11 +36,17 @@ public class ClientLauncher {
 		
 		//System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess("130.215.29.32", 9371); //"127.0.0.1"/localhost doesnt work
-		sa.connect(new MoonPieClientMessageHandler(handler));
+		//System.out.println("after new server, before connect");
+		connected = sa.connect(new MoonPieClientMessageHandler(handler));
+		//System.out.println("did we connect? " + connected);
+		if(!connected){
+			System.out.println("Could not connect in client launcher");
+			throw new Exception("Unable to Connect to Server");
+		}
 		ServerAccessManager.setAccess(sa);
 		
 		// send an introductory connect request 
-		System.out.println("try message");
+		//System.out.println("try message");
 		MessageXML m = new MessageXML (MessageXML.requestHeader() + "<connectRequest/></request>");
 		sa.sendRequest(m);
 	} 

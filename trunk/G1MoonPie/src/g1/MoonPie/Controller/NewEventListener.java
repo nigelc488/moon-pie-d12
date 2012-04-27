@@ -1,11 +1,15 @@
 package g1.MoonPie.Controller;
 
+import g1.MoonPie.MoonPieActivity;
+import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.NewEventView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 /**
  * This class is used as a listener for the create new event button.
@@ -26,6 +30,10 @@ public class NewEventListener implements OnClickListener {
 		
 		//this part only for testing sending messages
 		//SendMessageController send = new SendMessageController();
+		
+//		activity.setContentView(R.layout.results);
+//		Toast.makeText(activity.getApplicationContext(), "send messages", Toast.LENGTH_LONG);
+		
 		SendMessageController.addChoiceRequest("id'number", 1, "the & ring");
 		SendMessageController.addEdgeRequest("id'number2", 2, 3, 75);
 		SendMessageController.adminRequest("nig'el", "");
@@ -42,7 +50,9 @@ public class NewEventListener implements OnClickListener {
 		SendMessageController.reportRequest("key'here", "closed");
 		//end this part
 	
-		NewEventView view = new NewEventView(activity);
+		new NewEventView(activity);
+		
+		//Toast.makeText(new NoServerActicty(), "Could not Connect to Server.", Toast.LENGTH_LONG);
 		
 	}
 

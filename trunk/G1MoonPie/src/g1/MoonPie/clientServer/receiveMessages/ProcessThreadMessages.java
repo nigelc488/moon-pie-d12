@@ -4,6 +4,7 @@ import org.w3c.dom.Node;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddEdgeResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AdminResponseController;
@@ -15,11 +16,11 @@ import g1.MoonPie.clientServer.receiveMessages.messageController.RemoveResponseC
 import g1.MoonPie.clientServer.receiveMessages.messageController.ReportResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.SignInResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.TurnResponseController;
-import g1.MoonPie.clientServer.xml.MessageXML;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This method receives the thread message and converts it back to an XML style message. It then parses the message and calls the 
@@ -126,8 +127,14 @@ public class ProcessThreadMessages extends Handler{
 	
 	@Override
 	public void handleMessage(Message msg){
+		if(msg.obj.toString().equals("Connection Failed")){
+			System.out.println("Connection Failed from message");
+			Toast.makeText(activity, "Could not Connect to Server", Toast.LENGTH_LONG);
+			activity.finish();
+		}else{
 		message = (MessageXML) msg.obj;
 		process(message);
+		}
 	}
 
 }

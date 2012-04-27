@@ -2,10 +2,12 @@ package g1.MoonPie.clientServer.sendMessages;
 
 import java.util.ArrayList;
 
-import g1.MoonPie.Model.Event;
+import android.app.Activity;
+
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.EncryptPassword;
-import g1.MoonPie.clientServer.xml.MessageXML;
+import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * This class is used to send all of the messages to the server.
@@ -14,11 +16,15 @@ import g1.MoonPie.clientServer.xml.MessageXML;
  *
  */
 public class SendMessageController {
-
+	Activity activity;
 	/**
 	 * This constructor creates the SendMessageController.
 	 */
 	public SendMessageController(){
+	}
+	
+	public SendMessageController(Activity activity){
+		this.activity = activity;
 	}
 	
 	/**
@@ -29,12 +35,10 @@ public class SendMessageController {
 	 */
 	public static void addChoiceRequest(String id, int line, String choice){
 		id = EncodeXML.encodeString(id);
-		System.out.println(id);
 		choice = EncodeXML.encodeString(choice);
 		
 		String xmlString = MessageXML.requestHeader() + "<addChoiceRequest id='" + id + "' " + 
 	"number='" + line + "' " + "choice='" + choice + "'/></request>";
-		System.out.println("xmlString= " + xmlString);
 		MessageXML req = new MessageXML(xmlString);
 		ServerAccessManager.getAccess().sendRequest(req);
 		
@@ -110,7 +114,7 @@ public class SendMessageController {
 		//setup choices
 		//may need some code to handle when open event and therefore just 1 choice
 		for (int i = 0; i < numChoices; i++) {
-			String choice = "<choice value='" + EncodeXML.encodeString(event.getLines()[i].getChoice()) + "' " + "index='" + (i+1) + "'/>";
+			String choice = "<choice value='" + EncodeXML.encodeString(event.getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
 			xmlString += choice;
 		} 
 		String passwordXML = "";

@@ -1,8 +1,8 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
 
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.EncodeXML;
-import g1.MoonPie.clientServer.xml.MessageXML;
+import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;

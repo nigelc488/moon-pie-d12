@@ -4,8 +4,8 @@ package g1.MoonPie.clientServer.receiveMessages;
 import android.os.Handler;
 import android.os.Message;
 
-import g1.MoonPie.clientServer.xml.*;
-import g1.MoonPie.clientServer.client.*;
+import g1.MoonPie.clientServer.heineman.client.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 
 
 /**

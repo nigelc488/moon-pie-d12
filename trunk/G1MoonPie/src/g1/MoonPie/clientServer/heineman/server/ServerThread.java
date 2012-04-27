@@ -1,4 +1,4 @@
-package g1.MoonPie.clientServer.server;
+package g1.MoonPie.clientServer.heineman.server;
 
 import java.io.*;
 import java.net.*;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.w3c.dom.*;
 //import xml.*;
-import g1.MoonPie.clientServer.xml.*;
+import g1.MoonPie.clientServer.heineman.xml.*;
 
 /** Thread to handle individual requests from a client. */
 public class ServerThread extends Thread implements ClientState {
