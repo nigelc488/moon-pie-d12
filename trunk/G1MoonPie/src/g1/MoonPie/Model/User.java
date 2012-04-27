@@ -13,6 +13,8 @@ public class User {
 	String username;
 	/**The User's password(optional).*/
 	String password;
+	/**True if the user is the event moderator, false otherwise*/
+	boolean moderator;
 	/**The number of edges the User has lft to ad.*/
 	int remaingEdges;
 

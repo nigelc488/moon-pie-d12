@@ -15,7 +15,7 @@ public class Edge implements Comparable<Edge>{
 	int leftLine;
 	/**The choice line to the right of the edge.*/
 	int rightLine;
-	/**The height of the edge.*/
+	/**The height of the edge [from 0-100]*/
 	int height;
 
 	/**Construct for an Edge, with the left and right lines that it connects,

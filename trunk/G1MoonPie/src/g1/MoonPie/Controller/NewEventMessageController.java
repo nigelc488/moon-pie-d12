@@ -1,5 +1,6 @@
 package g1.MoonPie.Controller;
 
+import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.JoinEventView;
 import g1.MoonPie.View.NewEventView;
@@ -13,18 +14,18 @@ import android.view.View.OnClickListener;
  * @author jpizz
  *
  */
-public class JoinEventListener implements OnClickListener {
+public class NewEventMessageController implements OnClickListener {
 
 	Activity activity;
 	
-	public JoinEventListener(Activity activity){
+	public NewEventMessageController(Activity activity){
 		this.activity = activity;
 	}
 	
 	@Override
 	public void onClick(View v) {
 		
-		JoinEventView view = new JoinEventView(activity);
+		activity.setContentView(R.layout.welcome);
 		
 	}
 
