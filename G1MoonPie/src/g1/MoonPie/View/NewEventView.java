@@ -1,10 +1,13 @@
 package g1.MoonPie.View;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Controller.JoinEventMessageController;
+import g1.MoonPie.Controller.NewEventMessageController;
 import g1.MoonPie.Controller.NumChoicesListener;
 import g1.MoonPie.Controller.NumRoundsListener;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,6 +39,9 @@ public NewEventView(Activity activity){
     roundsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     roundsSpinner.setAdapter(roundsAdapter);
     roundsSpinner.setOnItemSelectedListener(new NumRoundsListener());
+    
+	Button newEventButton = (Button) activity.findViewById(R.id.nextButton);
+    newEventButton.setOnClickListener(new NewEventMessageController(activity));
 }
 
 
