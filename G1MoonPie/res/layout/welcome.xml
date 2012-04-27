@@ -20,7 +20,7 @@
         android:text="Create New Event" />
 
     <Button
-        android:id="@+id/existingButton"
+        android:id="@+id/joinButton"
         android:layout_column="0"
         android:layout_gravity="center_horizontal"
         android:layout_row="3"
