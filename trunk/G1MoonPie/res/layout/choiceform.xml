@@ -1,122 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:baselineAligned="true"
     android:orientation="vertical" >
-
-    <GridLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/questionLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1.16"
-        android:columnCount="3" >
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp"
+        android:text="Example Question"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/titleView"
-            android:layout_column="0"
-            android:layout_columnSpan="3"
-            android:layout_gravity="left"
-            android:layout_row="0"
-            android:text="Example Question"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="402dp"
+        android:layout_gravity="bottom" >
 
-        <TextView
-            android:id="@+id/choice1Label"
-            android:layout_column="0"
-            android:layout_gravity="bottom|right"
-            android:layout_row="1"
-            android:text="Choice 1:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <EditText
-            android:id="@+id/choice1TB"
-            android:layout_column="1"
-            android:layout_gravity="bottom|right"
-            android:layout_row="1"
-            android:ems="10" />
+            <TextView
+                android:id="@+id/choice1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 1:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/choice2Label"
-            android:layout_column="0"
-            android:layout_gravity="bottom|right"
-            android:layout_row="2"
-            android:text="Choice 2:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/choice1TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" >
 
-        <EditText
-            android:id="@+id/choice2TB"
-            android:layout_column="1"
-            android:layout_gravity="right"
-            android:layout_row="2"
-            android:ems="10" />
+                <requestFocus />
+            </EditText>
+        </TableRow>
 
-        <EditText
-            android:id="@+id/EditText01"
-            android:layout_column="1"
-            android:layout_gravity="right"
-            android:layout_row="3"
-            android:ems="10" >
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-            <requestFocus />
-        </EditText>
+            <TextView
+                android:id="@+id/choice2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 2:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_column="0"
-            android:layout_columnSpan="2"
-            android:layout_gravity="left"
-            android:layout_row="5"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/choice2TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </TableRow>
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_column="1"
-            android:layout_gravity="right"
-            android:layout_row="6"
-            android:text="Next" />
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="54dp"
-            android:layout_column="0"
-            android:layout_gravity="fill_vertical"
-            android:layout_row="0" />
+            <TextView
+                android:id="@+id/choice3Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 3:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/choice3Label"
-            android:layout_column="0"
-            android:layout_gravity="right"
-            android:layout_row="3"
-            android:text="Choice 3:"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/choice3TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="10dp"
-            android:layout_column="0"
-            android:layout_gravity="fill_horizontal"
-            android:layout_row="4" />
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="216dp"
-            android:layout_column="0"
-            android:layout_gravity="fill_horizontal"
-            android:layout_row="5" />
+            <TextView
+                android:id="@+id/choice4Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 4:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="74dp"
-            android:layout_column="0"
-            android:layout_gravity="fill_vertical"
-            android:layout_row="6" />
+            <EditText
+                android:id="@+id/choice4TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
 
-        <Space
-            android:layout_width="120dp"
-            android:layout_height="1dp"
-            android:layout_column="1"
-            android:layout_gravity="fill_vertical"
-            android:layout_row="0" />
-    </GridLayout>
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/choice5Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 5:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/choice5TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/choice6Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 6:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/choice6TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/choice7Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 7:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/choice7TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/choice8Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choice 8:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/choice8TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/toDLFormButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Submit" />
+
+        </FrameLayout>
+
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
