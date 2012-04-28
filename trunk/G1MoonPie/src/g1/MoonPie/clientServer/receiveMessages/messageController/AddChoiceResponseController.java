@@ -56,11 +56,18 @@ public class AddChoiceResponseController {
 		//text1.getText();
 		
 		
-		EditText text = (EditText)activity.findViewById(R.id.question);
-		text.setText(choice);
-		text.setFocusable(false);
-		EditText text2 = (EditText)activity.findViewById(R.id.question);
-		System.out.println("question text is: " + text2.getText());
+		//sample code for how to update a text field
+		
+		//EditText text = (EditText)activity.findViewById(R.id.question);
+		
+		//EditText text = (EditText)activity.findViewById(R.id.choice1TB);
+		//text.setText(choice);
+		//text.setFocusable(false);
+		
+		//EditText text2 = (EditText)activity.findViewById(R.id.question);
+		
+		//EditText text2 = (EditText)activity.findViewById(R.id.choice1TB);
+		//System.out.println("question text is: " + text2.getText());
 		
 		
 		//somehow needs to update view though, so will probably need to be passed the right text box as well

@@ -31,7 +31,7 @@ import android.widget.Toast;
 public class ProcessThreadMessages extends Handler{
 	MessageXML message;
 	Event event;
-	Activity activity;
+	static Activity activity;
 	
 	/**
 	 * This constructor us used so that the event and activity can be later sent to other controllers that will be called.
@@ -41,6 +41,14 @@ public class ProcessThreadMessages extends Handler{
 	public ProcessThreadMessages(Event event, Activity activity){
 		this.event = event;
 		this.activity = activity;
+	}
+	
+	/**
+	 * This method is used to change the activity to be passed to called controllers.
+	 * @param active Activity The current activity
+	 */
+	public static void setActivity(Activity active){
+		activity = active;
 	}
 	
 /*	public ProcessThreadMessages(Activity activity){

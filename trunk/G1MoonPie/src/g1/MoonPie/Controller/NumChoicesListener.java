@@ -15,7 +15,7 @@ public class NumChoicesListener implements OnItemSelectedListener {
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
-		Toast.makeText(parent.getContext(), "The choice is " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+		//Toast.makeText(parent.getContext(), "The choice is " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 	}
 
 	@Override
