@@ -9,6 +9,7 @@ import java.util.Collections;
  * @author Eric Cobane
  * @author Janine Pizzimenti
  * @author Nigel Cochran
+ * @author Chris Berthelette
  *
  */
 public class Line {
@@ -34,6 +35,10 @@ public class Line {
 		choice = "";
 	}
 	
+	public void setxPosition(int xPosition) {
+		this.xPosition = xPosition;
+	}
+
 	/**
 	 * This method returns the horizontal location of the Line.
 	 * @return int The horizontal location (xPositon) of the Line
