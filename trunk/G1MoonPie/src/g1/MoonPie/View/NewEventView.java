@@ -26,6 +26,8 @@ public NewEventView(Activity activity){
 	
 	activity.setContentView(R.layout.new_event_form);
 	
+	
+	
 	//add listener for numchoices drop down
     Spinner choicesSpinner = (Spinner) activity.findViewById(R.id.numChoices);
     ArrayAdapter<CharSequence> choicesAdapter = ArrayAdapter.createFromResource(activity, R.array.choices_array, android.R.layout.simple_spinner_item);
