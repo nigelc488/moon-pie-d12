@@ -15,9 +15,11 @@ import android.widget.RadioGroup;
 public class AdminCompleteController implements OnClickListener{
 Activity activity;
 Entries entries;
+String key;
 	
-	public AdminCompleteController(Activity activity, Entries ent){
+	public AdminCompleteController(Activity activity, Entries ent, String k){
 		this.activity = activity;
+		this.key = k; 
 	}
 	
 	@Override
@@ -25,7 +27,7 @@ Entries entries;
 		EditText days = (EditText) activity.findViewById(R.id.EditDaysText);
 		int DaysOld = Integer.parseInt(days.getText().toString());
 		SendMessageController smc = new SendMessageController();
-		smc.forceRequest("445", "", DaysOld);
+		smc.forceRequest(key, "", DaysOld);
 		
 	}
 
