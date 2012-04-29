@@ -9,6 +9,7 @@ import java.util.Collections;
  * @author Eric Cobane
  * @author Janine Pizzimenti
  * @author Nigel Cochran
+ * @author J Lowrey
  * @author Chris Berthelette
  *
  */
@@ -22,9 +23,7 @@ public class Line {
 	String choice;
 	/**List of Edges that contact the Line.*/
 	ArrayList<Edge> edges;
-	/**Whether or not the choice Line is editable*/
-	boolean choiceEditable;
-	
+
 	/**Construct for a choice Line.
 	 * 
 	 * @param xPos	The X-position of the line

@@ -35,7 +35,7 @@ public class JoinEventMessageController implements OnClickListener {
 		
 		SendMessageController.signInRequest(eventID, username, password);
 		
-		activity.setContentView(R.layout.welcome);
+		activity.setContentView(R.layout.choiceform);
 		
 	}
 

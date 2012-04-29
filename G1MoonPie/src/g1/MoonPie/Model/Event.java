@@ -9,6 +9,7 @@ import java.util.HashSet;
  * @author Eric Cobane
  * @author Janine Pizzimenti
  * @author Nigel Cochran
+ * @author J Lowrey
  *
  */
 
@@ -19,12 +20,15 @@ public class Event {
 	/**Number of rounds for the event.*/
 	int numRounds;
 	/**List of the users' names for the event.*/
-	ArrayList<User> users;
+	private ArrayList<User> users;
 	/**List of the lines for an event.*/
 	Line[] lines; //change to array
 	/**The event ID.*/
 	String ID;
-
+	/** States if an event is open or closed */
+	boolean isOpen = false;
+	
+	
 
 	/**Construct for a DecisionLines Event.
 	 * 
@@ -46,6 +50,25 @@ public class Event {
 		numRounds = 0;
 		numUsers = 0;
 	}
+	
+	
+	/**
+	 * getter for isOpen
+	 */
+	public boolean getIsOpen(){
+		return isOpen;
+	}
+	
+	/**
+	 * Sets the availability of the Event
+	 * True, open
+	 * false, closed
+	 * default, closed
+	 */
+	public boolean setIsOpen(){
+		return isOpen;
+	}
+
 	
 	/**
 	 * Set the number of rounds in an event
@@ -240,6 +263,14 @@ public class Event {
 
 	public void setID(String iD) {
 		ID = iD;
+	}
+
+	public ArrayList<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(ArrayList<User> users) {
+		this.users = users;
 	}
 	
 	

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
+import g1.MoonPie.Controller.AddChoiceController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
@@ -45,15 +46,13 @@ public class AddChoiceResponseController {
 		System.out.println("Add Choice: Line: " + line + " choice: " + choice);
 		
 		//This is where you should call the addChoiceController
-		//new AddChoiceController(activity, event, line, choice);
+		new AddChoiceController(event, activity);
+		
 		
 		
 		//______________________________________________________
 		//This code is just for testing but it shows how to retrieve text from a text field and also how to set the text.
 		
-		//SAMPLE CODE FOR JEREMY
-		//EditText text1 = (EditText)activity.findViewById(R.id.choice1TB);
-		//text1.getText();
 		
 		
 		//sample code for how to update a text field

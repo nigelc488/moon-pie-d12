@@ -17,7 +17,7 @@ public class User {
 	boolean moderator;
 	/**The number of edges the User has lft to ad.*/
 	int remaingEdges;
-
+	
 
 	/**Construct for a User, which contains a username, an optional password
 	 * and the number of remaining edges for the user to add.
