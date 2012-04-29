@@ -32,7 +32,7 @@ public class CloseEventController implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		
-		activity.setContentView(R.layout.forcecloseform);
+		activity.setContentView(R.layout.welcome);
 		//SendMessageController.closeRequest(event.getID());
 		
 	}
