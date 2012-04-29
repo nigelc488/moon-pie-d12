@@ -54,8 +54,8 @@ public class ChoiceFormView {
 		TextView label7 = (TextView)activity.findViewById(R.id.choice7Label);
 		TextView label8 = (TextView)activity.findViewById(R.id.choice8Label);
 		
-		EditText[] textBoxes = new EditText[7];
-		TextView[] labels = new EditText[7];
+		EditText[] textBoxes = new EditText[8];
+		TextView[] labels = new TextView[8];
 		
 		textBoxes[0] = text1;
 		textBoxes[1] = text2;

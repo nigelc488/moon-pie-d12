@@ -61,7 +61,9 @@ public class NewEventMessageController implements OnClickListener {
 
 		//the following code should be executed after a response from the server
 		ChoiceFormView view = new ChoiceFormView(event,activity);
-		activity.setContentView(R.layout.choiceform);
+//	already done in choiceformview
+//		activity.setContentView(R.layout.choiceform);
+		
 		view.setChoicesVisibility();
 
 	}
