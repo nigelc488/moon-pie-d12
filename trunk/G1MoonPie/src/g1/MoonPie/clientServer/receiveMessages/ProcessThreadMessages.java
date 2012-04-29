@@ -3,6 +3,7 @@ package g1.MoonPie.clientServer.receiveMessages;
 import org.w3c.dom.Node;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
@@ -32,15 +33,17 @@ public class ProcessThreadMessages extends Handler{
 	MessageXML message;
 	Event event;
 	static Activity activity;
+	Entries entries;
 	
 	/**
 	 * This constructor us used so that the event and activity can be later sent to other controllers that will be called.
 	 * @param event Event The Event for the application used to access model objects
 	 * @param activity Activity The activity for the application used to access GUI objects
 	 */
-	public ProcessThreadMessages(Event event, Activity activity){
+	public ProcessThreadMessages(Event event, Activity activity, Entries entries){
 		this.event = event;
 		this.activity = activity;
+		this.entries = entries;
 	}
 	
 	/**
@@ -121,7 +124,7 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("reportResponse")){
 			//cat is doing this one
 			System.out.println(type);
-			new ReportResponseController(event, activity).process(response);
+			new ReportResponseController(event, activity, entries).process(response);
 		}
 		else if(type.equals("chatResponse")){
 			//optional and we aren't doing it
