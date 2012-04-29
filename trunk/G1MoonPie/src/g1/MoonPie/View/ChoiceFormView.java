@@ -1,8 +1,10 @@
 package g1.MoonPie.View;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Controller.AddChoiceController;
 import g1.MoonPie.Controller.BeginRoundController;
 import g1.MoonPie.Controller.JoinEventMessageController;
+import g1.MoonPie.Model.Event;
 import android.app.Activity;
 import android.widget.Button;
 
@@ -14,14 +16,16 @@ import android.widget.Button;
 public class ChoiceFormView {
 
 	Activity activity;
+	Event event;
 
-	public ChoiceFormView(Activity a){
+	public ChoiceFormView(Event e, Activity a){
 
+		this.event = e;
 		this.activity = a;
 
 		activity.setContentView(R.layout.choiceform);
 
 		Button beginRoundButton = (Button) activity.findViewById(R.id.toDLFormButton);
-		beginRoundButton.setOnClickListener(new BeginRoundController(activity));
+		beginRoundButton.setOnClickListener(new AddChoiceController(event, activity));
 	}
 }
