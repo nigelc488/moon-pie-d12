@@ -115,7 +115,7 @@ public class ServerAccess {
 	/** Send request to the server. Return success or failure */
 	public synchronized boolean sendRequest(MessageXML r) {
 		if (!isActive) { return false; }
-
+		System.out.println("Send Message now:"+ r);
 		toServer.println(r);
 		return !toServer.checkError();
 	}

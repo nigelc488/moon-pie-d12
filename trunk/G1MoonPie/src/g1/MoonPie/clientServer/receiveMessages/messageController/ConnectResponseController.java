@@ -39,6 +39,7 @@ public class ConnectResponseController {
 		
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
 	
+		event.setID(id);
 		System.out.println("Connected: id=" + id);
 		
 		//This is where you should call the ConnectController
