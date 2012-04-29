@@ -18,17 +18,16 @@ import android.widget.Spinner;
 public class AdminChoicesView extends Activity {
 	
 	Activity activity; 
-	Entries entries;
+	String key;
 	
-	public AdminChoicesView (Activity activity, Entries ent){
-		
-		this.entries = ent;
+	public AdminChoicesView (Activity activity, String k){
 		this.activity = activity;
+		this.key = k;
 		
 		activity.setContentView(R.layout.adminchoice);
 	  
 	    RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
-	    EventType.setOnClickListener(new AdminViewTypeController(activity));
+	    EventType.setOnClickListener(new AdminViewTypeController(activity, key));
 	    
 	}
 
