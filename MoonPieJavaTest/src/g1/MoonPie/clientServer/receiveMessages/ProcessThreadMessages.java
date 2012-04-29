@@ -12,7 +12,6 @@ import g1.MoonPie.clientServer.receiveMessages.messageController.ForceResponseCo
 import g1.MoonPie.clientServer.receiveMessages.messageController.RemoveResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.ReportResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.SignInResponseController;
-import g1.MoonPie.clientServer.receiveMessages.messageController.TurnResponseController;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 import org.w3c.dom.Node;
@@ -63,11 +62,6 @@ public class ProcessThreadMessages{
 			//Done
 			System.out.println(type);
 			new SignInResponseController().process(response);
-		}
-		else if(type.equals("turnResponse")){
-			//Done
-			System.out.println(type);
-			new TurnResponseController();
 		}
 		else if(type.equals("adminResponse")){
 			//Done

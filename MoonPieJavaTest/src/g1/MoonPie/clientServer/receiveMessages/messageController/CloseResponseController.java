@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 
 
 public class CloseResponseController {
+	boolean closed = false;
 
 
 	public void process(MessageXML response){
@@ -15,11 +16,20 @@ public class CloseResponseController {
 		
 		System.out.println("Close the event");
 		
+		closed = true;
+		
 		//This is where you should call the closeEventController
 		//new CloseEventController();
 		
 		//needs to know what button to hide so will need to know about the Activity
 		
 	}
+
+
+	public boolean isClosed() {
+		return closed;
+	}
+	
+	
 	
 }

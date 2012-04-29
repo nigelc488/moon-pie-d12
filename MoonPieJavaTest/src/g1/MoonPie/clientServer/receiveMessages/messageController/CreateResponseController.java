@@ -10,6 +10,7 @@ import org.w3c.dom.Node;
 
 
 public class CreateResponseController {
+	String id;
 
 	
 	public void process(MessageXML response){
@@ -17,7 +18,7 @@ public class CreateResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
+		id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
 	
 		System.out.println("Created: id=" + id);
 		
@@ -25,5 +26,12 @@ public class CreateResponseController {
 		//new ConnectController(id);
 		
 	}
+
+
+	public String getId() {
+		return id;
+	}
+	
+	
 
 }

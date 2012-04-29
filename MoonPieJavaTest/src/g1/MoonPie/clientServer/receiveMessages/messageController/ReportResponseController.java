@@ -11,13 +11,14 @@ import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class ReportResponseController {
+	ArrayList<Entry> entries;
 
 	public void process(MessageXML response){
 		System.out.println("response: " + response );
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		ArrayList<Entry> entries = new ArrayList<Entry>();
+		entries = new ArrayList<Entry>();
 		
 		NodeList list = child.getChildNodes();
 
@@ -27,11 +28,12 @@ public class ReportResponseController {
 			
 			String id = EncodeXML.decodeString(map2.getNamedItem("id").getNodeValue());
 			String type = EncodeXML.decodeString(map2.getNamedItem("type").getNodeValue());
+			String question = EncodeXML.decodeString(map2.getNamedItem("question").getNodeValue());
 			int numChoices = Integer.parseInt(map2.getNamedItem("numChoices").getNodeValue());
 			int numRounds = Integer.parseInt(map2.getNamedItem("numRounds").getNodeValue());
 			String created = EncodeXML.decodeString(map2.getNamedItem("created").getNodeValue());
 			boolean completed = Boolean.parseBoolean(map2.getNamedItem("completed").getNodeValue());
-			entries.add(new Entry(id, type, numChoices, numRounds, created, completed));
+			entries.add(new Entry(id, type, question, numChoices, numRounds, created, completed));
 			
 		}
 		
@@ -56,6 +58,12 @@ public class ReportResponseController {
 		//somehow needs to update view though, so will probably need to be passed the right text box as well
 		
 	}
+
+	public ArrayList<Entry> getEntries() {
+		return entries;
+	}
+	
+	
 	
 	
 

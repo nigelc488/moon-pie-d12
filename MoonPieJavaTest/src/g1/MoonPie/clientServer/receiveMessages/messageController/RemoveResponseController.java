@@ -9,6 +9,7 @@ import org.w3c.dom.Node;
 
 
 public class RemoveResponseController {
+	int numberAffected;
 
 
 	
@@ -17,11 +18,19 @@ public class RemoveResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		int numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
+		numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
 		
 		System.out.println("removed" + numberAffected);
 		//new AdminController(event, activity, key);
-		
-		
 	}
+
+
+
+
+	public int getNumberAffected() {
+		return numberAffected;
+	}
+	
+	
+
 }
