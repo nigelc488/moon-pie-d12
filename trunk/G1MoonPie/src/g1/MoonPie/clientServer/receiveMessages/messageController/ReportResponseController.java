@@ -12,6 +12,7 @@ import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Entry;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.AdminView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
@@ -22,6 +23,7 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 public class ReportResponseController {
 	Event event;
 	Activity activity;
+	ArrayList<Entry> entries;
 	
 	/**
 	 * This constructor requires an event and activity so they can be passed to the next controller.
@@ -42,7 +44,7 @@ public class ReportResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		ArrayList<Entry> entries = new ArrayList<Entry>();
+		entries = new ArrayList<Entry>();
 		
 		NodeList list = child.getChildNodes();
 
@@ -60,7 +62,8 @@ public class ReportResponseController {
 			
 		}
 		
-
+		AdminView av = new AdminView(activity);
+		av.setTableValues(entries);
 
 		//}
 		
