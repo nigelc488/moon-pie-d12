@@ -67,7 +67,7 @@ public class ReportResponseController {
 		}
 		
 		ent.setEntires(entries);
-		AdminViewTypeController avtc = new AdminViewTypeController(activity);
+		AdminViewTypeController avtc = new AdminViewTypeController(activity, ent.getKey());
 		avtc.EnableVisability(ent);
 
 		//}
