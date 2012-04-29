@@ -26,71 +26,77 @@ public class ProcessThreadMessages{
 		
 	}
 	
-	public void process(MessageXML response){
+	public String process(MessageXML response){
 		System.out.println("message received" + response);
 		Node child = response.contents.getFirstChild();
 		String type = child.getLocalName();
+		String correctResponse = "none";
 		
 		if(type.equals("addChoiceResponse")){
 			//Done
 			System.out.println("in add choice response");
 			System.out.println(type);
-			new AddChoiceResponseController().process(response);
+			//new AddChoiceResponseController().process(response);
+			correctResponse = "addChoiceResponse";
 		}
 		else if(type.equals("addEdgeResponse")){
 			//Done
 			System.out.println(type);
-			new AddEdgeResponseController().process(response);
+			//new AddEdgeResponseController().process(response);
+			correctResponse = "addEdgeResponse";
 		}
 		else if(type.equals("closeResponse")){
 			//Done
 			System.out.println(type);
-			new CloseResponseController().process(response);
+			correctResponse = "closeResponse";
+			//new CloseResponseController().process(response);
 		}
 		else if(type.equals("connectResponse")){
 			//Done
 			System.out.println(type);
-			new ConnectResponseController().process(response);
+			correctResponse = "connectResponse";
+			//new ConnectResponseController().process(response);
 		}
 		else if(type.equals("createResponse")){
 			//Done
 			System.out.println(type);
-			new CreateResponseController().process(response);
+			//new CreateResponseController().process(response);
 		}
 		
 		else if(type.equals("signInResponse")){
 			//Done
 			System.out.println(type);
-			new SignInResponseController().process(response);
+			//new SignInResponseController().process(response);
 		}
 		else if(type.equals("adminResponse")){
 			//Done
 			System.out.println(type);
-			new AdminResponseController().process(response);
+			//new AdminResponseController().process(response);
 		}
 		else if(type.equals("removeResponse")){
 			//Done
 			System.out.println(type);
-			new RemoveResponseController().process(response);
+			//new RemoveResponseController().process(response);
 		}
 		else if(type.equals("forceResponse")){
 			//Done
 			System.out.println(type);
-			new ForceResponseController().process(response);
+			//new ForceResponseController().process(response);
 		}
 		else if(type.equals("reportResponse")){
 			//cat is doing this one
 			System.out.println(type);
-			new ReportResponseController().process(response);
+			//new ReportResponseController().process(response);
 		}
-		else if(type.equals("chatResponse")){
-			//optional and we aren't doing it
-			System.out.println(type);
+		else{
+			System.out.println("Not a valid message: " + type);
+			type = "none";
 		}
-		else System.out.println("Not a valid message: " + type);
 
-		//System.out.println("Received in main thread:" + response);
+		return type;
 	}
+	
+	
 	
 
 }

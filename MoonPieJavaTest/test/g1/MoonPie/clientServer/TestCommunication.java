@@ -256,10 +256,48 @@ public class TestCommunication extends TestCase {
 		assertEquals(5, report.getEntries().get(0).getNumChoices());
 		assertEquals(3, report.getEntries().get(0).getNumRounds());
 		assertEquals("a date?", report.getEntries().get(0).getCreated());
-		assertTrue(report.getEntries().get(0).isCompleted());
+		assertFalse(report.getEntries().get(0).isCompleted());
 	}
 	
 	public void testProcessThreadMessage(){
+		String xmlString = MessageXML.responseHeader("random id") + "<createResponse/></response>";
+		MessageXML message = new MessageXML(xmlString);
+		assertEquals("createResponse", process.process(message));
 		
+		xmlString = MessageXML.responseHeader("random id") + "<addChoiceResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("addChoiceResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<addEdgeResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("addEdgeResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<closeResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("closeResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<signInResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("signInResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<adminResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("adminResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<removeResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("removeResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<forceResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("forceResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<reportResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("reportResponse", process.process(message));
+		
+		xmlString = MessageXML.responseHeader("random id") + "<fakeResponse/></response>";
+		message = new MessageXML(xmlString);
+		assertEquals("none", process.process(message));
 	}
 }
