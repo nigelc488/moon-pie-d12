@@ -27,21 +27,34 @@ public class Event {
 	String ID;
 	/** States if an event is open or closed */
 	boolean isOpen = false;
+	/**The Question for the event*/
+	String question;
 	
 	
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
 
 	/**Construct for a DecisionLines Event.
 	 * 
 	 * @param numberOfUsers		The number of Users
 	 * @param numberOfRounds	The number of Rounds
 	 */
-	public Event(int numberOfUsers, int numberOfRounds){
+	public Event(int numberOfUsers, int numberOfRounds, String question, boolean isOpen){
 		this.numUsers = numberOfUsers;
 		this.numRounds = numberOfRounds;
 		lines = new Line[numberOfUsers];
 		for (int i = 0; i<numberOfUsers; i++){
 			lines[i] = new Line(i);
-		}	}
+		}	
+		this.question = question;
+		this.isOpen = isOpen;
+	}
 
 	/**
 	 * This constructor does not take in any variables but instantiates the lines, edges, results, number of rounds, and number of choices.
@@ -65,8 +78,8 @@ public class Event {
 	 * false, closed
 	 * default, closed
 	 */
-	public boolean setIsOpen(){
-		return isOpen;
+	public void closeEvent(){
+		this.isOpen = false;
 	}
 
 	

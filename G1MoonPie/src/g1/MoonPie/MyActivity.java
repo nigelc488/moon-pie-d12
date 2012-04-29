@@ -30,7 +30,7 @@ public class MyActivity extends Activity {
 		SendMessageController.addEdgeRequest("id'number2", 2, 3, 75);
 		SendMessageController.adminRequest("nig'el", "");
 		SendMessageController.closeRequest("id'number3");
-		Event event = new Event(5, 3);
+		Event event = new Event(5, 3, "q", false);
 		event.getLines()[0].setChoice("first's choice");
 		SendMessageController.createRequest("open", "who am < I", 5, 3, "nigel>", "password/>", event);
 		event.getLines()[1].setChoice("second & choice");
