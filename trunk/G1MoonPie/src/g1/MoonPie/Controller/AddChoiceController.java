@@ -105,8 +105,8 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
 			}
-			User mod = new User("username", "password", true);					//This was used to test close event controller
-			CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+		//	User mod = new User("username", "password", true);					//This was used to test close event controller
+		//	CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
 		}
 
 		/*If the event is closed*/
