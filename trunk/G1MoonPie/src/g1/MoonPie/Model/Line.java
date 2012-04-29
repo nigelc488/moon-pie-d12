@@ -33,10 +33,6 @@ public class Line {
 		edges = new ArrayList<Edge>();
 		choice = "";
 	}
-	
-	public void setxPosition(int xPosition) {
-		this.xPosition = xPosition;
-	}
 
 	/**
 	 * This method returns the horizontal location of the Line.
