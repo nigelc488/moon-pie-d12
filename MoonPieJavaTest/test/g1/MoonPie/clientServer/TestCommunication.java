@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import junit.framework.TestCase;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.client.ClientLauncher;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddEdgeResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AdminResponseController;
@@ -19,11 +20,13 @@ import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import g1.MoonPie.clientServer.xml.MessageXML;
 
 public class TestCommunication extends TestCase {
+	ProcessThreadMessages process;
 	
 	@Override
 	protected void setUp(){
 		try {
 			new ClientLauncher();
+			process = new ProcessThreadMessages();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
