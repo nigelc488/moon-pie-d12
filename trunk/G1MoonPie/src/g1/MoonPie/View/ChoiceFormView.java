@@ -88,6 +88,7 @@ public class ChoiceFormView {
 		
 		if (event.getIsOpen()){
 			textBoxes[0].setVisibility(0);
+			labels[0].setVisibility(0);
 		}else{
 			for (int i = 0; i < event.getLines().length; i++){			
 				textBoxes[i].setVisibility(0);

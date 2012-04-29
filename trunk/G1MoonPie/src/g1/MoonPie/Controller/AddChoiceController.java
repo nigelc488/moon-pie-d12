@@ -102,7 +102,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			for(int i=0; i<lines.length; i++){
 				if(lines[i].getChoice().equals("")){
 					lines[i].setChoice(textBoxes[0].getText().toString());
-					SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
+					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
 			}
 		}
