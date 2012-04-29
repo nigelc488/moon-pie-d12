@@ -97,9 +97,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		lines = event.getLines();
 		/* if the event is open */
 		if (event.getIsOpen()){
-			//	MOVE TO WHERE YOU FIRST CALL THIS SCREEN
-			//			textBoxes[0].setVisibility(0);
-			
+
 			//TODO This is wrong and needs to be fixed!
 			for(int i=0; i<lines.length; i++){
 				if(lines[i].getChoice().equals("")){
@@ -108,6 +106,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				}
 			}
 		}
+
 		/*If the event is closed*/
 		else{
 			ArrayList<String> namesOfLines = new ArrayList<String>();
@@ -115,36 +114,37 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				String namedLine = textBoxes[i].getText().toString();
 				namesOfLines.add(namedLine);
 			}
-			
+
 			namesValid = true;
 			if (namesOfLines.contains("")){
 				Toast.makeText(activity, "Please fill in empty boxes", Toast.LENGTH_SHORT).show();
 				namesValid = false;
 			}
-			
+
 			int sizeWithDuplicates = namesOfLines.size();
 			HashSet<String> linesNoDuplicates = new HashSet<String>();
 			linesNoDuplicates.addAll(namesOfLines);
 			int sizeWithoutDuplicates = linesNoDuplicates.size();
-			
+
 			if (sizeWithDuplicates != sizeWithoutDuplicates){
 				Toast.makeText(activity, "Please change duplicate choices", Toast.LENGTH_SHORT).show();
 				namesValid = false;
 			}
-			
+
 			if (namesValid == true){			
 				for (int i = 0; i < lines.length; i++){
 					lines[i].setChoice(textBoxes[i].getText().toString());
 					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
-//				User mod = new User("username", "password", true);					//This was used to test close event controller
-//				CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+				//				User mod = new User("username", "password", true);					//This was used to test close event controller
+				//				CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
 
-//				CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
-			
+				//				CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
+
 			}
 		}
 	}
+
 
 
 

@@ -27,18 +27,24 @@ public class ClientLauncher {
 	 * @param handler Handler the Android Message Handler used to send messages to the main thread.
 	 * @throws Exception If it cannot connect, it throws an exception.
 	 */
-	
+
 	public ClientLauncher(Handler handler) throws Exception {
 		// FIRST thing to do is register the protocol being used. There will be a single class protocol
 		// that will be defined and which everyone will use. For now, demonstrate with skeleton protocol.
 		if (!MessageXML.configure("decisionlines.xsd")) {
 			System.exit(0);
 		}
-		
+
+
 		String nigel = "130.215.29.32";
 		String serverGroup = "72.249.186.243";
-		server = serverGroup;
 		
+		String jeremy = "130.215.169.127";
+		server = jeremy;
+
+		//		server = serverGroup;
+		server = jeremy;
+
 		//System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess(server, 9371); //"127.0.0.1"/localhost doesnt work
 		//System.out.println("after new server, before connect");
@@ -49,7 +55,7 @@ public class ClientLauncher {
 			throw new Exception("Unable to Connect to Server");
 		}
 		ServerAccessManager.setAccess(sa);
-		
+
 		// send an introductory connect request 
 		//System.out.println("try message");
 		MessageXML m = new MessageXML (MessageXML.requestHeader() + "<connectRequest/></request>");
