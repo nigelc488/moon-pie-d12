@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.widget.EditText;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
+import g1.MoonPie.Controller.AdminViewTypeController;
+import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Entry;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.AdminView;
@@ -22,6 +24,7 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
  */
 public class ReportResponseController {
 	Event event;
+	Entries ent;
 	Activity activity;
 	ArrayList<Entry> entries;
 	
@@ -30,9 +33,10 @@ public class ReportResponseController {
 	 * @param event Event The event used to access model objects
 	 * @param activity Activity the activity used to access GUI objects
 	 */
-	public ReportResponseController(Event event, Activity activity){
+	public ReportResponseController(Event event, Activity activity, Entries entries){
 		this.event = event;
 		this.activity = activity;
+		this.ent = entries;
 	}
 	
 	/**
@@ -62,8 +66,9 @@ public class ReportResponseController {
 			
 		}
 		
-		AdminView av = new AdminView(activity);
-		av.setTableValues(entries);
+		ent.setEntires(entries);
+		AdminViewTypeController avtc = new AdminViewTypeController(activity);
+		avtc.EnableVisability(ent);
 
 		//}
 		
