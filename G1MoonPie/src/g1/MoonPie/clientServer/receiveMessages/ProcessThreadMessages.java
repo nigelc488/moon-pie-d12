@@ -109,7 +109,7 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("adminResponse")){
 			//Done
 			System.out.println(type);
-			new AdminResponseController(event, activity).process(response);
+			new AdminResponseController(event, activity, entries).process(response);
 		}
 		else if(type.equals("removeResponse")){
 			//Done
