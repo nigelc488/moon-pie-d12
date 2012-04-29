@@ -7,37 +7,28 @@ import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Controller.NewEventMessageController;
 import g1.MoonPie.Controller.NumChoicesListener;
 import g1.MoonPie.Controller.NumRoundsListener;
+import g1.MoonPie.Model.Entries;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 public class AdminChoicesView extends Activity {
 	
 	Activity activity; 
+	Entries entries;
 	
-	public AdminChoicesView (Activity activity){
+	public AdminChoicesView (Activity activity, Entries ent){
 		
+		this.entries = ent;
 		this.activity = activity;
-		Button DisplayButton;
-		Button RemoveButton;
-		RadioButton UnComp;
-		RadioButton Comp;
 		
 		activity.setContentView(R.layout.adminchoice);
-	    
-		DisplayButton = (Button) activity.findViewById(R.id.DisplayButton);
-	    DisplayButton.setOnClickListener(new AdminDisplayController(activity));
-	    
-	    RemoveButton = (Button) activity.findViewById(R.id.RemoveButton);
-	    RemoveButton.setOnClickListener(new AdminRemoveController(activity));
-	    
-	    UnComp = (RadioButton) activity.findViewById(R.id.UncompletedEvent);
-	    UnComp.setOnClickListener(new AdminViewTypeController(activity, 1));
-	    
-	    Comp = (RadioButton) activity.findViewById(R.id.CompletedEvent);
-	    Comp.setOnClickListener(new AdminViewTypeController(activity, 2));
+	  
+	    RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
+	    EventType.setOnClickListener(new AdminViewTypeController(activity));
 	    
 	}
 
