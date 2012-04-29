@@ -18,7 +18,7 @@
         android:id="@+id/choiceResult0"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -27,7 +27,7 @@
         android:id="@+id/choiceResult1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -36,7 +36,7 @@
         android:id="@+id/choiceResult2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -45,7 +45,7 @@
         android:id="@+id/choiceResult3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -54,7 +54,7 @@
         android:id="@+id/choiceResult4"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -63,7 +63,7 @@
         android:id="@+id/choiceResult5"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -72,7 +72,7 @@
         android:id="@+id/choiceResult6"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />
@@ -81,7 +81,7 @@
         android:id="@+id/choiceResult7"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_margin="15dp"
         android:layout_weight="1"
         android:text="" />

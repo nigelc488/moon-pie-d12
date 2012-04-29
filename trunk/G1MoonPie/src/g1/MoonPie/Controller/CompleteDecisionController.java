@@ -28,12 +28,14 @@ public class CompleteDecisionController {
 
 		this.event = e;
 		this.activity  = a;
-	}
+//	}
+//
+//
+//	/**This method gets the calculated results for the event and displays them on the results screen.*/
+//	public void calculateDecision(){
 
-
-	/**This method gets the calculated results for the event and displays them on the results screen.*/
-	public void calculateDecision(){
-
+		activity.setContentView(R.layout.results);
+		
 		//get the array representing the ordered choice results
 		String[] results = event.calculateResults();
 
@@ -55,7 +57,7 @@ public class CompleteDecisionController {
 
 			//set each TextView to the correct result choice to display top to bottom
 			choiceLabels[i] = (TextView) activity.findViewById(choiceID[i]);
-			choiceLabels[i].setText((i + 1) + " " + results[i]);
+			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
 	}
 }
