@@ -20,11 +20,13 @@ public class AdminRemoveController implements OnClickListener {
 Activity activity;
 Entries entries;
 String s;
+String key;
 	
-	public AdminRemoveController(Activity activity, Entries ent){
+	public AdminRemoveController(Activity activity, Entries ent, String k){
 		this.entries = ent;
 		this.activity = activity;
 		this.s = "hello";
+		this.key = k;
 	}
 	
 	@Override
@@ -35,9 +37,9 @@ String s;
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
-			smc.removeRequest("445", "", false, DaysOld);
+			smc.removeRequest(key, "", false, DaysOld);
 		}else if(checkedRadioButton == R.id.CompletedEvent){
-			smc.removeRequest("445", "", true, DaysOld);
+			smc.removeRequest(key, "", true, DaysOld);
 		}
 		
 	}
