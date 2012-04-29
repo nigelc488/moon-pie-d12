@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This class is used as a listener for the create join event button.
@@ -27,23 +28,39 @@ public class JoinEventMessageController implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
+		boolean valid = true;
 		
 		EditText eventIDText = (EditText) activity.findViewById(R.id.EventID);
 		String eventID = eventIDText.getText().toString();
+		if (eventID.equals("")){
+			Toast.makeText(activity, "Please enter a value for the Event ID", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
+		
 		EditText usernameText = (EditText) activity.findViewById(R.id.Username);
 		String username = usernameText.getText().toString();
+		if (username.equals("")){
+			Toast.makeText(activity, "Please enter a value for the username", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
+		
 		EditText passwordText = (EditText) activity.findViewById(R.id.Password);
 		String password = passwordText.getText().toString();
+		if (password.equals("")){
+			Toast.makeText(activity, "Please enter a value for the password", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
 		
-		SendMessageController.signInRequest(eventID, username, password);
-		
-		activity.setContentView(R.layout.choiceform);
-		
-		
-		//the following code should be executed after a response from the server
-		//ChoiceFormView view = new ChoiceFormView(event,activity);
-		//activity.setContentView(R.layout.choiceform);
-		//view.setChoicesVisibility();
+		if (valid){
+			//SendMessageController.signInRequest(eventID, username, password);
+			
+			activity.setContentView(R.layout.choiceform);
+			
+			//the following code should be executed after a response from the server
+			//ChoiceFormView view = new ChoiceFormView(event,activity);		
+			//view.setChoicesVisibility();
+		}
+
 		
 	}
 
