@@ -16,7 +16,7 @@ import java.util.HashSet;
 public class Event {
 
 	/**Number of Users for the event.*/
-	int numUsers;
+	int numChoices;
 	/**Number of rounds for the event.*/
 	int numRounds;
 	/**List of the users' names for the event.*/
@@ -42,14 +42,14 @@ public class Event {
 
 	/**Construct for a DecisionLines Event.
 	 * 
-	 * @param numberOfUsers		The number of Users
+	 * @param numberOfChoices		The number of Users
 	 * @param numberOfRounds	The number of Rounds
 	 */
-	public Event(int numberOfUsers, int numberOfRounds, String question, boolean isOpen){
-		this.numUsers = numberOfUsers;
+	public Event(int numberOfChoices, int numberOfRounds, String question, boolean isOpen){
+		this.numChoices = numberOfChoices;
 		this.numRounds = numberOfRounds;
-		lines = new Line[numberOfUsers];
-		for (int i = 0; i<numberOfUsers; i++){
+		lines = new Line[numberOfChoices];
+		for (int i = 0; i<numberOfChoices; i++){
 			lines[i] = new Line(i);
 		}	
 		this.question = question;
@@ -61,7 +61,7 @@ public class Event {
 	 */
 	public Event(){
 		numRounds = 0;
-		numUsers = 0;
+		numChoices = 0;
 	}
 	
 	
@@ -93,12 +93,12 @@ public class Event {
 	
 	/**
 	 * Set the number of users in an event
-	 * @param numU number of users
+	 * @param numC number of users
 	 */
-	public void setNumUsers(int numU){
-		numUsers = numU;
-		lines = new Line[numU];
-		for (int i = 0; i<numU; i++){
+	public void setNumChoices(int numC){
+		numChoices = numC;
+		lines = new Line[numC];
+		for (int i = 0; i<numC; i++){
 			lines[i] = new Line(i);
 		}
 	}
@@ -111,10 +111,17 @@ public class Event {
 	}
 	
 	/**
+	 * Get the number of choices in an event
+	 */
+	public int getNumChoices(){
+		return numChoices;
+	}
+	
+	/**
 	 * Get the number of users in an event
 	 */
 	public int getNumUsers(){
-		return numUsers;
+		return users.size();
 	}
 	
 	/**
