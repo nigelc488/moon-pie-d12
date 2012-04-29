@@ -9,6 +9,7 @@ import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Controller.NewEventMessageController;
 import g1.MoonPie.Controller.NumChoicesListener;
 import g1.MoonPie.Controller.NumRoundsListener;
+import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Entry;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
@@ -21,9 +22,10 @@ public class AdminView {
 	Activity activity;
 	TextView tv;
 	
-	ArrayList<Entry> entries;
+	Entries entries;
 	
-	public AdminView(Activity act) {
+	public AdminView(Activity act, Entries ent) {
+		this.entries = ent;
 		this.activity = act;
 		
 //		activity.setContentView(R.layout.adminview);
@@ -31,8 +33,8 @@ public class AdminView {
 	//	tv = (TextView) activity.findViewById(R.id.tvInfo);
 	}
 	
-	public void setTableValues(ArrayList<Entry> En){
-		this.entries = En;
+	public void setTableValues(){
+		activity.setContentView(R.layout.adminview);
 	}
 
 }
