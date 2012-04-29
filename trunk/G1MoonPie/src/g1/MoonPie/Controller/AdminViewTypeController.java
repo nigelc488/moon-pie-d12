@@ -1,17 +1,19 @@
 package g1.MoonPie.Controller;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Model.Entries;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class AdminViewTypeController implements OnClickListener{
 	Activity activity;
-	int type;
-	TextView EventType;
+	Entries entries;
+	TextView EType;
 	TextView Vis1;
 	TextView Vis2;
 	TextView Vis3;
@@ -20,14 +22,21 @@ public class AdminViewTypeController implements OnClickListener{
 	TextView Vis6;
 	EditText days;
 	Button Remove;
+	Button Complete;
+	Button Display;
 	
-	public AdminViewTypeController(Activity activity, int num){
+	public AdminViewTypeController(Activity activity){
 		this.activity = activity;
-		this.type = num;
+		
 	}
 	
 	@Override
 	public void onClick(View v) {
+		AdminDataContorller adc = new AdminDataContorller(activity,"454");
+	}
+	
+	public void EnableVisability(Entries ent){
+		this.entries = ent;
 		Vis1 = (TextView) activity.findViewById(R.id.textVis1);
 		Vis1.setVisibility(0);
 		Vis2 = (TextView) activity.findViewById(R.id.textVis2);
@@ -40,22 +49,32 @@ public class AdminViewTypeController implements OnClickListener{
 		days = (EditText) activity.findViewById(R.id.EditDaysText);
 		days.setVisibility(0);
 		
-		EventType = (TextView) activity.findViewById(R.id.texteventtype);
+		EType = (TextView) activity.findViewById(R.id.texteventtype);
 		
 		Remove = (Button) activity.findViewById(R.id.RemoveButton);
 		Remove.setVisibility(0);
+		Remove.setOnClickListener(new AdminRemoveController(activity, entries));
 		
-		if(type == 1){
-			EventType.setText("Unompeleted");
+		Complete = (Button) activity.findViewById(R.id.CompleteButton);
+		Complete.setVisibility(0);
+		Complete.setOnClickListener(new AdminCompleteController(activity, entries));
+		
+		Display = (Button) activity.findViewById(R.id.DisplayButton);
+		Remove.setVisibility(0);
+		Display.setOnClickListener(new AdminDisplayController(activity, entries));
+		
+		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
+		int checkedRadioButton = EventType.getCheckedRadioButtonId();
+		if (checkedRadioButton == R.id.UncompletedEvent){
+			EType.setText("Unompeleted");
 			Vis5 = (TextView) activity.findViewById(R.id.textVis5);
 			Vis5.setVisibility(0);
 			Vis6 = (TextView) activity.findViewById(R.id.textVis6);
 			Vis6.setVisibility(0);
 			
-		}else if(type == 2){
-			EventType.setText("Compeleted");
+		}else if(checkedRadioButton == R.id.CompletedEvent){
+			EType.setText("Compeleted");
 		}
-		
 	}
 	
 }
