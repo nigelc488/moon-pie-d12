@@ -43,7 +43,6 @@ public class ClientLauncher {
 		server = jeremy;
 
 		//		server = serverGroup;
-		server = jeremy;
 
 		//System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess(server, 9371); //"127.0.0.1"/localhost doesnt work

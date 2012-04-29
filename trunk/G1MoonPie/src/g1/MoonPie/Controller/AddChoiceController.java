@@ -77,18 +77,18 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		labels[7] = label8;
 
 
-
-		for (int i = 0; i < textBoxes.length; i++){
-
-
-			/** Visibility
-			 * Visible = 0
-			 * inVisible = 4
-			 * GONE, invisible and doesn't take up any space 8
-			 */
-			textBoxes[i].setVisibility(4);
-			labels[i].setVisibility(4);
-		}
+//	NOT NEEDED ANYMORE
+//		for (int i = 0; i < textBoxes.length; i++){
+//
+//
+//			/** Visibility
+//			 * Visible = 0
+//			 * inVisible = 4
+//			 * GONE, invisible and doesn't take up any space 8
+//			 */
+//			textBoxes[i].setVisibility(4);
+//			labels[i].setVisibility(4);
+//		}
 
 	}
 
