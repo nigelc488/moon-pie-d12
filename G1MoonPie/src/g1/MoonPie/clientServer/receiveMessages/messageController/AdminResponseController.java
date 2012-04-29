@@ -5,7 +5,9 @@ import org.w3c.dom.Node;
 
 import android.app.Activity;
 import g1.MoonPie.clientServer.EncodeXML;
+import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.AdminChoicesView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
@@ -16,15 +18,17 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 public class AdminResponseController {
 	Event event;
 	Activity activity;
+	Entries entries;
 	
 	/**
 	 * This constructor is used so the controller can pass the event and activity to the next controller.
 	 * @param event Event The event used to access model objects
 	 * @param activity Activity The activity used to access GUI objects
 	 */
-	public AdminResponseController(Event event, Activity activity){
+	public AdminResponseController(Event event, Activity activity, Entries Ent){
 		this.event = event;
 		this.activity = activity;
+		this.entries = Ent;
 	}
 	
 	/**
@@ -38,7 +42,8 @@ public class AdminResponseController {
 		String key = EncodeXML.decodeString(map.getNamedItem("key").getNodeValue());
 		
 		System.out.println("Admin with key=" + key);
-		//new AdminController(event, activity, key);
+		AdminChoicesView acv = new AdminChoicesView(activity, key);
+		entries.setKey(key);
 		
 		
 	}
