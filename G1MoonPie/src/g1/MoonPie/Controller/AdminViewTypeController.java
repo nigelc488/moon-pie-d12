@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class AdminViewTypeController implements OnClickListener{
 	Activity activity;
 	Entries entries;
+	String key;
 	TextView EType;
 	TextView Vis1;
 	TextView Vis2;
@@ -25,14 +26,15 @@ public class AdminViewTypeController implements OnClickListener{
 	Button Complete;
 	Button Display;
 	
-	public AdminViewTypeController(Activity activity){
+	public AdminViewTypeController(Activity activity, String k){
 		this.activity = activity;
+		this.key = k;
 		
 	}
 	
 	@Override
 	public void onClick(View v) {
-		AdminDataContorller adc = new AdminDataContorller(activity,"454");
+		AdminDataContorller adc = new AdminDataContorller(activity,key);
 	}
 	
 	public void EnableVisability(Entries ent){
@@ -53,11 +55,11 @@ public class AdminViewTypeController implements OnClickListener{
 		
 		Remove = (Button) activity.findViewById(R.id.RemoveButton);
 		Remove.setVisibility(0);
-		Remove.setOnClickListener(new AdminRemoveController(activity, entries));
+		Remove.setOnClickListener(new AdminRemoveController(activity, entries, key));
 		
 		Complete = (Button) activity.findViewById(R.id.CompleteButton);
 		Complete.setVisibility(0);
-		Complete.setOnClickListener(new AdminCompleteController(activity, entries));
+		Complete.setOnClickListener(new AdminCompleteController(activity, entries, key));
 		
 		Display = (Button) activity.findViewById(R.id.DisplayButton);
 		Remove.setVisibility(0);
