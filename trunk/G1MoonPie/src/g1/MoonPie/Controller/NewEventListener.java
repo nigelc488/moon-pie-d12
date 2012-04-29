@@ -49,6 +49,7 @@ public class NewEventListener implements OnClickListener {
 		//end this part
 		
 		//for testing having multiple activities
+		//intent(activity currently running, activity you want to start.class)
        //Intent intent = new Intent(activity, MyActivity.class);
        //activity.startActivity(intent);
         

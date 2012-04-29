@@ -1,0 +1,8 @@
+How to do a new activity.
+
+Create the new view/boundary/GUI class and extend activity
+add the activity to the androidmanifest.xml
+add the line of code ProcessThreadMessages.addActivity(this); right aftersuper.onCreate(savedInstance); in your new activity (look at MyActivity for an examle)
+when you want to launch it write:
+       Intent intent = new Intent(current_activity, activity_you_want_to_start.class);
+       current_activity.startActivity(intent);
