@@ -36,7 +36,8 @@ public class ClientLauncher {
 		}
 		
 		String nigel = "130.215.29.32";
-		server = nigel;
+		String serverGroup = "72.249.186.243";
+		server = serverGroup;
 		
 		//System.out.println("before new server acess");
 		ServerAccess sa = new ServerAccess(server, 9371); //"127.0.0.1"/localhost doesnt work
