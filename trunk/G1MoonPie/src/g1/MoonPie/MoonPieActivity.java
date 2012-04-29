@@ -2,6 +2,7 @@ package g1.MoonPie;
 
 import g1.MoonPie.Controller.*;
 import g1.MoonPie.Model.Edge;
+import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.NewEventView;
 import g1.MoonPie.clientServer.heineman.client.ClientLauncher;
@@ -31,6 +32,7 @@ public class MoonPieActivity extends Activity {
 	SendMessageController send;
 	ProcessThreadMessages processThread;
 	Event event;
+	Entries entries;
 	
 	/**
 	 * I still need to figure out how and when to close the looper. processThread is the handler used to send messages between threads.
@@ -44,11 +46,12 @@ public class MoonPieActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         event = new Event();
+        entries = new Entries();
         ServerAccessManager.setActivity(this);
         
         try{
         //System.out.println("try thread");
-        	processThread = new ProcessThreadMessages(event, this);
+        	processThread = new ProcessThreadMessages(event, this, entries);
         	communicationThread = new Thread(new ThreadActivity(processThread));
         	communicationThread.start();
         	
