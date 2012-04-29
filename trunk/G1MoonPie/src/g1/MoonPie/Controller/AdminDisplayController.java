@@ -31,7 +31,7 @@ public class AdminDisplayController implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		activity.setContentView(R.layout.adminview);
+	//	activity.setContentView(R.layout.adminview);
 		AdminDataContorller adc = new AdminDataContorller(activity, type, "454");
 		adc.requestData();
 	}

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
+import g1.MoonPie.Model.User;
+import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 /**
@@ -135,6 +137,8 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 					lines[i].setChoice(textBoxes[i].getText().toString());
 					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
+//				User mod = new User("username", "password", true);					//This was used to test close event controller
+//				CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
 			}
 		}
 	}

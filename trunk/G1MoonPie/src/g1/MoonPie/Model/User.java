@@ -15,6 +15,14 @@ public class User {
 	String password;
 	/**True if the user is the event moderator, false otherwise*/
 	boolean moderator;
+	public boolean isModerator() {
+		return moderator;
+	}
+
+	public void setModerator(boolean moderator) {
+		this.moderator = moderator;
+	}
+
 	/**The number of edges the User has lft to ad.*/
 	int remaingEdges;
 	
@@ -26,11 +34,11 @@ public class User {
 	 * @param pw		The User's password (optional) 
 	 * @param remainingEdges	The number of edges the User has left to add.	
 	 */
-	public User(String name, String pw, int remainingEdges){
+	public User(String name, String pw, boolean moderator){
 
 		this.username = name;
 		this.password = pw;
-		this.remaingEdges = remainingEdges;
+		this.moderator = moderator;
 	}
 
 	/**Checks to make sure the password entered by the User matches the 
@@ -45,6 +53,10 @@ public class User {
 			return false;
 		}
 		else return true;
+	}
+
+	public String getUsername() {
+		return this.username;
 	}
 
 }
