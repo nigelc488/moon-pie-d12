@@ -39,7 +39,7 @@ public class NewEventMessageController implements OnClickListener {
 
 		SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
 		
-		activity.setContentView(R.layout.welcome);
+		activity.setContentView(R.layout.choiceform);
 		
 	}
 
