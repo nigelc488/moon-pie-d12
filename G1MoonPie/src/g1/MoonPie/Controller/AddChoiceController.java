@@ -20,6 +20,7 @@ import g1.MoonPie.clientServer.sendMessages.SendMessageController;
  * 
  * @author J Lowrey
  * @author Eric Cobane
+ * @author Janine Pizzimenti
  *
  */
 public class AddChoiceController implements android.view.View.OnClickListener{
@@ -27,30 +28,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 	Event event;
 	Activity activity;
 	Line[] lines;
-	boolean namesValid = false;
-
-
-	//TextView choiceTitle;
-
-	//	EditText text1 = (EditText)activity.findViewById(R.id.choice1TB);
-	//	EditText text2 = (EditText)activity.findViewById(R.id.choice2TB);
-	//	EditText text3 = (EditText)activity.findViewById(R.id.choice3TB);
-	//	EditText text4 = (EditText)activity.findViewById(R.id.choice4TB);
-	//	EditText text5 = (EditText)activity.findViewById(R.id.choice5TB);
-	//	EditText text6 = (EditText)activity.findViewById(R.id.choice6TB);
-	//	EditText text7 = (EditText)activity.findViewById(R.id.choice7TB);
-	//	EditText text8 = (EditText)activity.findViewById(R.id.choice8TB);
-	//
-	//	TextView label1 = (TextView)activity.findViewById(R.id.choice1Label);
-	//	TextView label2 = (TextView)activity.findViewById(R.id.choice2Label);
-	//	TextView label3 = (TextView)activity.findViewById(R.id.choice3Label);
-	//	TextView label4 = (TextView)activity.findViewById(R.id.choice4Label);
-	//	TextView label5 = (TextView)activity.findViewById(R.id.choice5Label);
-	//	TextView label6 = (TextView)activity.findViewById(R.id.choice6Label);
-	//	TextView label7 = (TextView)activity.findViewById(R.id.choice7Label);
-	//	TextView label8 = (TextView)activity.findViewById(R.id.choice8Label);
-
-
+	boolean namesValid = true;
 	EditText[] textBoxes = new EditText[8];
 	TextView[] labels = new TextView[8];
 
@@ -115,33 +93,24 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 	@Override
 	public void onClick(View v) {
 		lines = event.getLines();
-
-		//moved: 
-		//choiceTitle.setText(event.getQuestion());
-		/** if the event is open */
+		/* if the event is open */
 		if (event.getIsOpen()){
-
-
 			//	MOVE TO WHERE YOU FIRST CALL THIS SCREEN
 			//			textBoxes[0].setVisibility(0);
-
+			
+			//TODO This is wrong and needs to be fixed!
 			for(int i=0; i<lines.length; i++){
-
 				if(lines[i].getChoice().equals("")){
 					lines[i].setChoice(textBoxes[0].getText().toString());
 					SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
 			}
 		}
-
-		/**If the event is closed*/
-		
+		/*If the event is closed*/
 		else{
 			ArrayList<String> namesOfLines = new ArrayList<String>();
-
 			for (int i = 0; i < lines.length; i++){
 				String namedLine = textBoxes[i].getText().toString();
-				
 				namesOfLines.add(namedLine);
 			}
 			
@@ -163,11 +132,6 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			
 			if (namesValid == true){			
 				for (int i = 0; i < lines.length; i++){
-
-					//	MOVE TO WHERE YOU FIRST CALL THIS SCREEN			
-					//					textBoxes[i].setVisibility(0);
-					//					labels[i].setVisibility(0);
-
 					lines[i].setChoice(textBoxes[i].getText().toString());
 					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}

@@ -29,8 +29,14 @@ public class NewEventMessageController implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		boolean valid = true;
+		
 		EditText questionText = (EditText) activity.findViewById(R.id.question);
 		String question = questionText.getText().toString();
+		if (question.equals("")){
+			Toast.makeText(activity, "Please enter a value for the question", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
 
 		String type; boolean isOpen;
 		RadioGroup availability = (RadioGroup) activity.findViewById(R.id.availability);
@@ -48,23 +54,29 @@ public class NewEventMessageController implements OnClickListener {
 		Spinner roundsSpinner = (Spinner) activity.findViewById(R.id.numRounds);
 		int numChoices = Integer.parseInt(choicesSpinner.getSelectedItem().toString());
 		int numRounds = Integer.parseInt(roundsSpinner.getSelectedItem().toString());
-		Toast.makeText(activity, "c:"+numChoices+" r:"+numRounds+" a:"+type, Toast.LENGTH_LONG).show();
 
 		EditText usernameText = (EditText) activity.findViewById(R.id.username);
 		String username = usernameText.getText().toString();
+		if (username.equals("")){
+			Toast.makeText(activity, "Please enter a value for the username", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
 
 		EditText passwordText = (EditText) activity.findViewById(R.id.password);
 		String password = passwordText.getText().toString();
+		if (password.equals("")){
+			Toast.makeText(activity, "Please enter a value for the password", Toast.LENGTH_SHORT).show();
+			valid = false;
+		}
 
-		Event event = new Event(numChoices, numRounds, question, isOpen);
-		SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
-
-		//the following code should be executed after a response from the server
-		ChoiceFormView view = new ChoiceFormView(event,activity);
-//	already done in choiceformview
-//		activity.setContentView(R.layout.choiceform);
-		
-		view.setChoicesVisibility();
+		if (valid){
+			Event event = new Event(numChoices, numRounds, question, isOpen);
+			SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
+	
+			//the following code should be executed after a response from the server
+			ChoiceFormView view = new ChoiceFormView(event,activity);		
+			view.setChoicesVisibility();
+		}
 
 	}
 
