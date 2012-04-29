@@ -26,9 +26,9 @@ public class AdminView {
 	public AdminView(Activity act) {
 		this.activity = act;
 		
-		activity.setContentView(R.layout.adminview);
+//		activity.setContentView(R.layout.adminview);
 		activity.setContentView(R.layout.adminchoice);
-		tv = (TextView) activity.findViewById(R.id.tvInfo);
+	//	tv = (TextView) activity.findViewById(R.id.tvInfo);
 	}
 	
 	public void setTableValues(ArrayList<Entry> En){
