@@ -20,8 +20,11 @@ import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
  */
 public class CloseEventController implements OnClickListener {
 
+	/**Event used for accessing model objects.*/
 	Event event;
+	/**Activity used for accessing view objects.*/
 	Activity activity;
+	/**User for determining moderator privelages.*/
 	User user;
 
 	/**This constructor creates the CloseEventController with an event, a user, and an activity.
