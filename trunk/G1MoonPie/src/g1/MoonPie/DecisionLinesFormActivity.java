@@ -1,6 +1,5 @@
 package g1.MoonPie;
 
-
 import g1.MoonPie.Controller.AddEdgeController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.DecisionLinesForm;
@@ -15,9 +14,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -54,7 +50,6 @@ public class DecisionLinesFormActivity extends Activity {
 		event = Event.getInstance();
 		ProcessThreadMessages.setActivity(this);
 		
-
 		//testing:    :)
 //		event.getLines()[0].setChoice("one1");
 //		event.getLines()[1].setChoice("two2");
@@ -73,10 +68,6 @@ public class DecisionLinesFormActivity extends Activity {
 		drawView.setBackgroundColor(Color.BLACK);
 		setContentView(drawView);
 
-
-
-
-
 		/**
 		 * Instantiates onTouch listener.
 		 * On MotionEvent.ACTION_DOWN, gets x-coordinate and y-coordinate,
@@ -87,12 +78,11 @@ public class DecisionLinesFormActivity extends Activity {
 		drawView.setOnTouchListener(new View.OnTouchListener() {
 			Context context = getApplicationContext();
 			CharSequence invalidEdgeErrorMsg = "This is an invalid edge. Try Again.";
-			CharSequence finishedAddingEdgesMsg = "No more edges needed";
-			int duration = 10;
-					//Toast.LENGTH_SHORT;
+			CharSequence finishedAddingEdgesMsg = "No more edges needed";			
 
 			public boolean onTouch(View v, MotionEvent me) {
 				int action = me.getAction();
+				int duration = Toast.LENGTH_SHORT;
 				if (action == MotionEvent.ACTION_DOWN) {
 					edgeXPos = (int) me.getX();	
 					edgeHeight = addEdge.scaleHeight(me.getY());
@@ -105,10 +95,14 @@ public class DecisionLinesFormActivity extends Activity {
 							System.out.println("This is an invalid edge. Try Again.");
 							Toast.makeText(context, invalidEdgeErrorMsg, duration).show();
 						}else{
+							
 							CharSequence numRemainingEdges = ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining");
 							System.out.println("Call AddEdgeController");
 							addEdge.AddEdge(edgeXPos, edgeHeight);
 							Toast.makeText(context, numRemainingEdges, duration).show();
+							if((addEdge.rounds - (event.getNumEdges()+1))== 0){
+							Toast.makeText(context, "Touch Anywhere To Continue", Toast.LENGTH_LONG).show();
+							}
 						}
 					}else{
 						System.out.println("finished adding edges");
@@ -116,12 +110,7 @@ public class DecisionLinesFormActivity extends Activity {
 						
 						//go back to old activity
 						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
-						startActivity(intent);
-						
-						
-						
-
-						
+						startActivity(intent);	
 					}
 				}
 				return true; 
