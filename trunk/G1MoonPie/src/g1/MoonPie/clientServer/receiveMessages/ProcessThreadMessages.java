@@ -119,12 +119,12 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("removeResponse")){
 			//Done
 			System.out.println(type);
-			new RemoveResponseController(event, activity).process(response);
+			new RemoveResponseController(event, activity, entries).process(response);
 		}
 		else if(type.equals("forceResponse")){
 			//Done
 			System.out.println(type);
-			new ForceResponseController(event, activity).process(response);
+			new ForceResponseController(event, activity, entries).process(response);
 		}
 		else if(type.equals("reportResponse")){
 			//cat is doing this one
