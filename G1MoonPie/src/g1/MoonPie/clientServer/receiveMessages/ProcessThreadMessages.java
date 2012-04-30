@@ -1,5 +1,7 @@
 package g1.MoonPie.clientServer.receiveMessages;
 
+import java.nio.channels.ClosedByInterruptException;
+
 import org.w3c.dom.Node;
 
 import g1.MoonPie.R;
@@ -86,7 +88,7 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("closeResponse")){
 			//Done
 			System.out.println(type);
-			new CloseResponseController(event, activity).process(response);
+			new CloseResponseController(Event.getInstance(), ProcessThreadMessages.getActivity()).process(response);
 		}
 		else if(type.equals("connectResponse")){
 			//Done
