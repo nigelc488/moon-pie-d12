@@ -32,6 +32,8 @@ public class DecisionLinesFormActivity extends Activity {
 	int edgeXPos;
 	int edgeHeight;
 	int maxHeight;
+	int left;
+	int right;
 
 	/**
 	 * Sets screen orientation to landscape,
@@ -49,16 +51,16 @@ public class DecisionLinesFormActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		event = Event.getInstance();
 		ProcessThreadMessages.setActivity(this);
-		
+
 		//testing:    :)
-//		event.getLines()[0].setChoice("one1");
-//		event.getLines()[1].setChoice("two2");
-//		event.getLines()[2].setChoice("three3");
-//		event.getLines()[3].setChoice("i'm");
-//		event.getLines()[4].setChoice("getting");
-//		event.getLines()[5].setChoice("very");
-//		event.getLines()[6].setChoice("tired");
-//		event.getLines()[7].setChoice("blah");
+		//		event.getLines()[0].setChoice("one1");
+		//		event.getLines()[1].setChoice("two2");
+		//		event.getLines()[2].setChoice("three3");
+		//		event.getLines()[3].setChoice("i'm");
+		//		event.getLines()[4].setChoice("getting");
+		//		event.getLines()[5].setChoice("very");
+		//		event.getLines()[6].setChoice("tired");
+		//		event.getLines()[7].setChoice("blah");
 
 		DecisionLinesForm.setContext(this);
 		drawView = DecisionLinesForm.getInstance();
@@ -82,33 +84,47 @@ public class DecisionLinesFormActivity extends Activity {
 
 			public boolean onTouch(View v, MotionEvent me) {
 				int action = me.getAction();
-				int duration = Toast.LENGTH_SHORT;
 				if (action == MotionEvent.ACTION_DOWN) {
 					edgeXPos = (int) me.getX();	
 					edgeHeight = addEdge.scaleHeight(me.getY());
+					
+					int duration = Toast.LENGTH_SHORT;
+					
 					if(event.getNumEdges() < addEdge.rounds){
 						if(edgeHeight < 0 | edgeHeight > 100 
 								| edgeXPos < ((event.getLines()[0].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) 
 								| edgeXPos > ((event.getLines()[event.getNumChoices()-1].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1)))
 								){
-
 							System.out.println("This is an invalid edge. Try Again.");
 							Toast.makeText(context, invalidEdgeErrorMsg, duration).show();
-						}else{
-							
-							CharSequence numRemainingEdges = ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining");
+						}else{ 
+
+							//CharSequence numRemainingEdges = ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining");
 							System.out.println("Call AddEdgeController");
-							addEdge.AddEdge(edgeXPos, edgeHeight);
-							Toast.makeText(context, numRemainingEdges, duration).show();
-							if((addEdge.rounds - (event.getNumEdges()+1))== 0){
-							Toast.makeText(context, "Touch Anywhere To Continue", Toast.LENGTH_LONG).show();
+
+							System.out.println(addEdge.findLeftLine(edgeXPos));
+							left = addEdge.findLeftLine(edgeXPos);
+							//System.out.println(left);
+							right = addEdge.findRightLine(edgeXPos);
+							//System.out.println(right);
+							
+							if(event.checkValidEdge(edgeHeight, left, right) == true){
+								
+								addEdge.AddEdge(edgeHeight, left, right);
+
+								if((addEdge.rounds - (event.getNumEdges()+1))== 0){
+									Toast.makeText(context, "Touch Anywhere To Continue", Toast.LENGTH_LONG).show();
+								}else{
+									Toast.makeText(context, ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining"), duration).show();
+								}
+							}else{
+								Toast.makeText(context, invalidEdgeErrorMsg, duration).show();
 							}
 						}
 					}else{
 						System.out.println("finished adding edges");
 						Toast.makeText(context, finishedAddingEdgesMsg, duration).show();
-						
-						//go back to old activity
+
 						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
 						startActivity(intent);	
 					}

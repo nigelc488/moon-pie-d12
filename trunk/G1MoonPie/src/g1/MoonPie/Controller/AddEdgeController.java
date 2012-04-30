@@ -22,8 +22,7 @@ import android.content.Loader.ForceLoadContentObserver;
 public class AddEdgeController {
 	Event event;
 	DecisionLinesForm drawView;
-	int leftLine;
-	int rightLine;
+	
 	int height;
 	public int rounds;
 	/**
@@ -40,6 +39,7 @@ public class AddEdgeController {
 	public AddEdgeController (DecisionLinesForm d){
 		this.event = Event.getInstance();
 		this.drawView = d;
+		
 		if(event.getIsOpen() == true){
 			rounds = event.getNumRounds();
 		}
@@ -47,32 +47,54 @@ public class AddEdgeController {
 			rounds = event.getTotalEdges();
 		}
 	}
-	 
-	public void AddEdge(int x, int height){
+	
+	public int findLeftLine (int x){
 		int i = 0;
 		int j = i+1;
+		int left = 0;
 		while(i < event.getNumChoices()-1){
-			if (x > ((event.getLines()[i].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) && x < ((event.getLines()[j].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) ){
-				leftLine = i;
-				rightLine = j;	
-				if(event.checkValidEdge(height, leftLine, rightLine) == true){
-					//event.addEdge(height, leftLine, rightLine);
-					SendMessageController.addEdgeRequest(Event.getInstance().getID(), leftLine, rightLine, height);
-					System.out.println("height:  " + height);
-					//System.out.println("ArrayPos:  " + event.getEdges().get(leftLine).getHeight());
-					System.out.println("edgeAdded");
-					drawView.postInvalidate();
-					break;
-				}else {
-					System.out.println("invalid edge");
-					break;
-				}
-			}else
+			if (x > ((event.getLines()[i].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) && x < ((event.getLines()[j].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) )
+			{
+				left = i;
+				break;
+			}else{
 				i++;
 				j++;
 			}
 		}
+		return left;
+	}
 	
+	public int findRightLine (int x){
+		int i = 0;
+		int j = i+1;
+		int right = 0;
+		while(i < event.getNumChoices()-1){
+			if (x > ((event.getLines()[i].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) && x < ((event.getLines()[j].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) )
+			{
+				right = j;
+				break;
+			}else{
+				i++;
+				j++;
+			}
+		}
+		return right;
+	}
+
+	public void AddEdge(int hght, int lLine, int rLine){ 
+		//if(event.checkValidEdge(height, leftLine, rightLine) == true){
+			SendMessageController.addEdgeRequest(Event.getInstance().getID(), lLine, rLine, hght);
+			//System.out.println("height:  " + height);
+			//System.out.println("ArrayPos:  " + event.getEdges().get(leftLine).getHeight());
+			//System.out.println("edgeAdded");
+			drawView.postInvalidate();
+		//}else {
+		//	System.out.println("invalid edge");
+		//}
+
+	}
+
 	public int scaleHeight(float f){
 		int scaledHeight;
 		scaledHeight = (int) (((100)*(4)*(f-(drawView.offset+60)))/((3)*drawView.getHeight()));
