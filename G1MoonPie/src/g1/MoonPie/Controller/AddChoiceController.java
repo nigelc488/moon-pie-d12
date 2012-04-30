@@ -138,10 +138,10 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 					lines[i].setChoice(textBoxes[i].getText().toString());
 					
 				}
-				//				User mod = new User("username", "password", true);					//This was used to test close event controller
-				//				CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+				//User mod = new User("username", "password", true);					//This was used to test close event controller
+				//CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
 
-				//				CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
+				//CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
 
 			}
 		}

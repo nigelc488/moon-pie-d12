@@ -7,6 +7,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 /**
  * This class is used to process removeResponse xml messages and call the necessary controller.
@@ -37,6 +38,10 @@ public class RemoveResponseController {
 		NamedNodeMap map = child.getAttributes();
 		
 		int numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
+
+		//Let the Admin know the requests has been processed
+		Toast.makeText(activity, "Event Removed", Toast.LENGTH_SHORT).show();
+
 		
 		System.out.println("removed" + numberAffected);
 		//new AdminController(event, activity, key);

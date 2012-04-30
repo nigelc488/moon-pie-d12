@@ -44,8 +44,11 @@ public class CreateResponseController {
 		System.out.println("Created: id=" + id);
 		
 		event.setPos(0);
-		//upond server response, insantiate ChoiceFormView, and set the choice visibilities
+		//upon server response, insTantiate ChoiceFormView, and set the choice visibilities
 
+		ChoiceFormView view = new ChoiceFormView(event, activity);
+		view.setChoicesVisibility();
+		
 		//This is where you should call the createController
 		//new ConnectController(id);
 		
