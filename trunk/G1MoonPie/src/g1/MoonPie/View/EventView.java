@@ -1,7 +1,7 @@
 package g1.MoonPie.View;
 
+import g1.MoonPie.CompleteDecisionActivity;
 import g1.MoonPie.R;
-import g1.MoonPie.Controller.CompleteDecisionController;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.User;
@@ -23,6 +23,6 @@ public class EventView {
 		this.event = e;
 		this.activity = a;
 		
-		CompleteDecisionController cdc = new CompleteDecisionController(event, activity);
+		//CompleteDecisionActivity cdc = new CompleteDecisionActivity(event, activity);
 	}
 }

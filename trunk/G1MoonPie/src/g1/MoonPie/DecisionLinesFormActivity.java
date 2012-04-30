@@ -4,8 +4,11 @@ package g1.MoonPie;
 import g1.MoonPie.Controller.AddEdgeController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.DecisionLinesForm;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
+import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -29,7 +32,7 @@ public class DecisionLinesFormActivity extends Activity {
 	DecisionLinesForm drawView;
 	AddEdgeController addEdge;
 	//TODO
-	Event event = Event.getInstance();
+	Event event;
 	int edgeXPos;
 	int edgeHeight;
 	int maxHeight;
@@ -46,8 +49,11 @@ public class DecisionLinesFormActivity extends Activity {
 
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		event = Event.getInstance();
+		ProcessThreadMessages.setActivity(this);
+		
 
 		//testing:    :)
 //		event.getLines()[0].setChoice("one1");
@@ -105,6 +111,15 @@ public class DecisionLinesFormActivity extends Activity {
 					}else{
 						System.out.println("finished adding edges");
 						Toast.makeText(context, finishedAddingEdgesMsg, duration).show();
+						
+						//go back to old activity
+						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
+						startActivity(intent);
+						
+						
+						
+
+						
 					}
 				}
 				return true; 

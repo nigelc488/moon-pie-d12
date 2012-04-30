@@ -1,6 +1,7 @@
 package g1.MoonPie.Controller;
 
 import android.app.Activity;
+import g1.MoonPie.CompleteDecisionActivity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
@@ -52,6 +53,6 @@ public class CloseEventLineController {
 		Event.getInstance().setLines(newLines);
 		
 		//not correct
-		new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+		//new CompleteDecisionActivity(Event.getInstance(), ProcessThreadMessages.getActivity());
 	}
 }

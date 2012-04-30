@@ -1,9 +1,11 @@
-package g1.MoonPie.Controller;
+package g1.MoonPie;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.widget.TextView;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 //Need a "DecisionLinesPanel" (per our UML) to initiate this controller.
 
@@ -12,7 +14,7 @@ import g1.MoonPie.Model.Event;
  * @author Eric Cobane
  *
  */
-public class CompleteDecisionController {
+public class CompleteDecisionActivity extends Activity{
 
 	/**Reference to the event for access to model objects.*/
 	Event event;
@@ -24,17 +26,18 @@ public class CompleteDecisionController {
 	 * @param e	Event to get results from.
 	 * @param a	Activity to display results on.
 	 */
-	public CompleteDecisionController(Event e, Activity a){
-
-		this.event = e;
-		this.activity  = a;
+//	public CompleteDecisionController (Event e, Activity a){
+//
+//		this.event = e;
+//		this.activity  = a;
 //	}
 //
 //
 //	/**This method gets the calculated results for the event and displays them on the results screen.*/
-//	public void calculateDecision(){
+	public void calculateDecision(){
+		event = Event.getInstance();
 
-		activity.setContentView(R.layout.results);
+		setContentView(R.layout.results);
 		
 		//get the array representing the ordered choice results
 		String[] results = event.calculateResults();
@@ -56,8 +59,15 @@ public class CompleteDecisionController {
 		for(int i=0; i<results.length; i++){
 
 			//set each TextView to the correct result choice to display top to bottom
-			choiceLabels[i] = (TextView) activity.findViewById(choiceID[i]);
+			choiceLabels[i] = (TextView) findViewById(choiceID[i]);
 			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		ProcessThreadMessages.setActivity(this);
+		calculateDecision();
 	}
 }

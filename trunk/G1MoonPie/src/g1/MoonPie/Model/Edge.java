@@ -25,7 +25,7 @@ public class Edge implements Comparable<Edge>{
 	 * @param rLine		Right line the edge contacts.
 	 * @param height	The height of the Edge.
 	 */
-	public Edge(int lLine, int rLine, int height){
+	public Edge(int height, int lLine, int rLine){
 
 		this.leftLine = lLine;
 		this.rightLine = rLine;
