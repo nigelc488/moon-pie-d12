@@ -2,11 +2,13 @@ package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.widget.EditText;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
+import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
@@ -39,8 +41,6 @@ public class SignInResponseController {
 	public void process(MessageXML response){
 		Node child = response.contents.getFirstChild();
 		Node childChild = child.getFirstChild();
-		Node nextChildChild = childChild.getNextSibling();
-		Node lastChildChild = child.getLastChild();
 		NamedNodeMap map = child.getAttributes();
 		
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
@@ -66,6 +66,17 @@ public class SignInResponseController {
 		Event.getInstance().setNumChoices(numChoices);
 		Event.getInstance().setNumRounds(numRounds);
 		Event.getInstance().getUser().setPostion(position);
+		
+		NodeList list = child.getChildNodes();
+		for (int i = 0; i < list.getLength(); i++) {
+			Node node = list.item(i);
+			NamedNodeMap map2 = node.getAttributes();
+			
+			String choice = map2.getNamedItem("value").getNodeValue();
+			int index = Integer.parseInt(map2.getNamedItem("index").getNodeValue());
+			Event.getInstance().getLines()[index].setChoice(choice);
+			
+		}
 		
 		//do this if open event
 		if(event.getIsOpen()){
