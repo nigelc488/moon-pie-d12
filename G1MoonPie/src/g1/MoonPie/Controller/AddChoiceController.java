@@ -18,7 +18,7 @@ import g1.MoonPie.Model.User;
 import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
-/**
+/**This class is used called when attempting to add choices to an event.
  * 
  * @author J Lowrey
  * @author Eric Cobane
@@ -33,10 +33,13 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 	boolean namesValid = true;
 	EditText[] textBoxes = new EditText[8];
 	TextView[] labels = new TextView[8];
-	
 	String[] choices;
 
-
+	/**This constructor creates an AddChoiceController with an event and an activity.
+	 * 
+	 * @param e	Event to access model objects.
+	 * @param a	Activity to access GUI objects.
+	 */
 	public AddChoiceController(Event e, Activity a){
 
 		event = e;
@@ -94,6 +97,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 
 	}
 
+	
 	@Override
 	public void onClick(View v) {
 		namesValid = true;
@@ -199,7 +203,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 //		}
 
 	
-	//this method returns the choices.  if any are blank or duplicates, then makes invalid
+	//This returns the choices. If any are blank or duplicates, then they are invalid.
 	String[] getChoices(){
 		String[] choices;
 		if(Event.getInstance().getIsOpen()){
