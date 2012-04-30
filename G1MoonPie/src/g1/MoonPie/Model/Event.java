@@ -280,14 +280,14 @@ public class Event {
 		
 		//TODO
 		
-		for (int i = 0; i < lines.length; i++){
+		for (int i = 0; i < (lines.length)/2; i++){
 			startLine = i;
 			currentLine = startLine;
-			for (int j = 0; j < allEdges.size(); j++){
-				if (allEdges.get(i).getLeftLine()==currentLine){
-					currentLine = allEdges.get(i).getRightLine();
-				} else if (allEdges.get(i).getRightLine()==currentLine){
-					currentLine = allEdges.get(i).getLeftLine();
+			for (int j = 0; j < noDouble.size(); j++){
+				if (noDouble.get(i).getLeftLine()==currentLine){
+					currentLine = noDouble.get(i).getRightLine();
+				} else if (noDouble.get(i).getRightLine()==currentLine){
+					currentLine = noDouble.get(i).getLeftLine();
 				}
 			}
 			results[currentLine] = getLines()[startLine].getChoice();

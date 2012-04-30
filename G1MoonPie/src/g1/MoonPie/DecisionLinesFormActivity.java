@@ -65,7 +65,8 @@ public class DecisionLinesFormActivity extends Activity {
 //		event.getLines()[6].setChoice("tired");
 //		event.getLines()[7].setChoice("blah");
 
-		drawView = new DecisionLinesForm(this);
+		DecisionLinesForm.setContext(this);
+		drawView = DecisionLinesForm.getInstance();
 
 		addEdge = new AddEdgeController(drawView);
 

@@ -20,13 +20,15 @@ public class DecisionLinesForm extends View {
 	AddEdgeController addEdge; 
 	Paint paint = new Paint();	
 	Event event;
+	private static DecisionLinesForm instance = null;
 	public int offset;
+	static Context context;
 	/**
 	 * 
 	 * @param context function call for Context.
 	 * @param e function call for Event.
 	 */
-	public DecisionLinesForm(Context context) {
+	private DecisionLinesForm(Context context) {
 		super(context);
 		this.event = Event.getInstance();
 		paint.setColor(Color.WHITE);
@@ -59,5 +61,19 @@ public class DecisionLinesForm extends View {
 			canvas.drawLine(rescaledLeftLine, unscaledHeight, rescaledRightLine, unscaledHeight, paint);
 		}
 	}
+	public static DecisionLinesForm getInstance() {
+		return instance;
+	}
+	public static void setInstance(DecisionLinesForm instance) {
+		DecisionLinesForm.instance = instance;
+	}
+
+	public static void setContext(Context cont) {
+		context = cont;
+		instance = new DecisionLinesForm(cont);
+	}
+	
+	
+
 }
 

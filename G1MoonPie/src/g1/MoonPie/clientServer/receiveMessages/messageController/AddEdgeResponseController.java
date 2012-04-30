@@ -2,6 +2,7 @@ package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.DecisionLinesForm;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
@@ -44,6 +45,7 @@ public class AddEdgeResponseController {
 		System.out.println("Add Edge: id=" + id + " left=" + left + " right=" + right +" height=" + height);
 		
 		Event.getInstance().addEdge(height, left, right);
+		DecisionLinesForm.getInstance().postInvalidate();
 		
 		//This is where you should call the addEdgeController
 		//new AddEdgeController(left, right, height);
