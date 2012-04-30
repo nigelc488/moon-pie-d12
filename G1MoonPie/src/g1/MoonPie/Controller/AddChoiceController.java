@@ -107,6 +107,13 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			//if moderator then sent create request
 			if(Event.getInstance().getUser().getPostion() == 0){
 				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
+				if (!Event.getInstance().getIsOpen()){
+					for (int i = 0; i < Event.getInstance().getLines().length; i++){
+						Event.getInstance().getLines()[i].setChoice(choices[i]);
+					}
+				}else{
+					Event.getInstance().getLines()[0].setChoice(choices[0]);
+				}
 			}
 			//if not moderator then send add choice request
 			else{
