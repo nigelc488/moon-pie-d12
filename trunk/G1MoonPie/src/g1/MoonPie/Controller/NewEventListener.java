@@ -17,6 +17,7 @@ import android.widget.Toast;
  * This class is used as a listener for the create new event button.
  * Right now it is being used to test sending and receiving messages and displaying text upon my command (the button press).
  * @author ncochran
+ * @author jpizz
  *
  */
 public class NewEventListener implements OnClickListener {

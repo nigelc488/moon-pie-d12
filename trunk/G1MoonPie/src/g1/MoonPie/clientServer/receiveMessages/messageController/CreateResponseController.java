@@ -12,6 +12,7 @@ import android.app.Activity;
 /**
  * This class is used to process createResponse xml messages and call the necessary controller.
  * @author ncochran
+ * @author jpizz
  *
  */
 public class CreateResponseController {
