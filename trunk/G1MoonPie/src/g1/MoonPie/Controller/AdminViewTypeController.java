@@ -63,7 +63,7 @@ public class AdminViewTypeController implements OnClickListener{
 		
 		Display = (Button) activity.findViewById(R.id.DisplayButton);
 		Display.setVisibility(0);
-		Display.setOnClickListener(new AdminDisplayController(activity));
+		Display.setOnClickListener(new AdminDisplayController(activity, entries));
 		
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();

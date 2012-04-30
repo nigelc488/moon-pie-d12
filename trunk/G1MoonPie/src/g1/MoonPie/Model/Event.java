@@ -227,7 +227,7 @@ public class Event {
 			choice = choice.toLowerCase();
 			//this for loop first checks to see if the string in the line is null, if not, it compares to see if the two are equal
 			for (int i = 0; i < lines.length; i++) {
-				if(lines[i].choice != null){
+				if(lines[i].choice != null  && !lines[i].choice.isEmpty()){
 					valid = lines[i].getChoice().toLowerCase().equals(choice);
 					if(!valid){
 						//alert user somehow

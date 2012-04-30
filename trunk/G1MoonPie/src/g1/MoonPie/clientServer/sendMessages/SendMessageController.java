@@ -169,6 +169,39 @@ public class SendMessageController {
 		System.out.println("CreateSent: " + sent);
 	}
 	
+	public static void createRequest(boolean isOpen, String question, int numChoices, int numRounds, String userName, String password, String[] choices){
+		String type;
+		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
+		//dont need to do password
+		if(isOpen){
+			type = "open";
+		}else type = "closed";
+		question = EncodeXML.encodeString(question);
+		userName = EncodeXML.encodeString(userName);
+		
+		//very well may be wrong...
+		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
+		//setup choices
+		//may need some code to handle when open event and therefore just 1 choice
+		for (int i = 0; i < choices.length; i++) {
+			if(!choices[i].isEmpty()){
+			String choice = "<choice value='" + EncodeXML.encodeString(choices[i]) + "' " + "index='" + i + "'/>";
+			xmlString += choice;
+			}
+		}
+		String passwordXML = "";
+		if(!password.isEmpty()){
+			String pass = EncryptPassword.getSuperSecrectPassword(password);
+			passwordXML = "password='" + pass + "'";
+		}
+		String user = "<user name='" + userName + "' " + passwordXML + "/>";
+		
+		xmlString += user + "</createRequest></request>";
+		MessageXML req = new MessageXML(xmlString);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("CreateSent: " + sent);
+	}
+	
 	/**
 	 * This method is used to create and send a forceRequest xml message.
 	 * @param key String The key for the admin
