@@ -96,10 +96,9 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+		namesValid = true;
 		lines = Event.getInstance().getLines();
 		String choice;
-		
-		namesValid = true;
 		
 		//get and validate choices
 		choices = getChoices();
