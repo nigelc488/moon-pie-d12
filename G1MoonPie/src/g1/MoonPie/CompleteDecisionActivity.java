@@ -7,7 +7,6 @@ import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
-//Need a "DecisionLinesPanel" (per our UML) to initiate this controller.
 
 /**This class is used to calculate the final decision for an event and display it on results.xml GUI.
  * 
@@ -21,25 +20,14 @@ public class CompleteDecisionActivity extends Activity{
 	/**Reference to the activity for access to the GUI objects*/
 	Activity activity;
 
-//	/**This constructor needs a reference of the event and activity to be worked on.
-//	 * 
-//	 * @param e	Event to get results from.
-//	 * @param a	Activity to display results on.
-//	 */
-//	public CompleteDecisionController (Event e, Activity a){
-//
-//		this.event = e;
-//		this.activity  = a;
-//	}
-//
-//
+
 	/**This method gets the calculated results for the event and displays them on the results screen.*/
 	public void calculateDecision(){
 		event = Event.getInstance();
 
 		setContentView(R.layout.results);
-		
-		
+
+
 		//get the array representing the ordered choice results
 		String[] results = event.calculateResults();
 
@@ -64,7 +52,7 @@ public class CompleteDecisionActivity extends Activity{
 			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);

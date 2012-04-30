@@ -17,24 +17,37 @@ import android.widget.TextView;
  */
 public class ChoiceFormView {
 
-	Activity activity;
+	/**Event to access model objects.*/
 	Event event;
+	/**Activity to access GUI objects.*/
+	Activity activity;
 
+	/**This constructor creates a new ChoiceFormView, with access to an event and an activity.
+	 * 
+	 * @param e	Event to access model objects.
+	 * @param a	Activity to acess GUI objects.
+	 */
 	public ChoiceFormView(Event e, Activity a){
 
 		this.event = e;
 		this.activity = a;
 
+		//set the view to choiceform
 		activity.setContentView(R.layout.choiceform);
 
+		//add listener to beginRoundButton
 		Button beginRoundButton = (Button) activity.findViewById(R.id.toDLFormButton);
 		beginRoundButton.setOnClickListener(new AddChoiceController(event, activity));
 	}
-	
+
+	/**This method sets the visibility of choices for the client based on if the event is open or closed.*/
 	public void setChoicesVisibility(){
+
+		//set the title label to the event question
 		TextView choiceTitle = (TextView) activity.findViewById(R.id.questionLabel);
 		choiceTitle.setText(event.getQuestion());
-		
+
+		//create 8 edit text boxes
 		EditText text1 = (EditText)activity.findViewById(R.id.choice1TB);
 		EditText text2 = (EditText)activity.findViewById(R.id.choice2TB);
 		EditText text3 = (EditText)activity.findViewById(R.id.choice3TB);
@@ -44,6 +57,7 @@ public class ChoiceFormView {
 		EditText text7 = (EditText)activity.findViewById(R.id.choice7TB);
 		EditText text8 = (EditText)activity.findViewById(R.id.choice8TB);
 
+		//create 8 choice labels
 		TextView label1 = (TextView)activity.findViewById(R.id.choice1Label);
 		TextView label2 = (TextView)activity.findViewById(R.id.choice2Label);
 		TextView label3 = (TextView)activity.findViewById(R.id.choice3Label);
@@ -52,10 +66,12 @@ public class ChoiceFormView {
 		TextView label6 = (TextView)activity.findViewById(R.id.choice6Label);
 		TextView label7 = (TextView)activity.findViewById(R.id.choice7Label);
 		TextView label8 = (TextView)activity.findViewById(R.id.choice8Label);
-		
+
+		//create arrays for the text boxes and labels created above
 		EditText[] textBoxes = new EditText[8];
 		TextView[] labels = new TextView[8];
-		
+
+		//add the text boxes and labels to the arrays
 		textBoxes[0] = text1;
 		textBoxes[1] = text2;
 		textBoxes[2] = text3;
@@ -64,7 +80,7 @@ public class ChoiceFormView {
 		textBoxes[5] = text6;
 		textBoxes[6] = text7;
 		textBoxes[7] = text8;
-		
+
 		labels[0] = label1;
 		labels[1] = label2;
 		labels[2] = label3;
@@ -73,7 +89,8 @@ public class ChoiceFormView {
 		labels[5] = label6;
 		labels[6] = label7;
 		labels[7] = label8;
-		
+
+		//iterate through all the text boxes and labels setting them invisible
 		for (int i = 0; i < textBoxes.length; i++){
 
 			/* Visibility
@@ -84,11 +101,14 @@ public class ChoiceFormView {
 			textBoxes[i].setVisibility(4);
 			labels[i].setVisibility(4);
 		}
-		
+
+		/*if the event is open, only set one text box and label visible, otherwise set the correct amount visible for the
+		 *moderator to be able to fill in all choices*/
 		if (event.getIsOpen()){
 			textBoxes[0].setVisibility(0);
 			labels[0].setVisibility(0);
-		}else{
+		}
+		else{
 			for (int i = 0; i < event.getLines().length; i++){			
 				textBoxes[i].setVisibility(0);
 				labels[i].setVisibility(0);
