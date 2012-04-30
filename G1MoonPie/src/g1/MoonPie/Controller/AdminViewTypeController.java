@@ -35,6 +35,7 @@ public class AdminViewTypeController implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		AdminDataContorller adc = new AdminDataContorller(activity,key);
+		adc.requestData();
 	}
 	
 	public void EnableVisability(Entries ent){
