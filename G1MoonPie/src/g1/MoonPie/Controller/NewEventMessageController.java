@@ -75,12 +75,23 @@ public class NewEventMessageController implements OnClickListener {
 
 		if (valid){
 			
-			Event event = new Event(numChoices, numRounds, question, isOpen);
+			//LAUNCH NEXT STEP
+			
+			
+			//SendMessageController.createRequest(type, question, numChoices, numRounds, username, password);
+			
+			Event.getInstance().setOpen(isOpen);
+			Event.getInstance().setNumChoices(numChoices);
+			Event.getInstance().setNumRounds(numRounds);
+			//Event.getInstance().
+			
+	
+			//Event event = new Event(numChoices, numRounds, question, isOpen);
 			
 			//SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
 			
 			//the following code should be executed after a response from the server
-			ChoiceFormView view = new ChoiceFormView(event,activity);		
+			ChoiceFormView view = new ChoiceFormView(Event.getInstance(), activity);		
 			view.setChoicesVisibility();
 		}
 

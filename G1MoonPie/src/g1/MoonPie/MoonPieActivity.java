@@ -45,13 +45,12 @@ public class MoonPieActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        event = new Event();
         entries = new Entries();
         ServerAccessManager.setActivity(this);
         
         try{
         //System.out.println("try thread");
-        	processThread = new ProcessThreadMessages(event, this, entries);
+        	processThread = new ProcessThreadMessages(this, entries);
         	communicationThread = new Thread(new ThreadActivity(processThread));
         	communicationThread.start();
         	

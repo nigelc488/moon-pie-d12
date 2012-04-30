@@ -22,12 +22,13 @@ public class Entry {
 	 * @param created String The date when the event was created
 	 * @param completed boolean If the event has been completed or not
 	 */
-	public Entry(String id, String type, int numChoices, int numRounds, String created, boolean completed){
+	public Entry(String id, String type, String question, int numChoices, int numRounds, String created, boolean completed){
 		this.id = id;
 		this.type = type;
 		this.numChoices = numChoices;
 		this.numRounds = numRounds;
 		this.created = created;
 		this.completed = completed;
+		this.question = question;
 	}
 }
