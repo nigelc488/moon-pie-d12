@@ -5,6 +5,7 @@ import g1.MoonPie.Controller.JoinEventMessageController;
 import g1.MoonPie.Controller.NewEventMessageController;
 import g1.MoonPie.Controller.NumChoicesListener;
 import g1.MoonPie.Controller.NumRoundsListener;
+import g1.MoonPie.Model.Event;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,9 +20,10 @@ import android.widget.Toast;
  */
 public class NewEventView{
 	Activity activity;
+	Event event;
 	
-public NewEventView(Activity activity){
-	
+public NewEventView(Event event,Activity activity){
+	this.event = event;
 	this.activity = activity;
 	
 	activity.setContentView(R.layout.new_event_form);
@@ -43,7 +45,7 @@ public NewEventView(Activity activity){
     roundsSpinner.setOnItemSelectedListener(new NumRoundsListener());
     
 	Button newEventButton = (Button) activity.findViewById(R.id.nextButton);
-    newEventButton.setOnClickListener(new NewEventMessageController(activity));
+    newEventButton.setOnClickListener(new NewEventMessageController(event, activity));
 }
 
 

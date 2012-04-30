@@ -79,7 +79,7 @@ public class NewEventListener implements OnClickListener {
 		//System.out.println("all messages sent");
 		//end this part
 	
-		new NewEventView(activity);
+		new NewEventView(event, activity);
 
 		
 		//Toast.makeText(new NoServerActicty(), "Could not Connect to Server.", Toast.LENGTH_LONG);

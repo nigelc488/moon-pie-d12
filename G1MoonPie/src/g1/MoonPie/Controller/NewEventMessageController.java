@@ -25,8 +25,9 @@ import android.widget.Toast;
 public class NewEventMessageController implements OnClickListener {
 
 	Activity activity;
+	Event event;
 
-	public NewEventMessageController(Activity activity){
+	public NewEventMessageController(Event event, Activity activity){
 		this.activity = activity;
 	}
 
@@ -74,6 +75,7 @@ public class NewEventMessageController implements OnClickListener {
 		}
 
 		if (valid){
+
 			
 			//LAUNCH NEXT STEP
 			
@@ -88,12 +90,13 @@ public class NewEventMessageController implements OnClickListener {
 			Event.getInstance().setQuestion(question);
 
 			
-	
 			//Event event = new Event(numChoices, numRounds, question, isOpen);
 			
 			//SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
 			
 			//the following code should be executed after a response from the server
+			//ChoiceFormView view = new ChoiceFormView(event,activity);		
+			//view.setChoicesVisibility();
 			ChoiceFormView view = new ChoiceFormView(Event.getInstance(), activity);		
 			view.setChoicesVisibility();
 		}
