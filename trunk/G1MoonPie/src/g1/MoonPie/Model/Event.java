@@ -31,6 +31,7 @@ public class Event {
 	User user;
 	
 	
+	
 
 
 
@@ -53,6 +54,7 @@ public class Event {
 	/**
 	 * This constructor does not take in any variables but instantiates the lines, edges, results, number of rounds, and number of choices.
 	 */
+
 	protected Event(){
 		numRounds = 0;
 		numChoices = 0;
@@ -286,15 +288,6 @@ public class Event {
 	public void setID(String iD) {
 		ID = iD;
 	}
-	
-	public static Event getInstance(){
-		if(instance == null) instance = new Event();
-		return instance;
-	}
-
-	public static void setInstance(Event event){
-		instance = event;
-	}
 
 	public void setOpen(boolean isOpen) {
 		this.isOpen = isOpen;
@@ -307,5 +300,16 @@ public class Event {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public static Event getInstance(){
+	if(instance == null) instance = new Event();
+	return instance;
+	}
+	
+	public void setInstance(Event event){
+		instance = event;
+	}
+
+
+	
 	
 }

@@ -1,9 +1,7 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
-
-import g1.MoonPie.R;
-import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
+import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 import org.w3c.dom.NamedNodeMap;
@@ -46,7 +44,7 @@ public class CreateResponseController {
 		//upon server response, insTantiate ChoiceFormView, and set the choice visibilities
 
 		ChoiceFormView view = new ChoiceFormView(event, activity);
-		view.setChoicesVisibility();
+		//view.setChoicesVisibility();
 		
 	}
 
