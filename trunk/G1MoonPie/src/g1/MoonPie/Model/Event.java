@@ -278,16 +278,16 @@ public class Event {
 			
 		}
 		
-		//TODO
+		//this is a short comment so you understand wtf i did...
 		
-		for (int i = 0; i < (lines.length)/2; i++){
+		for (int i = 0; i < lines.length; i++){
 			startLine = i;
 			currentLine = startLine;
 			for (int j = 0; j < noDouble.size(); j++){
-				if (noDouble.get(i).getLeftLine()==currentLine){
-					currentLine = noDouble.get(i).getRightLine();
-				} else if (noDouble.get(i).getRightLine()==currentLine){
-					currentLine = noDouble.get(i).getLeftLine();
+				if (noDouble.get(j).getLeftLine()==currentLine){
+					currentLine = noDouble.get(j).getRightLine();
+				} else if (noDouble.get(j).getRightLine()==currentLine){
+					currentLine = noDouble.get(j).getLeftLine();
 				}
 			}
 			results[currentLine] = getLines()[startLine].getChoice();
