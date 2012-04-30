@@ -73,17 +73,15 @@ public class AddEdgeController {
 			}
 		}
 	
-
-
 	public int scaleHeight(float f){
 		int scaledHeight;
-		scaledHeight = (int) (((100)*(6)*(f-(drawView.offset+30)))/((5)*drawView.getHeight()));
+		scaledHeight = (int) (((100)*(4)*(f-(drawView.offset+60)))/((3)*drawView.getHeight()));
 		return scaledHeight;
 	}
 
 	public int unscaleHeight(int i){
 		int unscaledHeight;
-		unscaledHeight = (((event.getEdges().get(i).getHeight()*(5)*(drawView.getHeight()))/((100)*(6)))+(drawView.offset+30));
+		unscaledHeight = (((event.getEdges().get(i).getHeight()*(3)*(drawView.getHeight()))/((100)*(4)))+(drawView.offset+60));
 		return unscaledHeight;
 
 	}
