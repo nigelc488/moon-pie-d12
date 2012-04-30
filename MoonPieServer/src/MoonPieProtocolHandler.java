@@ -1,4 +1,5 @@
 
+
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
@@ -70,6 +71,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			System.out.println(child.getLocalName());
 			String id = "1234";
 			String xmlString = Message.responseHeader(request.id()) + "<createResponse id='" + id + "'/></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
@@ -77,6 +79,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			System.out.println(child.getLocalName());
 			String numberAffected = "5";
 			String xmlString = Message.responseHeader(request.id()) + "<forceResponse numberAffected='" + numberAffected + "'/></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
@@ -84,6 +87,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			System.out.println(child.getLocalName());
 			String numberAffected = "3";
 			String xmlString = Message.responseHeader(request.id()) + "<removeResponse numberAffected='" + numberAffected + "'/></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
@@ -108,18 +112,48 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			String entry2 = "<entry id='" + id +"' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "created='" + created + "' " + "completed='" + completed + "'/>";
 			
 			String xmlString = Message.responseHeader(request.id()) + "<reportResponse>" + entry + entry2 + "</reportResponse></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
 		else if (child.getLocalName().equals ("signInRequest")) {
+			String[] choices;
+			String type;
 			System.out.println(child.getLocalName());
 			String id = map.getNamedItem("id").getNodeValue();
-			String type = "closed";
+			
 			String question = "Why?";
 			int numChoices = 5;
 			int numRounds = 3;
-			int position = 4;
-			String xmlString = Message.responseHeader(request.id()) + "<signInResponse id='" + id + "' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "position='" + position + "'/></response>";
+			int position = 3;
+			
+			
+			if (id.equals("Open")){
+				type = "open";
+				choices = new String[position];
+				choices[0] = "one";
+				choices[1] = "two";
+				choices[2] = "three";
+			}
+			//closed event
+			else{
+				type = "closed";
+				choices = new String[numChoices];
+				choices[0] = "one";
+				choices[1] = "two";
+				choices[2] = "three";
+				choices[3] = "four";
+				choices[4] = "five";
+			}
+			
+
+			String xmlString = Message.responseHeader(request.id()) + "<signInResponse id='" + id + "' " + "type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds + "' " + "position='" + position + "'>";
+			for (int i = 0; i < choices.length; i++) {
+				String choice = "<choice value='" + choices[i] + "' " + "index='" + i + "'/>";
+				xmlString += choice;
+			}
+			xmlString +="</signInResponse></response>";
+			System.out.println(xmlString);
 			Message r = new Message(xmlString);
 			return r;
 		}
