@@ -37,7 +37,8 @@ public class CloseEventLineController {
 		Line[] newLines;
 	
 		int lineCount = 0;
-
+		
+		//increment a counter variable to represent the number of elements to make the new array with
 		for(int i=0; i<currentLines.length; i++){
 			if(!currentLines[i].getChoice().equals("")){
 				lineCount++;
@@ -49,6 +50,7 @@ public class CloseEventLineController {
 			newLines[i] = new Line(i);
 		}
 
+		//set the choices of the new lines with the choices carried over from the old lines
 		for(int j=0; j<newLines.length; j++){
 			newLines[j].setChoice(currentLines[j].getChoice());
 		}
