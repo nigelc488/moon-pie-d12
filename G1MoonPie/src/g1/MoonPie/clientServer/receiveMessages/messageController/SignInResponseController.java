@@ -6,12 +6,15 @@ import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.widget.EditText;
+import android.widget.Toast;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
+import g1.MoonPie.Controller.CompleteDecisionController;
 import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 /**
  * this class is used to process signInResponse xml messages and call the necessary controller.
@@ -52,6 +55,8 @@ public class SignInResponseController {
 		
 		System.out.println("SignIn with id=" + id + " type=" + type + " question=" + question + " numChoices=" + numChoices + " numRounds=" + numRounds + " position=" + position);
 		
+		if(!id.equals("no")){
+		
 		//convert from string to boolean
 		if(type.equals("open")){
 			isOpen = true;
@@ -78,6 +83,8 @@ public class SignInResponseController {
 			
 		}
 		
+
+		
 		//do this if open event
 		if(event.getIsOpen()){
 			
@@ -86,9 +93,11 @@ public class SignInResponseController {
 		}
 		//do this if closed event
 		else{
-			
-			//Send to EventView (Chris's stuff)
+			//LAUNCH CHRIS WINDOW
+			//ProcessThreadMessages.getActivity().setContentView(R.layout.results);
+			new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
 		}
+		}else Toast.makeText(ProcessThreadMessages.getActivity(), "Not a Valid ID", Toast.LENGTH_LONG).show();
 
 		
 

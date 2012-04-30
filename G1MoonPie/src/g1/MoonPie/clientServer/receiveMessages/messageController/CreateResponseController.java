@@ -1,8 +1,11 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
+import g1.MoonPie.Controller.CompleteDecisionController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
+import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -41,6 +44,16 @@ public class CreateResponseController {
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
 	
 		System.out.println("Created: id=" + id);
+		
+//		if(Event.getInstance().getIsOpen()){
+//			//launch waiting screen
+//			new CloseEventView(Event.getInstance(), ProcessThreadMessages.getActivity());
+//			
+//		}
+//		else{
+//			//launch CHRIS SCREEN
+//			new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+//		}
 		
 		//upon server response, insTantiate ChoiceFormView, and set the choice visibilities
 
