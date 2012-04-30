@@ -116,6 +116,11 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				String namedLine = textBoxes[i].getText().toString();
 				namesOfLines.add(namedLine);
 			}
+			
+//			SendMessageController.createRequest(type, question, numChoices, numRounds, userName, password, event);
+			
+			
+//			SendMessageController.createRequest(Event., question, numChoices, numRounds, userName, password, event)
 
 			namesValid = true;
 			if (namesOfLines.contains("")){
