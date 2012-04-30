@@ -22,8 +22,8 @@ public class CloseEventLineController {
 
 	/**Constructor needs access to event and activity.
 	 * 
-	 * @param e	the event to modify
-	 * @param a	the activity
+	 * @param e	the event to modify model objects.
+	 * @param a	the activity to modify GUI objects.
 	 */
 	public CloseEventLineController(Event e, Activity a){
 		this.event = e;
@@ -53,9 +53,5 @@ public class CloseEventLineController {
 			newLines[j].setChoice(currentLines[j].getChoice());
 		}
 		Event.getInstance().setLines(newLines);
-		
-		
-		//not correct
-		//new CompleteDecisionActivity(Event.getInstance(), ProcessThreadMessages.getActivity());
 	}
 }
