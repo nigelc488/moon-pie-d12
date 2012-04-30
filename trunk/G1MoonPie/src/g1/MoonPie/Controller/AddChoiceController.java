@@ -94,15 +94,23 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		lines = event.getLines();
+		lines = Event.getInstance().getLines();
+		
 		/* if the event is open */
 		if (event.getIsOpen()){
-
 			//TODO This is wrong and needs to be fixed!
 			for(int i=0; i<lines.length; i++){
 				if(lines[i].getChoice().equals("")){
 					lines[i].setChoice(textBoxes[0].getText().toString());
-					SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
+					
+					//if you are the moderator then need to send create message
+					if(Event.getInstance().getUser().getPostion() == 0){
+						SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+					}
+					//if you are not moderator then send add choice message
+					else{
+						SendMessageController.addChoiceRequest(Event.getInstance().getID(), i, lines[i].getChoice());
+					}	
 				}
 			}
 		//	User mod = new User("username", "password", true);					//This was used to test close event controller
@@ -138,11 +146,13 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				namesValid = false;
 			}
 
-			if (namesValid == true){			
-				for (int i = 0; i < lines.length; i++){
-					lines[i].setChoice(textBoxes[i].getText().toString());
-					
-				}
+			if (namesValid == true){
+				
+				//this means everything worked so should do next step:
+				
+				//if it is closed then you are definately the moderator and send create request
+				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+
 				//User mod = new User("username", "password", true);					//This was used to test close event controller
 				//CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
 

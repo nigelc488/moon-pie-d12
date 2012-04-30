@@ -31,4 +31,63 @@ public class Entry {
 		this.completed = completed;
 		this.question = question;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public int getNumChoices() {
+		return numChoices;
+	}
+
+	public void setNumChoices(int numChoices) {
+		this.numChoices = numChoices;
+	}
+
+	public int getNumRounds() {
+		return numRounds;
+	}
+
+	public void setNumRounds(int numRounds) {
+		this.numRounds = numRounds;
+	}
+
+	public String getCreated() {
+		return created;
+	}
+
+	public void setCreated(String created) {
+		this.created = created;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	
+	
+	
 }
