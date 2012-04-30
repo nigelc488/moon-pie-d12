@@ -45,6 +45,11 @@ public class CreateResponseController {
 	
 		System.out.println("Created: id=" + id);
 		
+		if(!Event.getInstance().getIsOpen()){
+			//launch CHRIS SCREEN
+			new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+		}
+		
 //		if(Event.getInstance().getIsOpen()){
 //			//launch waiting screen
 //			new CloseEventView(Event.getInstance(), ProcessThreadMessages.getActivity());
