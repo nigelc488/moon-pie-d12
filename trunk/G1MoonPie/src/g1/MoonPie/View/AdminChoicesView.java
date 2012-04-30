@@ -26,8 +26,17 @@ public class AdminChoicesView extends Activity {
 		
 		activity.setContentView(R.layout.adminchoice);
 	  
-	    RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EntryTable);
-	    EventType.setOnClickListener(new AdminViewTypeController(activity, key));
+	    //RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EntryTable);
+	    //EventType.setOnClickListener(new AdminViewTypeController(activity, key));
+		
+		RadioButton rbCompleted = (RadioButton) activity.findViewById(R.id.CompletedEvent);
+		rbCompleted.setOnClickListener(new AdminViewTypeController(activity, key));
+		
+		RadioButton rbUncompleted = (RadioButton) activity.findViewById(R.id.UncompletedEvent);
+		rbUncompleted.setOnClickListener(new AdminViewTypeController(activity, key));
+		
+		
+		
 	    
 	}
 
