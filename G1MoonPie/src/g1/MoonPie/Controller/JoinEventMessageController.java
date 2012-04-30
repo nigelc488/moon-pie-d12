@@ -2,6 +2,7 @@ package g1.MoonPie.Controller;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.Model.User;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.View.JoinEventView;
 import g1.MoonPie.View.NewEventView;
@@ -61,7 +62,9 @@ public class JoinEventMessageController implements OnClickListener {
 			}
 
 			else{
-
+				
+				//add the user to the event and send the sign in request to the server
+				Event.getInstance().setUser(new User(username, password));
 				SendMessageController.signInRequest(eventID, username, password);
 
 				//activity.setContentView(R.layout.choiceform);

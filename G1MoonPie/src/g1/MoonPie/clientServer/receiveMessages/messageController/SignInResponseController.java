@@ -20,6 +20,8 @@ public class SignInResponseController {
 	Event event;
 	Activity activity;
 	
+	boolean isOpen;
+	
 	/**
 	 * This constructor requires an event and activity so they can be passed to the next controller.
 	 * @param event Event The event used to access model objects
@@ -47,19 +49,33 @@ public class SignInResponseController {
 		
 		System.out.println("SignIn with id=" + id + " type=" + type + " question=" + question + " numChoices=" + numChoices + " numRounds=" + numRounds + " position=" + position);
 		
-		event.setPos(position);
+		//convert from string to boolean
+		if(type.equals("open")){
+			isOpen = true;
+		}else isOpen = false;
 		
+		//Update the Event
+		Event.getInstance().setID(id);
+		Event.getInstance().setOpen(isOpen);
+		Event.getInstance().setQuestion(question);
+		Event.getInstance().setNumChoices(numChoices);
+		Event.getInstance().setNumRounds(numRounds);
+		Event.getInstance().getUser().setPostion(position);
+		
+		//do this if open event
 		if(event.getIsOpen()){
 			
 			ChoiceFormView view = new ChoiceFormView(event,activity);		
 			view.setChoicesVisibility();
 		}
+		//do this if closed event
 		else{
 			
 			//Send to EventView (Chris's stuff)
 		}
+
 		
-		
+
 		//the following code should be executed after a response from the server
 		//new SignInController(event, activity, id, type, question, numChoices, numRounds, position);
 		//somehow needs to update view though, so will probably need to be passed the right text box as well
