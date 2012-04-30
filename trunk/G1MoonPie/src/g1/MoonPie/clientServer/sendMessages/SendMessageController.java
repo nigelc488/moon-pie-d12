@@ -40,7 +40,8 @@ public class SendMessageController {
 		String xmlString = MessageXML.requestHeader() + "<addChoiceRequest id='" + id + "' " + 
 	"number='" + line + "' " + "choice='" + choice + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("AddChoiceSent: " + sent);
 		
 	}
 	
@@ -57,7 +58,8 @@ public class SendMessageController {
 		String xmlString = MessageXML.requestHeader() + "<addEdgeRequest id ='" + id + "' " + "left='" + left + "' " + "right='" + right + "' " + "height='" + height + "'/></request>";
 		
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("AddEdgeSent: " + sent);
 	}
 	
 	/**
@@ -78,7 +80,8 @@ public class SendMessageController {
 		//not sure if this string is right
 		String xmlString = MessageXML.requestHeader() + "<adminRequest>" + user + "</adminRequest></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("AdminRequestSent: " + sent);
 	}
 	
 	/**
@@ -89,7 +92,8 @@ public class SendMessageController {
 		id = EncodeXML.encodeString(id);
 		String xmlString = MessageXML.requestHeader() + "<closeRequest id='" + id + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("CloseRequestSent: " + sent);
 	}
 	
 	/**
@@ -102,7 +106,7 @@ public class SendMessageController {
 	 * @param password String The password of the person creating the event.  The password is encrypted using SHA1 before being sent to the server.
 	 * @param event The event to be created.  This is used to gain access to the choices for the event.
 	 */
-	public static void createRequest(String type, String question, int numChoices, int numRounds, String userName, String password, Event event){
+	public static void createRequest(String type, String question, int numChoices, int numRounds, String userName, String password){
 		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
 		//dont need to do password
 		type = EncodeXML.encodeString(type);
@@ -114,9 +118,11 @@ public class SendMessageController {
 		//setup choices
 		//may need some code to handle when open event and therefore just 1 choice
 		for (int i = 0; i < numChoices; i++) {
-			String choice = "<choice value='" + EncodeXML.encodeString(event.getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
+			if(!Event.getInstance().getLines()[i].getChoice().isEmpty()){
+			String choice = "<choice value='" + EncodeXML.encodeString(Event.getInstance().getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
 			xmlString += choice;
-		} 
+			}
+		}
 		String passwordXML = "";
 		if(!password.isEmpty()){
 			String pass = EncryptPassword.getSuperSecrectPassword(password);
@@ -126,7 +132,8 @@ public class SendMessageController {
 		
 		xmlString += user + "</createRequest></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("CreateSent: " + sent);
 	}
 	
 	/**
@@ -141,7 +148,8 @@ public class SendMessageController {
 		
 		String xmlString = MessageXML.requestHeader() + "<forceRequest key='" + key + "' " + "id='" + id + "' " + "daysOld='" + daysOld + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("ForceSent: " + sent);
 	}
 	
 	/**
@@ -157,7 +165,8 @@ public class SendMessageController {
 		
 		String xmlString = MessageXML.requestHeader() + "<removeRequest key='" + key + "' " + "id='" + id + "' " + "completed='" + completed + "' " + "daysOld='" + daysOld + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("RemoveSent: " + sent);
 	}
 	
 	/**
@@ -171,7 +180,8 @@ public class SendMessageController {
 		
 		String xmlString= MessageXML.requestHeader() + "<reportRequest key='" + key + "' " + "type='" + type + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("ReportSent: " + sent);
 	}
 	
 	/**
@@ -193,9 +203,7 @@ public class SendMessageController {
 		//not sure if this string is right
 		String xmlString = MessageXML.requestHeader() + "<signInRequest id='" + id + "'>" + user + "</signInRequest></request>";
 		MessageXML req = new MessageXML(xmlString);
-		ServerAccessManager.getAccess().sendRequest(req);
+		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+		System.out.println("SignInSent: " + sent);
 	}
-	
-	
-
 }

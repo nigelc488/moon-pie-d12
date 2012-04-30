@@ -40,9 +40,8 @@ public class ProcessThreadMessages extends Handler{
 	 * @param event Event The Event for the application used to access model objects
 	 * @param activity Activity The activity for the application used to access GUI objects
 	 */
-	public ProcessThreadMessages(Event event, Activity activity, Entries entries){
-		this.event = event;
-		this.activity = activity;
+	public ProcessThreadMessages(Activity activity, Entries entries){
+		ProcessThreadMessages.activity = activity;
 		this.entries = entries;
 	}
 	
@@ -52,6 +51,10 @@ public class ProcessThreadMessages extends Handler{
 	 */
 	public static void setActivity(Activity active){
 		activity = active;
+	}
+	
+	public static Activity getActivity(){
+		return activity;
 	}
 	
 /*	public ProcessThreadMessages(Activity activity){

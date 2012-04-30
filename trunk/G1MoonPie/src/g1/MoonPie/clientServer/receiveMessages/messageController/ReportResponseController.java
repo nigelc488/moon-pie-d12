@@ -58,11 +58,12 @@ public class ReportResponseController {
 			
 			String id = EncodeXML.decodeString(map2.getNamedItem("id").getNodeValue());
 			String type = EncodeXML.decodeString(map2.getNamedItem("type").getNodeValue());
+			String question = EncodeXML.decodeString(map2.getNamedItem("question").getNodeValue());
 			int numChoices = Integer.parseInt(map2.getNamedItem("numChoices").getNodeValue());
 			int numRounds = Integer.parseInt(map2.getNamedItem("numRounds").getNodeValue());
 			String created = EncodeXML.decodeString(map2.getNamedItem("created").getNodeValue());
 			boolean completed = Boolean.parseBoolean(map2.getNamedItem("completed").getNodeValue());
-			entries.add(new Entry(id, type, numChoices, numRounds, created, completed));
+			entries.add(new Entry(id, type, question, numChoices, numRounds, created, completed));
 			
 		}
 		

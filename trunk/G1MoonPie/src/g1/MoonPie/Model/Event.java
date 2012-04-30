@@ -14,6 +14,7 @@ import java.util.HashSet;
  */
 
 public class Event {
+	private static Event instance = null;
 
 	/**Number of Users for the event.*/
 	int numChoices;
@@ -33,36 +34,38 @@ public class Event {
 	
 	
 
-	public String getQuestion() {
-		return question;
-	}
 
-	public void setQuestion(String question) {
-		this.question = question;
-	}
 
 	/**Construct for a DecisionLines Event.
 	 * 
 	 * @param numberOfChoices		The number of Users
 	 * @param numberOfRounds	The number of Rounds
 	 */
-	public Event(int numberOfChoices, int numberOfRounds, String question, boolean isOpen){
-		this.numChoices = numberOfChoices;
-		this.numRounds = numberOfRounds;
-		lines = new Line[numberOfChoices];
-		for (int i = 0; i<numberOfChoices; i++){
-			lines[i] = new Line(i);
-		}	
-		this.question = question;
-		this.isOpen = isOpen;
-	}
+//	public Event(int numberOfChoices, int numberOfRounds, String question, boolean isOpen){
+//		this.numChoices = numberOfChoices;
+//		this.numRounds = numberOfRounds;
+//		lines = new Line[numberOfChoices];
+//		for (int i = 0; i<numberOfChoices; i++){
+//			lines[i] = new Line(i);
+//		}	
+//		this.question = question;
+//		this.isOpen = isOpen;
+//	}
 
 	/**
 	 * This constructor does not take in any variables but instantiates the lines, edges, results, number of rounds, and number of choices.
 	 */
-	public Event(){
+	protected Event(){
 		numRounds = 0;
 		numChoices = 0;
+	}
+	
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 	
 	
@@ -294,13 +297,17 @@ public class Event {
 		this.position = pos;
 	}
 	
-//	public ArrayList<User> getUsers() {
-//		return users;
-//	}
+	public static Event getInstance(){
+		if(instance == null) instance = new Event();
+		return instance;
+	}
 
-//	public void setUsers(ArrayList<User> users) {
-//		this.users = users;
-//	}
-	
+	public static void setInstance(Event event){
+		instance = event;
+	}
+
+	public void setOpen(boolean isOpen) {
+		this.isOpen = isOpen;
+	}
 	
 }
