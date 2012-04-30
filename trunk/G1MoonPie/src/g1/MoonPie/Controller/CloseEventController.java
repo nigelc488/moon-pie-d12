@@ -8,6 +8,7 @@ import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.User;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
 
@@ -32,7 +33,7 @@ public class CloseEventController implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		
-		activity.setContentView(R.layout.welcome);
+		new CloseEventLineController(Event.getInstance(), ProcessThreadMessages.getActivity());
 		//SendMessageController.closeRequest(event.getID());
 		
 	}

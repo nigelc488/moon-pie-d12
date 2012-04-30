@@ -3,6 +3,7 @@ package g1.MoonPie.Controller;
 import android.app.Activity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 /**This class modifies the number of lines in an event if the moderator closes it before all users have joined.
  * 
@@ -41,10 +42,16 @@ public class CloseEventLineController {
 		}
 		//instantiate new line array at the correct size for lines that will be carried over
 		newLines = new Line[lineCount];
+		for (int i = 0; i<lineCount; i++){
+			newLines[i] = new Line(i);
+		}
 
 		for(int j=0; j<newLines.length; j++){
 			newLines[j].setChoice(currentLines[j].getChoice());
 		}
-		//event.setLines(newLines);
+		Event.getInstance().setLines(newLines);
+		
+		//not correct
+		new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
 	}
 }

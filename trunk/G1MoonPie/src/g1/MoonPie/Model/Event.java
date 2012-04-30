@@ -68,7 +68,10 @@ public class Event {
 		this.question = question;
 	}
 	
-	
+	public void setLines(Line[] lines) {
+		this.lines = lines;
+	}
+
 	/**
 	 * getter for isOpen
 	 */
