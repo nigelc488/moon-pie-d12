@@ -62,9 +62,9 @@ public class JoinEventMessageController implements OnClickListener {
 
 			else{
 
-				//SendMessageController.signInRequest(eventID, username, password);
+				SendMessageController.signInRequest(eventID, username, password);
 
-				activity.setContentView(R.layout.choiceform);
+				//activity.setContentView(R.layout.choiceform);
 
 				//the following code should be executed after a response from the server
 				//ChoiceFormView view = new ChoiceFormView(event,activity);		

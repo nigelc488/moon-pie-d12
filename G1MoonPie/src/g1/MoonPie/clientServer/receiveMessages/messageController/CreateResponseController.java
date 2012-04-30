@@ -1,7 +1,9 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
 
+import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 import org.w3c.dom.NamedNodeMap;
@@ -41,6 +43,9 @@ public class CreateResponseController {
 	
 		System.out.println("Created: id=" + id);
 		
+		event.setPos(0);
+		//upond server response, insantiate ChoiceFormView, and set the choice visibilities
+
 		//This is where you should call the createController
 		//new ConnectController(id);
 		
