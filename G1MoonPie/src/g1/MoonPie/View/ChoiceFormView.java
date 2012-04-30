@@ -2,7 +2,6 @@ package g1.MoonPie.View;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Controller.AddChoiceController;
-import g1.MoonPie.Controller.BeginRoundController;
 import g1.MoonPie.Controller.JoinEventMessageController;
 import g1.MoonPie.Model.Event;
 import android.app.Activity;

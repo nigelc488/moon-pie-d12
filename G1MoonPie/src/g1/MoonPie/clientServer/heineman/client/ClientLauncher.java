@@ -38,11 +38,10 @@ public class ClientLauncher {
 
 		String nigel = "130.215.29.32";
 		String serverGroup = "72.249.186.243";
-		
+		String janine = "130.215.175.186";
 		String jeremy = "130.215.169.127";
-		//server = jeremy;
 		String Eric = "130.215.127.53";
-		server = nigel;
+		server = janine;
 
 		//		server = serverGroup;
 
