@@ -7,6 +7,7 @@ import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.User;
 import android.app.Activity;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**This class is used to set up the waiting view, and allow moderators only to close event.
  * 
@@ -34,7 +35,10 @@ public class CloseEventView {
 
 		activity.setContentView(R.layout.waiting);
 		Button closeButton = (Button) activity.findViewById(R.id.closeButton);
-
+		
+		TextView eventID = (TextView) activity.findViewById(R.id.EventIDDisp);
+		eventID.setText("Event ID: "+event.getID());
+		
 		//if the user is not a moderator hide the close event button
 		if(!(Event.getInstance().getUser().getPostion() == 0)){
 			closeButton.setVisibility(4);
