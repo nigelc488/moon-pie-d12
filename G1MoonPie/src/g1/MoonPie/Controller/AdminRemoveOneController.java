@@ -18,12 +18,13 @@ public class AdminRemoveOneController implements OnClickListener {
 Activity activity;
 Entries entries;
 ArrayList<Integer> clicked;
-
+AdminView av;
 	
-	public AdminRemoveOneController(Activity activity, Entries ent, ArrayList<Integer> clicked){
+	public AdminRemoveOneController(Activity activity, Entries ent, ArrayList<Integer> clicked, AdminView av){
 		this.entries = ent;
 		this.activity = activity;
 		this.clicked = clicked;
+		this.av = av;
 
 	}
 	
@@ -34,6 +35,7 @@ ArrayList<Integer> clicked;
 		for(int i=0; i< size; i++){
 			smc.removeRequest(entries.getKey(), entries.getEntry(clicked.get(i)).getId(), false, 0);
 		}
-		
+		av.clearArray();
+		av.setTableValues();
 	}
 }
