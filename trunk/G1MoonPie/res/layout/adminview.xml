@@ -72,13 +72,7 @@
             android:visibility="visible"
             android:text="Remove" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            
-            android:text="" />
+       
 
         <Button
             android:id="@+id/bComplete"
@@ -87,6 +81,23 @@
             android:layout_weight="1"
             android:visibility="visible"
             android:text="Complete" />
+        
+         <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            
+            android:text="" />
+         
+         <Button
+            android:id="@+id/bBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:text="Back" />
+         
 
     </LinearLayout>
 
