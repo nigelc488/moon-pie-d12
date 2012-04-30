@@ -136,7 +136,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 				choices[2] = "three";
 			}
 			//closed event
-			else{
+			else if (id.equals("Closed")){
 				type = "closed";
 				choices = new String[numChoices];
 				choices[0] = "one";
@@ -144,6 +144,12 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 				choices[2] = "three";
 				choices[3] = "four";
 				choices[4] = "five";
+			}
+			//not a valid id
+			else{
+				type = "closed";
+				id = "no";
+				choices = new String[0];
 			}
 			
 
