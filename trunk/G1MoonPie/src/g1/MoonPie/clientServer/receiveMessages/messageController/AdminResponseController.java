@@ -45,7 +45,6 @@ public class AdminResponseController {
 		AdminChoicesView acv = new AdminChoicesView(activity, key);
 		entries.setKey(key);
 		
-		
 	}
 
 }
