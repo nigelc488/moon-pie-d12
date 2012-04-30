@@ -1,6 +1,7 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
 
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.EventView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 import org.w3c.dom.NamedNodeMap;
@@ -35,9 +36,13 @@ public class CloseResponseController {
 	public void process(MessageXML response){
 		
 		
-
-		
 		System.out.println("Close the event");
+		
+		
+		Activity dummy = new Activity();
+		
+		EventView eventView = new EventView(event, dummy);
+		
 		
 		//This is where you should call the closeEventController
 		//new CloseEventController();
