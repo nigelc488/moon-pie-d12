@@ -15,7 +15,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 /**
- * This controller is used to process the closeResponse message and call the necessary controller.
+ * This controller is used to process the closeResponse message and close the event if there are enough choices.
  * @author ncochran
  *
  */
@@ -34,7 +34,7 @@ public class CloseResponseController {
 	}
 
 	/**
-	 * This method is used to do the actual processing of the message and calling of the controller.
+	 * There is no actually content of the CloseResponse so this method will close the event if there are 3 or more users.
 	 * @param response MessageXML The message to be processed and reacted to.
 	 */
 	public void process(MessageXML response){
@@ -59,19 +59,6 @@ public class CloseResponseController {
 			Toast.makeText(ProcessThreadMessages.getActivity(), "There are only " + (lineCount+1) + " Choices.  Need at least 3.", Toast.LENGTH_SHORT).show();
 			System.out.println("Too few");
 		}
-		
-		
-		
-		
-//		Activity dummy = new Activity();
-//		
-//		EventView eventView = new EventView(event, dummy);
-		
-		
-		//This is where you should call the closeEventController
-		//new CloseEventController();
-		
-		//needs to know what button to hide so will need to know about the Activity
 		
 	}
 	

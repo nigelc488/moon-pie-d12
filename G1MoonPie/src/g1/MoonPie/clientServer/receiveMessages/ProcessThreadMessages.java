@@ -18,7 +18,6 @@ import g1.MoonPie.clientServer.receiveMessages.messageController.ForceResponseCo
 import g1.MoonPie.clientServer.receiveMessages.messageController.RemoveResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.ReportResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.SignInResponseController;
-import g1.MoonPie.clientServer.receiveMessages.messageController.TurnResponseController;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
@@ -47,6 +46,8 @@ public class ProcessThreadMessages extends Handler{
 		this.entries = entries;
 	}
 	
+	//makes the activity a singleton.  should really have done this somewhere else but too late now...
+	
 	/**
 	 * This method is used to change the activity to be passed to called controllers.
 	 * @param active Activity The current activity
@@ -54,18 +55,13 @@ public class ProcessThreadMessages extends Handler{
 	public static void setActivity(Activity active){
 		activity = active;
 	}
-	
+	/**
+	 * This method is used to get the current activity.
+	 * @return Activity The current activity
+	 */
 	public static Activity getActivity(){
 		return activity;
 	}
-	
-/*	public ProcessThreadMessages(Activity activity){
-		this.activity = activity;
-	}*/
-	
-/*	public ProcessThreadMessages(){
-		
-	}*/
 	
 	/**
 	 * This method is used for the logic of processing the xml message to see which message it is and which controller should be called.
@@ -106,11 +102,6 @@ public class ProcessThreadMessages extends Handler{
 			System.out.println(type);
 			new SignInResponseController(event, activity).process(response);
 		}
-		else if(type.equals("turnResponse")){
-			//Done
-			System.out.println(type);
-			new TurnResponseController(event, activity);
-		}
 		else if(type.equals("adminResponse")){
 			//Done
 			System.out.println(type);
@@ -130,10 +121,6 @@ public class ProcessThreadMessages extends Handler{
 			//cat is doing this one
 			System.out.println(type);
 			new ReportResponseController(event, activity, entries).process(response);
-		}
-		else if(type.equals("chatResponse")){
-			//optional and we aren't doing it
-			System.out.println(type);
 		}
 		else System.out.println("Not a valid message: " + type);
 

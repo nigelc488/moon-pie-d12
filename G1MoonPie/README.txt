@@ -17,4 +17,5 @@ Open MoonPieServer then src then default package then run MoonPieServerLauncher.
 
 Open MoonPie then src then g1.MoonPie then launch MoonPieActivity.
 This will connect to the server and then display the welcome screen.
-Press "Create New Event" and it will launch the Create New Event Form.
+
+Because of a lack of integration with the server, only running a new closed event is fully functional with our mock server.

@@ -11,21 +11,21 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * This class is used to send all of the messages to the server.
- * Each individual message has its own method.
+ * Each individual message has its own method and they are all static so can be called from anywhere.
  * @author ncochran
  *
  */
 public class SendMessageController {
 	Activity activity;
-	/**
-	 * This constructor creates the SendMessageController.
-	 */
-	public SendMessageController(){
-	}
-	
-	public SendMessageController(Activity activity){
-		this.activity = activity;
-	}
+//	/**
+//	 * This constructor creates the SendMessageController.
+//	 */
+//	public SendMessageController(){
+//	}
+//	
+//	public SendMessageController(Activity activity){
+//		this.activity = activity;
+//	}
 	
 	/**
 	 * This message creates an addChoiceRequest xml message.
@@ -97,6 +97,69 @@ public class SendMessageController {
 		System.out.println("CloseRequestSent: " + sent);
 	}
 	
+	//unused variations of constructor seen below.  to attached to get rid of quite yet :(
+	
+
+//	public static void createRequest(String type, String question, int numChoices, int numRounds, String userName, String password){
+//		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
+//		//dont need to do password
+//		type = EncodeXML.encodeString(type);
+//		question = EncodeXML.encodeString(question);
+//		userName = EncodeXML.encodeString(userName);
+//		
+//		//very well may be wrong...
+//		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
+//		//setup choices
+//		//may need some code to handle when open event and therefore just 1 choice
+//		for (int i = 0; i < numChoices; i++) {
+//			if(!Event.getInstance().getLines()[i].getChoice().isEmpty()){
+//			String choice = "<choice value='" + EncodeXML.encodeString(Event.getInstance().getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
+//			xmlString += choice;
+//			}
+//		}
+//		String passwordXML = "";
+//		if(!password.isEmpty()){
+//			String pass = EncryptPassword.getSuperSecrectPassword(password);
+//			passwordXML = "password='" + pass + "'";
+//		}
+//		String user = "<user name='" + userName + "' " + passwordXML + "/>";
+//		
+//		xmlString += user + "</createRequest></request>";
+//		MessageXML req = new MessageXML(xmlString);
+//		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+//		System.out.println("CreateSent: " + sent);
+//	}
+	
+//	public static void createRequest(boolean isOpen, String question, int numChoices, int numRounds, String userName, String password){
+//		String type;
+//		if(isOpen){
+//			type = "open";
+//		}else type = "closed";
+//		question = EncodeXML.encodeString(question);
+//		userName = EncodeXML.encodeString(userName);
+//		
+//		//very well may be wrong...
+//		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
+//		//setup choices
+//		//may need some code to handle when open event and therefore just 1 choice
+//		for (int i = 0; i < numChoices; i++) {
+//			if(!Event.getInstance().getLines()[i].getChoice().isEmpty()){
+//			String choice = "<choice value='" + EncodeXML.encodeString(Event.getInstance().getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
+//			xmlString += choice;
+//			}
+//		}
+//		String passwordXML = "";
+//		if(!password.isEmpty()){
+//			String pass = EncryptPassword.getSuperSecrectPassword(password);
+//			passwordXML = "password='" + pass + "'";
+//		}
+//		String user = "<user name='" + userName + "' " + passwordXML + "/>";
+//		
+//		xmlString += user + "</createRequest></request>";
+//		MessageXML req = new MessageXML(xmlString);
+//		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
+//		System.out.println("CreateSent: " + sent);
+//	}
 	/**
 	 * This method creates a createRequest xml message.
 	 * @param type String Either "open" or "closed"
@@ -105,85 +168,18 @@ public class SendMessageController {
 	 * @param numRounds int The number of edges a participant can add
 	 * @param userName String The username of the person creating the event
 	 * @param password String The password of the person creating the event.  The password is encrypted using SHA1 before being sent to the server.
-	 * @param event The event to be created.  This is used to gain access to the choices for the event.
+	 * @param choices String[] The array of choices requested by the user.
 	 */
-	public static void createRequest(String type, String question, int numChoices, int numRounds, String userName, String password){
-		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
-		//dont need to do password
-		type = EncodeXML.encodeString(type);
-		question = EncodeXML.encodeString(question);
-		userName = EncodeXML.encodeString(userName);
-		
-		//very well may be wrong...
-		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
-		//setup choices
-		//may need some code to handle when open event and therefore just 1 choice
-		for (int i = 0; i < numChoices; i++) {
-			if(!Event.getInstance().getLines()[i].getChoice().isEmpty()){
-			String choice = "<choice value='" + EncodeXML.encodeString(Event.getInstance().getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
-			xmlString += choice;
-			}
-		}
-		String passwordXML = "";
-		if(!password.isEmpty()){
-			String pass = EncryptPassword.getSuperSecrectPassword(password);
-			passwordXML = "password='" + pass + "'";
-		}
-		String user = "<user name='" + userName + "' " + passwordXML + "/>";
-		
-		xmlString += user + "</createRequest></request>";
-		MessageXML req = new MessageXML(xmlString);
-		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
-		System.out.println("CreateSent: " + sent);
-	}
-	
-	public static void createRequest(boolean isOpen, String question, int numChoices, int numRounds, String userName, String password){
-		String type;
-		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
-		//dont need to do password
-		if(isOpen){
-			type = "open";
-		}else type = "closed";
-		question = EncodeXML.encodeString(question);
-		userName = EncodeXML.encodeString(userName);
-		
-		//very well may be wrong...
-		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
-		//setup choices
-		//may need some code to handle when open event and therefore just 1 choice
-		for (int i = 0; i < numChoices; i++) {
-			if(!Event.getInstance().getLines()[i].getChoice().isEmpty()){
-			String choice = "<choice value='" + EncodeXML.encodeString(Event.getInstance().getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
-			xmlString += choice;
-			}
-		}
-		String passwordXML = "";
-		if(!password.isEmpty()){
-			String pass = EncryptPassword.getSuperSecrectPassword(password);
-			passwordXML = "password='" + pass + "'";
-		}
-		String user = "<user name='" + userName + "' " + passwordXML + "/>";
-		
-		xmlString += user + "</createRequest></request>";
-		MessageXML req = new MessageXML(xmlString);
-		boolean sent = ServerAccessManager.getAccess().sendRequest(req);
-		System.out.println("CreateSent: " + sent);
-	}
-	
 	public static void createRequest(boolean isOpen, String question, int numChoices, int numRounds, String userName, String password, String[] choices){
 		String type;
-		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
-		//dont need to do password
 		if(isOpen){
 			type = "open";
 		}else type = "closed";
 		question = EncodeXML.encodeString(question);
 		userName = EncodeXML.encodeString(userName);
 		
-		//very well may be wrong...
 		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
 		//setup choices
-		//may need some code to handle when open event and therefore just 1 choice
 		for (int i = 0; i < choices.length; i++) {
 			if(!choices[i].isEmpty()){
 			String choice = "<choice value='" + EncodeXML.encodeString(choices[i]) + "' " + "index='" + i + "'/>";
