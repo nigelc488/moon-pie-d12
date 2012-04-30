@@ -69,10 +69,7 @@ public class NewEventMessageController implements OnClickListener {
 
 		EditText passwordText = (EditText) activity.findViewById(R.id.password);
 		String password = passwordText.getText().toString();
-		if (password.equals("")){
-			Toast.makeText(activity, "Please enter a value for the password", Toast.LENGTH_SHORT).show();
-			valid = false;
-		}
+
 
 		if (valid){
 
