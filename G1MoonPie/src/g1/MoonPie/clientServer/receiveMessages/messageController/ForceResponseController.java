@@ -38,7 +38,7 @@ public class ForceResponseController {
 		int numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
 		
 		//Let the admin know the request was processed
-		Toast.makeText(activity, "Event has been closed", Toast.LENGTH_SHORT).show();
+		Toast.makeText(activity, "Event(s) closed", Toast.LENGTH_SHORT).show();
 		
 		System.out.println("forced" + numberAffected);
 		//new AdminController(event, activity, key);

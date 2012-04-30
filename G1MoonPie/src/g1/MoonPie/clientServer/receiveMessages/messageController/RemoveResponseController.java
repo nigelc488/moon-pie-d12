@@ -40,7 +40,7 @@ public class RemoveResponseController {
 		int numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
 
 		//Let the Admin know the requests has been processed
-		Toast.makeText(activity, "Event has been removed", Toast.LENGTH_SHORT).show();
+		Toast.makeText(activity, "Event(s) removed", Toast.LENGTH_SHORT).show();
 
 		
 		System.out.println("removed" + numberAffected);
