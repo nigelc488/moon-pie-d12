@@ -26,7 +26,7 @@ public class AdminChoicesView extends Activity {
 		
 		activity.setContentView(R.layout.adminchoice);
 	  
-	    RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
+	    RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EntryTable);
 	    EventType.setOnClickListener(new AdminViewTypeController(activity, key));
 	    
 	}
