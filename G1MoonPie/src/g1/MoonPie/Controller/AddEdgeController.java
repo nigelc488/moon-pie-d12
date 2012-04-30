@@ -3,6 +3,7 @@ package g1.MoonPie.Controller;
 
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.DecisionLinesForm;
+import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.content.Loader.ForceLoadContentObserver;
 
 
@@ -55,15 +56,16 @@ public class AddEdgeController {
 				leftLine = i;
 				rightLine = j;	
 				if(event.checkValidEdge(height, leftLine, rightLine) == true){
-					event.addEdge(height, leftLine, rightLine);
+					//event.addEdge(height, leftLine, rightLine);
+					SendMessageController.addEdgeRequest(Event.getInstance().getID(), leftLine, rightLine, height);
 					System.out.println("height:  " + height);
-					System.out.println("ArrayPos:  " + event.getEdges().get(leftLine).getHeight());
+					//System.out.println("ArrayPos:  " + event.getEdges().get(leftLine).getHeight());
 					System.out.println("edgeAdded");
 					drawView.postInvalidate();
-					return;
+					break;
 				}else {
 					System.out.println("invalid edge");
-					return;
+					break;
 				}
 			}else
 				i++;

@@ -53,6 +53,7 @@ public class SendMessageController {
 	 * @param height int The vertical location of the edge
 	 */
 	public static void addEdgeRequest(String id, int left, int right, int height){
+		System.out.println("id= " + id + " left= " + left + " right= " + right +" height= " + height);
 		id = EncodeXML.encodeString(id);
 		
 		String xmlString = MessageXML.requestHeader() + "<addEdgeRequest id ='" + id + "' " + "left='" + left + "' " + "right='" + right + "' " + "height='" + height + "'/></request>";

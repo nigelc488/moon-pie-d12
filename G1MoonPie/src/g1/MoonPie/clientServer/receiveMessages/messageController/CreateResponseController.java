@@ -1,5 +1,6 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
-import g1.MoonPie.Controller.CompleteDecisionController;
+import g1.MoonPie.CompleteDecisionActivity;
+import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.View.CloseEventView;
@@ -11,6 +12,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import android.app.Activity;
+import android.content.Intent;
 
 /**
  * This class is used to process createResponse xml messages and call the necessary controller.
@@ -42,12 +44,16 @@ public class CreateResponseController {
 		NamedNodeMap map = child.getAttributes();
 		
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
-	
+		Event.getInstance().setID(id);
 		System.out.println("Created: id=" + id);
 		
 		if(!Event.getInstance().getIsOpen()){
 			//launch CHRIS SCREEN
-			new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+			//new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+			
+			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
+			ProcessThreadMessages.getActivity().startActivity(intent);
+			
 		}
 		
 //		if(Event.getInstance().getIsOpen()){

@@ -265,10 +265,21 @@ public class Event {
 	 * for that Choice.  It does this for each Choice.  The results are displayed in the console.
 	 */
 	public String[] calculateResults(){
+		ArrayList<Edge> noDouble = new ArrayList<Edge>();
 		String[] results = new String[lines.length];
 		int startLine; int currentLine;
 		ArrayList<Edge> allEdges = getEdges();
 		Collections.sort(allEdges);
+		for (int i = 0; i < allEdges.size(); i++) {
+			if(i%2 == 0){
+				noDouble.add(allEdges.get(i));
+			}
+			System.out.println("look here");
+			
+		}
+		
+		//TODO
+		
 		for (int i = 0; i < lines.length; i++){
 			startLine = i;
 			currentLine = startLine;

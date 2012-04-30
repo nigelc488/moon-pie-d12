@@ -7,9 +7,9 @@ import org.w3c.dom.NodeList;
 import android.app.Activity;
 import android.widget.EditText;
 import android.widget.Toast;
+import g1.MoonPie.CompleteDecisionActivity;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
-import g1.MoonPie.Controller.CompleteDecisionController;
 import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.ChoiceFormView;
@@ -95,7 +95,7 @@ public class SignInResponseController {
 		else{
 			//LAUNCH CHRIS WINDOW
 			//ProcessThreadMessages.getActivity().setContentView(R.layout.results);
-			new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
+			//new CompleteDecisionActivity(Event.getInstance(), ProcessThreadMessages.getActivity());
 		}
 		}else Toast.makeText(ProcessThreadMessages.getActivity(), "Not a Valid ID", Toast.LENGTH_LONG).show();
 
