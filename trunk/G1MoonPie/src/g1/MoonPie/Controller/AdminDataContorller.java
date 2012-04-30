@@ -15,8 +15,11 @@ public class AdminDataContorller {
 	
 	public AdminDataContorller(Activity act, String key){
 		this.activity = act;
-		smc = new SendMessageController();
 		this.key = key;
+	}
+	
+	public void requestData(){
+		smc = new SendMessageController();
 		
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
