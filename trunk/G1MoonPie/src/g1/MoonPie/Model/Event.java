@@ -311,6 +311,30 @@ public class Event {
 	public void setInstance(Event event){
 		instance = event;
 	}
+	
+	public boolean checkValidEdge(int height, int leftLinePos, int rightLinePos){
+		boolean valid = true;
+
+		for(int i=0; i< this.getNumChoices(); i++){//iterates trough choices
+			for(int z=0; z<this.getLines()[i].getEdges().size(); z++){//iterates through edges of that choice
+				if(this.getLines()[i].getEdges().get(z).getHeight() < height+2 &&  
+						this.getLines()[i].getEdges().get(z).getHeight() > height-2){
+
+					if(this.getLines()[i].getEdges().get(z).getLeftLine() == leftLinePos ){
+						valid = false;
+					}
+					if(this.getLines()[i].getEdges().get(z).getLeftLine() == rightLinePos ){
+						valid = false;
+					}
+					if(this.getLines()[i].getEdges().get(z).getRightLine() == leftLinePos ){
+						valid = false;
+					}
+				}
+			}
+		}
+
+		return valid;
+	}
 
 
 	
