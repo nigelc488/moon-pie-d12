@@ -118,7 +118,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				}
 				SendMessageController.addChoiceRequest(Event.getInstance().getID(), Event.getInstance().getUser().getPostion(), choice);
 			}
-			if (event.getIsOpen()) activity.setContentView(R.layout.waiting);
+			if (event.getIsOpen()) new CloseEventView(event, activity);
 		}
 	}
 		

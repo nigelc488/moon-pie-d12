@@ -27,17 +27,16 @@ public class CloseEventView {
 	 * @param u	user to access privileges (moderator or not).
 	 * @param a	activity to access view objects.
 	 */
-	public CloseEventView(Event e, User u, Activity a){
+	public CloseEventView(Event e, Activity a){
 
 		this.event = e;
 		this.activity = a;
-		this.user = u;
 
 		activity.setContentView(R.layout.waiting);
 		Button closeButton = (Button) activity.findViewById(R.id.closeButton);
 
 		//if the user is not a moderator hide the close event button
-		if(!(user.getPostion() == 0)){
+		if(!(Event.getInstance().getUser().getPostion() == 0)){
 			closeButton.setVisibility(4);
 		}
 		//if user is a moderator display close vent button and add listener
