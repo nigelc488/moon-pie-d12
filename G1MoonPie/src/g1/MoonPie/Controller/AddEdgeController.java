@@ -47,7 +47,7 @@ public class AddEdgeController {
 			rounds = event.getTotalEdges();
 		}
 	}
-	
+	 
 	public void AddEdge(int x, int height){
 		int i = 0;
 		int j = i+1;
@@ -97,6 +97,4 @@ public class AddEdgeController {
 		scaledRightLine = ((event.getEdges().get(i).getRightLine()+1)*(drawView.getWidth()/(event.getNumChoices()+1)));
 		return scaledRightLine;
 	}
-		
-
 }
