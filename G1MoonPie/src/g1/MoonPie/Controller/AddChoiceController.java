@@ -99,36 +99,29 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		lines = Event.getInstance().getLines();
 		String choice;
 		
+		namesValid = true;
 		
 		//get and validate choices
 		choices = getChoices();
+		
 		if(namesValid){
-		//if moderator then sent create request
-		if(Event.getInstance().getUser().getPostion() == 0){
-			SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
-		}
-		//if not moderator then send add choice request
-		else{
-			if(choices.length > 1){
-				System.out.println("ERROR SOMETHING IS BAD");
-				choice = null;
-			}else {
-				choice = choices[0];
+			//if moderator then sent create request
+			if(Event.getInstance().getUser().getPostion() == 0){
+				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
 			}
-			SendMessageController.addChoiceRequest(Event.getInstance().getID(), Event.getInstance().getUser().getPostion(), choice);
-		}
+			//if not moderator then send add choice request
+			else{
+				if(choices.length > 1){
+					System.out.println("ERROR SOMETHING IS BAD");
+					choice = null;
+				}else {
+					choice = choices[0];
+				}
+				SendMessageController.addChoiceRequest(Event.getInstance().getID(), Event.getInstance().getUser().getPostion(), choice);
+			}
+			if (event.getIsOpen()) activity.setContentView(R.layout.waiting);
 		}
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 //		/* if the event is open */
@@ -137,7 +130,6 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 //			
 //			
 //			//THIS IS ACTUALLY STILL WRONG
-//			//TODO This is wrong and needs to be fixed!
 //			for(int i=0; i<lines.length; i++){
 //				if(lines[i].getChoice().equals("")){
 //					lines[i].setChoice(textBoxes[0].getText().toString());
@@ -199,7 +191,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 //
 //			}
 //		}
-//	}
+
 	
 	//this method returns the choices.  if any are blank or duplicates, then makes invalid
 	String[] getChoices(){
@@ -207,28 +199,34 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		if(Event.getInstance().getIsOpen()){
 			choices = new String[1];
 		} else choices = new String[Event.getInstance().getNumChoices()];
+		ArrayList<String> linesWithDuplicates = new ArrayList<String>();
+		HashSet<String> linesNoDuplicates = new HashSet<String>();
 		for (int i = 0; i < choices.length; i++){
 			String namedLine = textBoxes[i].getText().toString();
 			
+			int choiceNum = i+1;
+			
+			linesWithDuplicates.add(namedLine);
+			int sizeWithDuplicates = linesWithDuplicates.size();
+			linesNoDuplicates.addAll(linesWithDuplicates);
+			int sizeWithoutDuplicates = linesNoDuplicates.size();
+			if (sizeWithDuplicates != sizeWithoutDuplicates){
+				//Toast.makeText(activity, "Choice "+choiceNum+" is a duplicate, please change it", Toast.LENGTH_SHORT).show();
+				namesValid = false;
+			}
+			
 			//check to see if it is a valid edge
-			if(Event.getInstance().checkValidChoice(namedLine)){
+			if(namesValid && Event.getInstance().checkValidChoice(namedLine)){
 				choices[i] = namedLine;
 			}else{
 				namesValid = false;
-				Toast.makeText(activity, "One of your choices is invalid", Toast.LENGTH_SHORT).show();
+				if (namedLine.equals("")){
+					Toast.makeText(activity, "Choice "+choiceNum+" is empty, please complete", Toast.LENGTH_SHORT).show();
+				}else{
+					Toast.makeText(activity, "Choice "+choiceNum+" is a duplicate, please change it", Toast.LENGTH_SHORT).show();
+				}
+				return choices;
 			}
-			
-			
-//			//no choices should be empty
-//			if(namedLine.isEmpty()){
-//					Toast.makeText(activity, "Please fill in empty boxes", Toast.LENGTH_SHORT).show();
-//					namesValid = false;
-//				}else {
-//					//
-//					if(Event.getInstance().checkValidChoice(namedLine)){
-//						
-//					}
-//				}
 		}
 		return choices;
 	}
