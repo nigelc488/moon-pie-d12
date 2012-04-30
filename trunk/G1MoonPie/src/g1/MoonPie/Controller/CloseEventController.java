@@ -24,12 +24,21 @@ public class CloseEventController implements OnClickListener {
 	Activity activity;
 	User user;
 
+	/**This constructor creates the CloseEventController with an event, a user, and an activity.
+	 * 
+	 * @param e	The event to be used to update model objects
+	 * @param u	The User who is requesting the close to be used to check if Moderator
+	 * @param a	The Activity to be used to update GUI objects.
+	 */
 	public CloseEventController(Event e,User u, Activity a){
 		this.event = e;
 		this.activity = a;
 		this.user = u;
 	}
 
+	/**This method is a listener for the CloseEventButton.  On click event, a new CloseEventLineController will be created, 
+	 * and a closeRequest will be sent to the server.
+	 */
 	@Override
 	public void onClick(View arg0) {
 		
