@@ -28,6 +28,7 @@
 					      android:layout_height="fill_parent"
 					      android:layout_weight="1"
 					      android:text="Event ID" />
+		            
 		            <TextView
 					      android:id="@+id/tvType"
 					      android:layout_width="fill_parent"
@@ -68,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:text="Remove" />
 
         <TextView
@@ -84,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:text="Complete" />
 
     </LinearLayout>
