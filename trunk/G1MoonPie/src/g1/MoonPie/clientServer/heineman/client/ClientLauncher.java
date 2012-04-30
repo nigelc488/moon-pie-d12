@@ -40,12 +40,14 @@ public class ClientLauncher {
 		String serverGroup = "72.249.186.243";
 		
 		String jeremy = "130.215.169.127";
-		server = jeremy;
+		//server = jeremy;
+		String Eric = "130.215.127.53";
+		server = serverGroup;
 
 		//		server = serverGroup;
 
 		//System.out.println("before new server acess");
-		ServerAccess sa = new ServerAccess(server, 50000); //"127.0.0.1"/localhost doesnt work
+		ServerAccess sa = new ServerAccess(server, 9371); //"127.0.0.1"/localhost doesnt work
 		//System.out.println("after new server, before connect");
 		connected = sa.connect(new MoonPieClientMessageHandler(handler));
 		//System.out.println("did we connect? " + connected);

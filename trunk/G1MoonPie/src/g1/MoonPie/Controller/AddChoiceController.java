@@ -102,7 +102,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			for(int i=0; i<lines.length; i++){
 				if(lines[i].getChoice().equals("")){
 					lines[i].setChoice(textBoxes[0].getText().toString());
-					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
+					SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
 				}
 			}
 		//	User mod = new User("username", "password", true);					//This was used to test close event controller
@@ -136,7 +136,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			if (namesValid == true){			
 				for (int i = 0; i < lines.length; i++){
 					lines[i].setChoice(textBoxes[i].getText().toString());
-					//SendMessageController.addChoiceRequest(event.getID(), i, lines[i].getChoice());
+					
 				}
 				//				User mod = new User("username", "password", true);					//This was used to test close event controller
 				//				CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller

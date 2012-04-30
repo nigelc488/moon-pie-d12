@@ -1,7 +1,10 @@
 package g1.MoonPie.Controller;
 
+import java.util.ArrayList;
+
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.Model.User;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.View.NewEventView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
@@ -29,6 +32,7 @@ public class NewEventMessageController implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		System.out.println("button clicked");
 		boolean valid = true;
 		
 		EditText questionText = (EditText) activity.findViewById(R.id.question);
@@ -70,9 +74,11 @@ public class NewEventMessageController implements OnClickListener {
 		}
 
 		if (valid){
+			
 			Event event = new Event(numChoices, numRounds, question, isOpen);
-			SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
-	
+			
+			//SendMessageController.createRequest(type, question, numChoices, numRounds, username, password, event);
+			
 			//the following code should be executed after a response from the server
 			ChoiceFormView view = new ChoiceFormView(event,activity);		
 			view.setChoicesVisibility();

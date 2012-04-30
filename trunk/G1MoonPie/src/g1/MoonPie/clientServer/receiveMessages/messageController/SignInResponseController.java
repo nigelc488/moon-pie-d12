@@ -46,6 +46,15 @@ public class SignInResponseController {
 		
 		System.out.println("SignIn with id=" + id + " type=" + type + " question=" + question + " numChoices=" + numChoices + " numRounds=" + numRounds + " position=" + position);
 		
+		
+		activity.setContentView(R.layout.choiceform);
+		
+		event.setPos(position);
+		//the following code should be executed after a response from the server
+		//ChoiceFormView view = new ChoiceFormView(event,activity);		
+		//view.setChoicesVisibility();
+		
+		
 		//new SignInController(event, activity, id, type, question, numChoices, numRounds, position);
 		
 		//somehow needs to update view though, so will probably need to be passed the right text box as well

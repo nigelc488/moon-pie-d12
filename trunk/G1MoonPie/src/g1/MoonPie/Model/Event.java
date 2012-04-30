@@ -20,7 +20,8 @@ public class Event {
 	/**Number of rounds for the event.*/
 	int numRounds;
 	/**List of the users' names for the event.*/
-	private ArrayList<User> users;
+	//private ArrayList<User> users;
+	int position;
 	/**List of the lines for an event.*/
 	Line[] lines; //change to array
 	/**The event ID.*/
@@ -121,7 +122,7 @@ public class Event {
 	 * Get the number of users in an event
 	 */
 	public int getNumUsers(){
-		return users.size();
+		return numChoices;//users.size();
 	}
 	
 	/**
@@ -285,13 +286,21 @@ public class Event {
 		ID = iD;
 	}
 
-	public ArrayList<User> getUsers() {
-		return users;
+	public int getPos(){
+		return this.position;
 	}
+	
+	public void setPos(int pos){
+		this.position = pos;
+	}
+	
+//	public ArrayList<User> getUsers() {
+//		return users;
+//	}
 
-	public void setUsers(ArrayList<User> users) {
-		this.users = users;
-	}
+//	public void setUsers(ArrayList<User> users) {
+//		this.users = users;
+//	}
 	
 	
 }
