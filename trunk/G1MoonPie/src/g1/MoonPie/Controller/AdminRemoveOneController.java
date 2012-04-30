@@ -13,28 +13,62 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminRemoveOneController.
+ */
 public class AdminRemoveOneController implements OnClickListener {
 
+/** The activity. */
 Activity activity;
+
+/** The entries. */
 Entries entries;
+
+/** The clicked. */
 ArrayList<Integer> clicked;
+
+/** The Admin view. */
 AdminView av;
+
+/** The type. */
+String type;
 	
-	public AdminRemoveOneController(Activity activity, Entries ent, ArrayList<Integer> clicked, AdminView av){
+	/**
+	 * Instantiates a new admin remove one controller.
+	 *
+	 * @param activity the activity
+	 * @param ent the entries
+	 * @param clicked the clicked
+	 * @param av the admin veiw
+	 * @param ty the type
+	 */
+	public AdminRemoveOneController(Activity activity, Entries ent, ArrayList<Integer> clicked, AdminView av, String ty){
 		this.entries = ent;
 		this.activity = activity;
 		this.clicked = clicked;
 		this.av = av;
+		this.type = ty;
 
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	@Override
 	public void onClick(View v) {
 		SendMessageController smc = new SendMessageController();
 		int size = clicked.size();
-		for(int i=0; i< size; i++){
-			smc.removeRequest(entries.getKey(), entries.getEntry(clicked.get(i)).getId(), false, 0);
+		if(type == "open"){
+			for(int i=0; i< size; i++){
+				smc.removeRequest(entries.getKey(), entries.getEntry(clicked.get(i)).getId(), false, 0);
+			}
+		}else{
+			for(int i=0; i< size; i++){
+				smc.removeRequest(entries.getKey(), entries.getEntry(clicked.get(i)).getId(), true, 0);
+			}
 		}
+			
 		av.clearArray();
 		av.setTableValues();
 	}

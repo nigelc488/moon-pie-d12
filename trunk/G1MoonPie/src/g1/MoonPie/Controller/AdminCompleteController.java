@@ -12,16 +12,36 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminCompleteController.
+ */
 public class AdminCompleteController implements OnClickListener{
+
+/** The activity. */
 Activity activity;
+
+/** The entries. */
 Entries entries;
+
+/** The key. */
 String key;
 	
+	/**
+	 * Instantiates a new admin complete controller.
+	 *
+	 * @param activity the activity
+	 * @param ent the ent
+	 * @param k the k
+	 */
 	public AdminCompleteController(Activity activity, Entries ent, String k){
 		this.activity = activity;
 		this.key = k; 
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	@Override
 	public void onClick(View v) {
 		EditText days = (EditText) activity.findViewById(R.id.EditDaysText);

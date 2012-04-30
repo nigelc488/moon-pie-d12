@@ -15,13 +15,31 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminRemoveController.
+ */
 public class AdminRemoveController implements OnClickListener {
 
+/** The activity. */
 Activity activity;
+
+/** The entries. */
 Entries entries;
+
+/** The s. */
 String s;
+
+/** The key. */
 String key;
 	
+	/**
+	 * Instantiates a new admin remove controller.
+	 *
+	 * @param activity the activity
+	 * @param ent the ent
+	 * @param k the k
+	 */
 	public AdminRemoveController(Activity activity, Entries ent, String k){
 		this.entries = ent;
 		this.activity = activity;
@@ -29,6 +47,9 @@ String key;
 		this.key = k;
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	@Override
 	public void onClick(View v) {
 		EditText days = (EditText) activity.findViewById(R.id.EditDaysText);
