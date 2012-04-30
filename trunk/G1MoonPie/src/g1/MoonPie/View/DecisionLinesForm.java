@@ -9,6 +9,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
 import android.view.View;
 /**
  * DecisionLinesForm adds a canvas to the application and draws text and lines to model choices, lines, and edges
@@ -32,6 +33,9 @@ public class DecisionLinesForm extends View {
 		super(context);
 		this.event = Event.getInstance();
 		paint.setColor(Color.WHITE);
+		paint.setTextSize(20);
+		paint.setTextAlign(Align.CENTER);
+		
 		addEdge = new AddEdgeController(this); 
 	}
 	/**
@@ -41,13 +45,15 @@ public class DecisionLinesForm extends View {
 	public void onDraw(Canvas canvas) {
 		int height = getHeight();
 		int width = getWidth();
-		int lineHeight = (5*height)/6;
+		int lineHeight = (3*height)/4;
 		offset = (height/25);
-		
+		int center = (width/2);
+		canvas.drawText(event.getQuestion(), center, offset+10, paint);	
 		for (int i = 0; i < event.getNumChoices(); i++){
 			int xpos = (i+1)*(width/(event.getNumChoices() +1));
-			canvas.drawText(event.getLines()[i].getChoice(), xpos - 10, offset+10, paint);	
-			canvas.drawLine(xpos, offset+30, xpos, offset+30 + lineHeight, paint);
+			canvas.drawText(event.getLines()[i].getChoice(), xpos, offset+40, paint);	
+			canvas.drawLine(xpos, offset+60, xpos, offset + 60 + lineHeight, paint);
+			
 		}
 		for (int i = 0; i < event.getEdges().size(); i++) {
 			ArrayList<Edge> edgesList = event.getEdges();
