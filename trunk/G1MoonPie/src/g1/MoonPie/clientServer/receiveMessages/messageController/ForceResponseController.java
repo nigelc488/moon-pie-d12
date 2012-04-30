@@ -4,6 +4,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import android.app.Activity;
+import android.widget.Toast;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
@@ -35,6 +36,9 @@ public class ForceResponseController {
 		NamedNodeMap map = child.getAttributes();
 		
 		int numberAffected = Integer.parseInt(map.getNamedItem("numberAffected").getNodeValue());
+		
+		//Let the admin know the request was processed
+		Toast.makeText(activity, "Event has been closed", Toast.LENGTH_SHORT).show();
 		
 		System.out.println("forced" + numberAffected);
 		//new AdminController(event, activity, key);

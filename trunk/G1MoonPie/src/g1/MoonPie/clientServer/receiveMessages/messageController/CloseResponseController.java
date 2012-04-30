@@ -34,8 +34,7 @@ public class CloseResponseController {
 	 */
 	public void process(MessageXML response){
 		
-		//Let the admin know the request was processed
-		Toast.makeText(activity, "Event has been closed", Toast.LENGTH_SHORT).show();
+		
 
 		
 		System.out.println("Close the event");
