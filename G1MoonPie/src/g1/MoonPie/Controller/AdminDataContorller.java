@@ -25,7 +25,7 @@ public class AdminDataContorller {
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
 			type = "open";
-		}if (checkedRadioButton == R.id.UncompletedEvent){
+		}if (checkedRadioButton == R.id.CompletedEvent){
 			type= "closed";
 		}
 		smc.reportRequest(key, type);
