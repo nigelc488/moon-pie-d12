@@ -13,6 +13,7 @@ import android.widget.Button;
  * @author Eric Cobane
  * @author Janine Pizzimenti
  * @author Jeremy Lowrey
+ * @author Nigel Cochran
  */
 public class CloseEventView {
 
@@ -36,7 +37,7 @@ public class CloseEventView {
 		Button closeButton = (Button) activity.findViewById(R.id.closeButton);
 
 		//if the user is not a moderator hide the close event button
-		if(!user.isModerator()){
+		if(!(user.getPostion() == 0)){
 			closeButton.setVisibility(4);
 		}
 		//if user is a moderator display close vent button and add listener

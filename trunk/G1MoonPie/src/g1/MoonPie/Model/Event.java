@@ -20,9 +20,6 @@ public class Event {
 	int numChoices;
 	/**Number of rounds for the event.*/
 	int numRounds;
-	/**List of the users' names for the event.*/
-	//private ArrayList<User> users;
-	int position;
 	/**List of the lines for an event.*/
 	Line[] lines; //change to array
 	/**The event ID.*/
@@ -31,6 +28,7 @@ public class Event {
 	boolean isOpen = false;
 	/**The Question for the event*/
 	String question;
+	User user;
 	
 	
 
@@ -288,14 +286,6 @@ public class Event {
 	public void setID(String iD) {
 		ID = iD;
 	}
-
-	public int getPos(){
-		return this.position;
-	}
-	
-	public void setPos(int pos){
-		this.position = pos;
-	}
 	
 	public static Event getInstance(){
 		if(instance == null) instance = new Event();
@@ -308,6 +298,14 @@ public class Event {
 
 	public void setOpen(boolean isOpen) {
 		this.isOpen = isOpen;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

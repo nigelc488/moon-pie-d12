@@ -83,7 +83,7 @@ public class NewEventMessageController implements OnClickListener {
 			Event.getInstance().setOpen(isOpen);
 			Event.getInstance().setNumChoices(numChoices);
 			Event.getInstance().setNumRounds(numRounds);
-			//Event.getInstance().
+			Event.getInstance().setUser(new User(username, password, 0));
 			
 	
 			//Event event = new Event(numChoices, numRounds, question, isOpen);
