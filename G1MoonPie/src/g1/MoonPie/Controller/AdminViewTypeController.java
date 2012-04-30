@@ -10,34 +10,80 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminViewTypeController.
+ */
 public class AdminViewTypeController implements OnClickListener{
+	
+	/** The activity. */
 	Activity activity;
+	
+	/** The entries. */
 	Entries entries;
+	
+	/** The key. */
 	String key;
+	
+	/** The E type. */
 	TextView EType;
+	
+	/** The Vis1. */
 	TextView Vis1;
+	
+	/** The Vis2. */
 	TextView Vis2;
+	
+	/** The Vis3. */
 	TextView Vis3;
+	
+	/** The Vis4. */
 	TextView Vis4;
+	
+	/** The Vis5. */
 	TextView Vis5;
+	
+	/** The Vis6. */
 	TextView Vis6;
+	
+	/** The days. */
 	EditText days;
+	
+	/** The Remove. */
 	Button Remove;
+	
+	/** The Complete. */
 	Button Complete;
+	
+	/** The Display. */
 	Button Display;
 	
+	/**
+	 * Instantiates a new admin view type controller.
+	 *
+	 * @param activity the activity
+	 * @param k the k
+	 */
 	public AdminViewTypeController(Activity activity, String k){
 		this.activity = activity;
 		this.key = k;
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.view.View.OnClickListener#onClick(android.view.View)
+	 */
 	@Override
 	public void onClick(View v) {
 		AdminDataContorller adc = new AdminDataContorller(activity,key);
 		adc.requestData();
 	}
 	
+	/**
+	 * Enable visability.
+	 *
+	 * @param ent the ent
+	 */
 	public void EnableVisability(Entries ent){
 		this.entries = ent;
 		Vis1 = (TextView) activity.findViewById(R.id.textVis1);
