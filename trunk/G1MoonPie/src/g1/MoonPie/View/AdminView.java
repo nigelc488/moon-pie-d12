@@ -3,6 +3,8 @@ package g1.MoonPie.View;
 import java.util.ArrayList;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Controller.AdminBackController;
+import g1.MoonPie.Controller.AdminCompleteOneController;
 import g1.MoonPie.Controller.AdminDisplayController;
 import g1.MoonPie.Controller.AdminRemoveController;
 import g1.MoonPie.Controller.AdminRemoveOneController;
@@ -25,14 +27,36 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+/**
+ * The Class AdminView.
+ */
 public class AdminView {
+	
+	/** The activity. */
 	Activity activity;
+	
+	/** The Textview. */
 	TextView tv;
+	
+	/** The type. */
 	String ty;
+	
+	/** The entries. */
 	Entries entries;
+	
+	/** The ID's of clicked rows. */
 	ArrayList<Integer> clicked;
+	
+	/** The rows in the tables. */
 	TableRow[] row;
 	
+	/**
+	 * Instantiates a new admin view.
+	 *
+	 * @param act the activity
+	 * @param ent the entries
+	 * @param ty the type
+	 */
 	public AdminView(Activity act, Entries ent, String ty) {
 		this.entries = ent;
 		this.activity = act;
@@ -43,6 +67,9 @@ public class AdminView {
 	//	tv = (TextView) activity.findViewById(R.id.tvInfo);
 	}
 	
+	/**
+	 * Creates the Table and fills it with information. it also add the action liseners
+	 */
 	public void setTableValues(){
 		activity.setContentView(R.layout.adminview);
 		TableLayout EntryData = (TableLayout) activity.findViewById(R.id.EntryTable);
@@ -109,12 +136,14 @@ public class AdminView {
 		}
 		
 		Button bRemove = (Button) activity.findViewById(R.id.bRemove);
-		bRemove.setOnClickListener(new AdminRemoveOneController(activity,entries,clicked,this));
+		bRemove.setOnClickListener(new AdminRemoveOneController(activity,entries,clicked,this,ty));
 		Button bComplete = (Button) activity.findViewById(R.id.bComplete);
+		Button bBack = (Button) activity.findViewById(R.id.bBack);
+		bBack.setOnClickListener(new AdminBackController(activity,entries));
 		
 		if(ty == "open"){
 			bComplete.setVisibility(0);
-			bComplete.setOnClickListener(new AdminRemoveOneController(activity,entries, clicked, this));
+			bComplete.setOnClickListener(new AdminCompleteOneController(activity,entries, clicked, this));
 		}else{
 			bComplete.setVisibility(1);
 		}
@@ -125,7 +154,8 @@ public class AdminView {
 	public void clicked(int Id){
 		if(!clicked.contains(Id)){
 			clicked.add(Id);
-		}
+		}else
+			clicked.remove(Id);
 	}
 	
 //	public void changeColor(int Id){

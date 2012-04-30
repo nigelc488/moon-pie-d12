@@ -15,11 +15,24 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AdminChoicesView.
+ */
 public class AdminChoicesView extends Activity {
 	
+	/** The activity. */
 	Activity activity; 
+	
+	/** The key. */
 	String key;
 	
+	/**
+	 * Instantiates a new admin choices view.
+	 *
+	 * @param activity the activity
+	 * @param k the admin key
+	 */
 	public AdminChoicesView (Activity activity, String k){
 		this.activity = activity;
 		this.key = k;
