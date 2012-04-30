@@ -14,6 +14,7 @@ import g1.MoonPie.Controller.NumRoundsListener;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Entry;
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -49,7 +50,32 @@ public class AdminView {
 		EntryData.setStretchAllColumns(true);  
 		EntryData.setShrinkAllColumns(true);  
 		
+		EntryData.removeAllViews();
+
 		int size = entries.getsize();
+		TableRow rowtitle = new TableRow(activity);
+		TextView eventID = new TextView(activity);
+		eventID.setText("Event ID");
+		rowtitle.addView(eventID);
+		
+		TextView typeV = new TextView(activity);
+		typeV.setText("Type");
+		rowtitle.addView(typeV);
+		
+		TextView NC = new TextView(activity);
+		NC.setText("NumChoices");
+		rowtitle.addView(NC);
+		
+		TextView NR = new TextView(activity);
+		NR.setText("NumRounds");
+		rowtitle.addView(NR);
+		
+		TextView dates = new TextView(activity);
+		dates.setText("Date");
+		rowtitle.addView(dates);
+		
+		EntryData.addView(rowtitle);
+		
 		row = new TableRow [size];
 		TextView[] eID = new TextView [size];
 		TextView[] type = new TextView [size];
@@ -65,26 +91,30 @@ public class AdminView {
 			type[i].setText(entries.getEntry(i).getType());
 			row[i].addView(type[i]);
 			numChoices[i] = new TextView(activity);
-			numChoices[i].setText(entries.getEntry(i).getNumChoices());
+			numChoices[i].setText(String.valueOf(entries.getEntry(i).getNumChoices()));
 			row[i].addView(numChoices[i]);
 			numRounds[i] = new TextView(activity);
-			numRounds[i].setText(entries.getEntry(i).getNumRounds());
+			numRounds[i].setText(String.valueOf(entries.getEntry(i).getNumRounds()));
 			row[i].addView(numRounds[i]);
 			Date[i] = new TextView(activity);
 			Date[i].setText(entries.getEntry(i).getCreated());
 			row[i].addView(Date[i]);
 			row[i].setId(i);
 			row[i].setOnClickListener(new AdminTableController(activity,i, this));
+			if(clicked.contains(i)){
+				row[i].setBackgroundColor(0xff363636);
+			}
 			EntryData.addView(row[i]);
+			
 		}
 		
 		Button bRemove = (Button) activity.findViewById(R.id.bRemove);
-		bRemove.setOnClickListener(new AdminRemoveOneController(activity,entries,clicked));
+		bRemove.setOnClickListener(new AdminRemoveOneController(activity,entries,clicked,this));
 		Button bComplete = (Button) activity.findViewById(R.id.bComplete);
 		
 		if(ty == "open"){
 			bComplete.setVisibility(0);
-			bComplete.setOnClickListener(new AdminRemoveOneController(activity,entries, clicked));
+			bComplete.setOnClickListener(new AdminRemoveOneController(activity,entries, clicked, this));
 		}else{
 			bComplete.setVisibility(1);
 		}
@@ -93,7 +123,17 @@ public class AdminView {
 	}
 	
 	public void clicked(int Id){
-		clicked.add(Id);
+		if(!clicked.contains(Id)){
+			clicked.add(Id);
+		}
+	}
+	
+//	public void changeColor(int Id){
+//		row[Id].setBackgroundColor(0xff363636);
+//	}
+	
+	public void clearArray(){
+		clicked.clear();
 	}
 
 }
