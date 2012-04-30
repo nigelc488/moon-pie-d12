@@ -88,7 +88,8 @@ public class DecisionLinesFormActivity extends Activity {
 			Context context = getApplicationContext();
 			CharSequence invalidEdgeErrorMsg = "This is an invalid edge. Try Again.";
 			CharSequence finishedAddingEdgesMsg = "No more edges needed";
-			int duration = Toast.LENGTH_SHORT;
+			int duration = 10;
+					//Toast.LENGTH_SHORT;
 
 			public boolean onTouch(View v, MotionEvent me) {
 				int action = me.getAction();
