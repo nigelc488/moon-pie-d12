@@ -55,6 +55,8 @@ public class SignInResponseController {
 		}else isOpen = false;
 		
 		//Update the Event
+		
+		event = Event.getInstance();
 		Event.getInstance().setID(id);
 		Event.getInstance().setOpen(isOpen);
 		Event.getInstance().setQuestion(question);
@@ -65,7 +67,7 @@ public class SignInResponseController {
 		//do this if open event
 		if(event.getIsOpen()){
 			
-			ChoiceFormView view = new ChoiceFormView(event,activity);		
+			ChoiceFormView view = new ChoiceFormView(event, activity);		
 			view.setChoicesVisibility();
 		}
 		//do this if closed event

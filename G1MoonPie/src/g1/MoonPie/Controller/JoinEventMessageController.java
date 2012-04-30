@@ -57,7 +57,7 @@ public class JoinEventMessageController implements OnClickListener {
 			//check if user is admin (admin's username is admin, password is key)
 			if(username.equals("admin") && password.equals("key")){
 
-				//SendMessageController.adminRequest("admin", "key");
+				SendMessageController.adminRequest("admin", "key");
 
 			}
 

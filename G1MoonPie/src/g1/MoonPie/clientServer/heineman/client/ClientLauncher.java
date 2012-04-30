@@ -42,7 +42,7 @@ public class ClientLauncher {
 		String jeremy = "130.215.169.127";
 		//server = jeremy;
 		String Eric = "130.215.127.53";
-		server = Eric;
+		server = nigel;
 
 		//		server = serverGroup;
 
