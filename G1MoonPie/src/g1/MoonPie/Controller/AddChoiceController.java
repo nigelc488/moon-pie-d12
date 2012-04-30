@@ -33,6 +33,8 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 	boolean namesValid = true;
 	EditText[] textBoxes = new EditText[8];
 	TextView[] labels = new TextView[8];
+	
+	String[] choices;
 
 
 	public AddChoiceController(Event e, Activity a){
@@ -95,73 +97,141 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 	@Override
 	public void onClick(View v) {
 		lines = Event.getInstance().getLines();
+		String choice;
 		
-		/* if the event is open */
-		if (event.getIsOpen()){
-			//TODO This is wrong and needs to be fixed!
-			for(int i=0; i<lines.length; i++){
-				if(lines[i].getChoice().equals("")){
-					lines[i].setChoice(textBoxes[0].getText().toString());
-					
-					//if you are the moderator then need to send create message
-					if(Event.getInstance().getUser().getPostion() == 0){
-						SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
-					}
-					//if you are not moderator then send add choice message
-					else{
-						SendMessageController.addChoiceRequest(Event.getInstance().getID(), i, lines[i].getChoice());
-					}	
-				}
-			}
-		//	User mod = new User("username", "password", true);					//This was used to test close event controller
-		//	CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+		
+		//get and validate choices
+		choices = getChoices();
+		if(namesValid){
+		//if moderator then sent create request
+		if(Event.getInstance().getUser().getPostion() == 0){
+			SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
 		}
-
-		/*If the event is closed*/
+		//if not moderator then send add choice request
 		else{
-			ArrayList<String> namesOfLines = new ArrayList<String>();
-			for (int i = 0; i < lines.length; i++){
-				String namedLine = textBoxes[i].getText().toString();
-				namesOfLines.add(namedLine);
+			if(choices.length > 1){
+				System.out.println("ERROR SOMETHING IS BAD");
+				choice = null;
+			}else {
+				choice = choices[0];
 			}
-			
-//			SendMessageController.createRequest(type, question, numChoices, numRounds, userName, password, event);
-			
-			
-//			SendMessageController.createRequest(Event., question, numChoices, numRounds, userName, password, event)
-
-			namesValid = true;
-			if (namesOfLines.contains("")){
-				Toast.makeText(activity, "Please fill in empty boxes", Toast.LENGTH_SHORT).show();
-				namesValid = false;
-			}
-
-			int sizeWithDuplicates = namesOfLines.size();
-			HashSet<String> linesNoDuplicates = new HashSet<String>();
-			linesNoDuplicates.addAll(namesOfLines);
-			int sizeWithoutDuplicates = linesNoDuplicates.size();
-
-			if (sizeWithDuplicates != sizeWithoutDuplicates){
-				Toast.makeText(activity, "Please change duplicate choices", Toast.LENGTH_SHORT).show();
-				namesValid = false;
-			}
-
-			if (namesValid == true){
-				
-				//this means everything worked so should do next step:
-				
-				//if it is closed then you are definately the moderator and send create request
-				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
-
-				//User mod = new User("username", "password", true);					//This was used to test close event controller
-				//CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
-
-				//CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
-
-			}
+			SendMessageController.addChoiceRequest(Event.getInstance().getID(), Event.getInstance().getUser().getPostion(), choice);
+		}
 		}
 	}
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		/* if the event is open */
+//		if (event.getIsOpen()){
+//			
+//			
+//			
+//			//THIS IS ACTUALLY STILL WRONG
+//			//TODO This is wrong and needs to be fixed!
+//			for(int i=0; i<lines.length; i++){
+//				if(lines[i].getChoice().equals("")){
+//					lines[i].setChoice(textBoxes[0].getText().toString());
+//					
+//					//if you are the moderator then need to send create message
+//					if(Event.getInstance().getUser().getPostion() == 0){
+//						SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+//					}
+//					//if you are not moderator then send add choice message
+//					else{
+//						SendMessageController.addChoiceRequest(Event.getInstance().getID(), i, lines[i].getChoice());
+//					}	
+//				}
+//			}
+//		//	User mod = new User("username", "password", true);					//This was used to test close event controller
+//		//	CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+//		}
+//
+//		/*If the event is closed*/
+//		else{
+//			ArrayList<String> namesOfLines = new ArrayList<String>();
+//			for (int i = 0; i < lines.length; i++){
+//				String namedLine = textBoxes[i].getText().toString();
+//				namesOfLines.add(namedLine);
+//			}
+//			
+////			SendMessageController.createRequest(type, question, numChoices, numRounds, userName, password, event);
+//			
+//			
+////			SendMessageController.createRequest(Event., question, numChoices, numRounds, userName, password, event)
+//
+//			namesValid = true;
+//			if (namesOfLines.contains("")){
+//				Toast.makeText(activity, "Please fill in empty boxes", Toast.LENGTH_SHORT).show();
+//				namesValid = false;
+//			}
+//
+//			int sizeWithDuplicates = namesOfLines.size();
+//			HashSet<String> linesNoDuplicates = new HashSet<String>();
+//			linesNoDuplicates.addAll(namesOfLines);
+//			int sizeWithoutDuplicates = linesNoDuplicates.size();
+//
+//			if (sizeWithDuplicates != sizeWithoutDuplicates){
+//				Toast.makeText(activity, "Please change duplicate choices", Toast.LENGTH_SHORT).show();
+//				namesValid = false;
+//			}
+//
+//			if (namesValid == true){
+//				
+//				//this means everything worked so should do next step:
+//				
+//				//if it is closed then you are definately the moderator and send create request
+//				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+//
+//				//User mod = new User("username", "password", true);					//This was used to test close event controller
+//				//CloseEventView view = new CloseEventView(event, mod, activity);  	//This was used to test close event controller
+//
+//				//CompleteDecisionController results = new CompleteDecisionController(event, activity);	//This was used to test the complete decisions controller
+//
+//			}
+//		}
+//	}
+	
+	//this method returns the choices.  if any are blank or duplicates, then makes invalid
+	String[] getChoices(){
+		String[] choices;
+		if(Event.getInstance().getIsOpen()){
+			choices = new String[1];
+		} else choices = new String[Event.getInstance().getNumChoices()];
+		for (int i = 0; i < choices.length; i++){
+			String namedLine = textBoxes[i].getText().toString();
+			
+			//check to see if it is a valid edge
+			if(Event.getInstance().checkValidChoice(namedLine)){
+				choices[i] = namedLine;
+			}else{
+				namesValid = false;
+				Toast.makeText(activity, "One of your choices is invalid", Toast.LENGTH_SHORT).show();
+			}
+			
+			
+//			//no choices should be empty
+//			if(namedLine.isEmpty()){
+//					Toast.makeText(activity, "Please fill in empty boxes", Toast.LENGTH_SHORT).show();
+//					namesValid = false;
+//				}else {
+//					//
+//					if(Event.getInstance().checkValidChoice(namedLine)){
+//						
+//					}
+//				}
+		}
+		return choices;
+	}
 
 
 

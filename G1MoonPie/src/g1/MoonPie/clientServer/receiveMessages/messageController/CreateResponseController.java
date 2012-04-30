@@ -24,7 +24,7 @@ public class CreateResponseController {
 	 * @param activity Activity the activity used to access GUI objects
 	 */
 	public CreateResponseController(Event event, Activity activity){
-		this.event = event;
+		this.event = Event.getInstance();
 		this.activity = activity;
 	}
 	
@@ -43,7 +43,7 @@ public class CreateResponseController {
 		
 		//upon server response, insTantiate ChoiceFormView, and set the choice visibilities
 
-		ChoiceFormView view = new ChoiceFormView(event, activity);
+		//ChoiceFormView view = new ChoiceFormView(event, activity);
 		//view.setChoicesVisibility();
 		
 	}

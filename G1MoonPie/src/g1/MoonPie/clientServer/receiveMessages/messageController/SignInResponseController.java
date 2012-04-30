@@ -38,6 +38,9 @@ public class SignInResponseController {
 	 */
 	public void process(MessageXML response){
 		Node child = response.contents.getFirstChild();
+		Node childChild = child.getFirstChild();
+		Node nextChildChild = childChild.getNextSibling();
+		Node lastChildChild = child.getLastChild();
 		NamedNodeMap map = child.getAttributes();
 		
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
