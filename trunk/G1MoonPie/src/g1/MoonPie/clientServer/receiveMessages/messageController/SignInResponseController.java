@@ -8,6 +8,7 @@ import android.widget.EditText;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
@@ -46,17 +47,21 @@ public class SignInResponseController {
 		
 		System.out.println("SignIn with id=" + id + " type=" + type + " question=" + question + " numChoices=" + numChoices + " numRounds=" + numRounds + " position=" + position);
 		
-		
-		activity.setContentView(R.layout.choiceform);
-		
 		event.setPos(position);
+		
+		if(event.getIsOpen()){
+			
+			ChoiceFormView view = new ChoiceFormView(event,activity);		
+			view.setChoicesVisibility();
+		}
+		else{
+			
+			//Send to EventView (Chris's stuff)
+		}
+		
+		
 		//the following code should be executed after a response from the server
-		//ChoiceFormView view = new ChoiceFormView(event,activity);		
-		//view.setChoicesVisibility();
-		
-		
 		//new SignInController(event, activity, id, type, question, numChoices, numRounds, position);
-		
 		//somehow needs to update view though, so will probably need to be passed the right text box as well
 		
 	}

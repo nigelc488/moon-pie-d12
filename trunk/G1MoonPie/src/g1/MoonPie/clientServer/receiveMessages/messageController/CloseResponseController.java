@@ -7,6 +7,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 /**
  * This controller is used to process the closeResponse message and call the necessary controller.
@@ -32,7 +33,10 @@ public class CloseResponseController {
 	 * @param response MessageXML The message to be processed and reacted to.
 	 */
 	public void process(MessageXML response){
-		//for this request, any message works so there is no need to process the message itself
+		
+		//Let the admin know the request was processed
+		Toast.makeText(activity, "Event has been closed", Toast.LENGTH_SHORT).show();
+
 		
 		System.out.println("Close the event");
 		
