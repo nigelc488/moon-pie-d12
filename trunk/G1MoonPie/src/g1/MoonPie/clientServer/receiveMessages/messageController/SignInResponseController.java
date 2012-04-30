@@ -5,9 +5,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 import g1.MoonPie.CompleteDecisionActivity;
+import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Model.Edge;
@@ -96,6 +98,10 @@ public class SignInResponseController {
 			//LAUNCH CHRIS WINDOW
 			//ProcessThreadMessages.getActivity().setContentView(R.layout.results);
 			//new CompleteDecisionActivity(Event.getInstance(), ProcessThreadMessages.getActivity());
+			
+			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
+			ProcessThreadMessages.getActivity().startActivity(intent);
+			
 		}
 		}else Toast.makeText(ProcessThreadMessages.getActivity(), "Not a Valid ID", Toast.LENGTH_LONG).show();
 

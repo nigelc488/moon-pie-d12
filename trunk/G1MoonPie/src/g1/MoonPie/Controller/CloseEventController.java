@@ -33,8 +33,10 @@ public class CloseEventController implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		
+		System.out.println("close event button");
+		
 		new CloseEventLineController(Event.getInstance(), ProcessThreadMessages.getActivity());
-		//SendMessageController.closeRequest(event.getID());
+		SendMessageController.closeRequest(event.getID());
 		
 	}
 }
