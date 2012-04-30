@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import g1.MoonPie.R;
 import g1.MoonPie.Controller.AdminDisplayController;
 import g1.MoonPie.Controller.AdminRemoveController;
+import g1.MoonPie.Controller.AdminRemoveOneController;
 import g1.MoonPie.Controller.AdminTableController;
 import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Controller.NewEventMessageController;
@@ -26,15 +27,18 @@ import android.widget.TextView;
 public class AdminView {
 	Activity activity;
 	TextView tv;
-	
+	String ty;
 	Entries entries;
+	ArrayList<Integer> clicked;
+	TableRow[] row;
 	
-	public AdminView(Activity act, Entries ent) {
+	public AdminView(Activity act, Entries ent, String ty) {
 		this.entries = ent;
 		this.activity = act;
-		
+		this.ty = ty;
+		clicked = new ArrayList<Integer>();
 //		activity.setContentView(R.layout.adminview);
-		activity.setContentView(R.layout.adminchoice);
+		//activity.setContentView(R.layout.adminchoice);
 	//	tv = (TextView) activity.findViewById(R.id.tvInfo);
 	}
 	
@@ -46,7 +50,7 @@ public class AdminView {
 		EntryData.setShrinkAllColumns(true);  
 		
 		int size = entries.getsize();
-		TableRow[] row = new TableRow [size];
+		row = new TableRow [size];
 		TextView[] eID = new TextView [size];
 		TextView[] type = new TextView [size];
 		TextView[] numChoices = new TextView [size];
@@ -70,11 +74,26 @@ public class AdminView {
 			Date[i].setText(entries.getEntry(i).getCreated());
 			row[i].addView(Date[i]);
 			row[i].setId(i);
-			row[i].setOnClickListener(new AdminTableController(activity, i));
+			row[i].setOnClickListener(new AdminTableController(activity,i, this));
 			EntryData.addView(row[i]);
 		}
 		
+		Button bRemove = (Button) activity.findViewById(R.id.bRemove);
+		bRemove.setOnClickListener(new AdminRemoveOneController(activity,entries,clicked));
+		Button bComplete = (Button) activity.findViewById(R.id.bComplete);
 		
+		if(ty == "open"){
+			bComplete.setVisibility(0);
+			bComplete.setOnClickListener(new AdminRemoveOneController(activity,entries, clicked));
+		}else{
+			bComplete.setVisibility(1);
+		}
+		
+		
+	}
+	
+	public void clicked(int Id){
+		clicked.add(Id);
 	}
 
 }
