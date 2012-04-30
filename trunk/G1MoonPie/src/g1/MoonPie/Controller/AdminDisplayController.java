@@ -1,6 +1,8 @@
 package g1.MoonPie.Controller;
 
 import g1.MoonPie.R;
+import g1.MoonPie.Model.Entries;
+import g1.MoonPie.View.AdminView;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,11 +16,17 @@ public class AdminDisplayController implements OnClickListener{
 	RadioButton Comp;
 	
 	Activity activity;
-	
+	Entries entries;
 	String type;
 	
-	public AdminDisplayController(Activity activity){
+	public AdminDisplayController(Activity activity, Entries entries){
 		this.activity = activity;
+		this.entries =entries;
+		
+	}
+	
+	@Override
+	public void onClick(View v) {
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
@@ -27,10 +35,9 @@ public class AdminDisplayController implements OnClickListener{
 		else{
 			type = "closed";
 		}
-	}
-	
-	@Override
-	public void onClick(View v) {
+		
+		AdminView av = new AdminView(activity, entries, type);
+		av.setTableValues();
 		
 	}
 	
