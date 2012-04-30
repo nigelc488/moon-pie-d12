@@ -33,7 +33,7 @@ public class NewEventMessageController implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		System.out.println("button clicked");
+		//System.out.println("button clicked");
 		boolean valid = true;
 		
 		EditText questionText = (EditText) activity.findViewById(R.id.question);
@@ -79,6 +79,9 @@ public class NewEventMessageController implements OnClickListener {
 			
 			//SendMessageController.createRequest(type, question, numChoices, numRounds, username, password);
 			
+			
+			//shouldn't really do this but should be fine because server will send back the same 
+			//information and if there is a conflict then server stuff is newer and will be updated to that
 			Event.getInstance().setQuestion(question);
 			Event.getInstance().setOpen(isOpen);
 			Event.getInstance().setNumChoices(numChoices);

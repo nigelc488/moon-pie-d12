@@ -1,7 +1,6 @@
 package g1.MoonPie.Controller;
 
 import g1.MoonPie.MoonPieActivity;
-import g1.MoonPie.MyActivity;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.JoinEventView;

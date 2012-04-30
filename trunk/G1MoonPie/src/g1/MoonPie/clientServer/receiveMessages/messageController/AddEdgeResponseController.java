@@ -12,7 +12,7 @@ import org.w3c.dom.Node;
 import android.app.Activity;
 
 /**
- * This controller is used to process the addEdgeResponse and call the necessary controller.
+ * This controller is used to process the addEdgeRespone, adds the Edge, and updates the GUI.
  * @author ncochran
  *
  */
@@ -22,8 +22,8 @@ public class AddEdgeResponseController {
 	
 	/**
 	 * This constructor is used to pass the event and activity on to the next controller.
-	 * @param event Event The event used to access model objects.
-	 * @param activity Activity The activity used to access GUI objects.
+	 * @param event Event The event used to access model objects
+	 * @param activity Activity The activity used to access GUI objects
 	 */
 	public AddEdgeResponseController(Event event, Activity activity){
 		this.event = event;
@@ -32,7 +32,8 @@ public class AddEdgeResponseController {
 
 	/**
 	 * This method is used to do the actual processing of the message and calling of the controller.
-	 * @param response MessageXML The message to be processed and reacted to.
+	 * It adds the Edge to the Event and tells the Canvas to redraw.
+	 * @param response MessageXML The message to be processed and reacted to
 	 */
 	public void process(MessageXML response){
 		Node child = response.contents.getFirstChild();
@@ -47,11 +48,6 @@ public class AddEdgeResponseController {
 		Event.getInstance().addEdge(height, left, right);
 		DecisionLinesForm.getInstance().postInvalidate();
 		
-		//This is where you should call the addEdgeController
-		//new AddEdgeController(left, right, height);
-		// new AddEdgeController().addEdgeReceived(event, activity, left, right, height);
-		
-		//need to update the view so will need to know about the panel or whatever that is being drawn on
 	}
 	
 }

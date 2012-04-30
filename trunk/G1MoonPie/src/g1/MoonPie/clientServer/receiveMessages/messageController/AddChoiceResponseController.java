@@ -14,7 +14,7 @@ import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
- * This controller is used to parse the addChoiceResponse and call the necessary controller.
+ * This controller is used to parse the addChoiceResponse and then call the add choice controller.
  * @author ncochran
  *
  */
@@ -47,29 +47,6 @@ public class AddChoiceResponseController {
 		
 		//This is where you should call the addChoiceController
 		new AddChoiceController(event, activity);
-		
-		
-		
-		//______________________________________________________
-		//This code is just for testing but it shows how to retrieve text from a text field and also how to set the text.
-		
-		
-		
-		//sample code for how to update a text field
-		
-		//EditText text = (EditText)activity.findViewById(R.id.question);
-		
-		//EditText text = (EditText)activity.findViewById(R.id.choice1TB);
-		//text.setText(choice);
-		//text.setFocusable(false);
-		
-		//EditText text2 = (EditText)activity.findViewById(R.id.question);
-		
-		//EditText text2 = (EditText)activity.findViewById(R.id.choice1TB);
-		//System.out.println("question text is: " + text2.getText());
-		
-		
-		//somehow needs to update view though, so will probably need to be passed the right text box as well
 		
 	}
 }

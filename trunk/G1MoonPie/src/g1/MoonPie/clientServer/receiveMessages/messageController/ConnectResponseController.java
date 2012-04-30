@@ -10,7 +10,7 @@ import org.w3c.dom.Node;
 import android.app.Activity;
 
 /**
- * This class is used to process the connectResponse xml message and call the necessary action controller.
+ * This class is used to process the connectResponse xml message.
  * @author ncochran
  *
  */
@@ -38,9 +38,13 @@ public class ConnectResponseController {
 		NamedNodeMap map = child.getAttributes();
 		
 		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
+		
+		
+		//This id is not the event id.  This id shouldn't actually be used for anything.
+		//Event.getInstance().setID(id);
 	
 		//event.setID(id);
-		System.out.println("Connected: id=" + id);
+		//System.out.println("Connected: id=" + id);
 		
 		//This is where you should call the ConnectController
 		//new ConnectController(id);

@@ -70,24 +70,6 @@ public class ReportResponseController {
 		ent.setEntires(entries);
 		AdminViewTypeController avtc = new AdminViewTypeController(activity, ent.getKey());
 		avtc.EnableVisability(ent);
-
-		//}
-		
-		
-//		int line = Integer.parseInt(map.getNamedItem("number").getNodeValue());
-//		String choice = map.getNamedItem("choice").getNodeValue();
-//		System.out.println("Add Choice: Line: " + line + " choice: " + choice);
-		
-		//This is where you should call the addChoiceController
-		//new AddChoiceController(activity, event, line, choice);
-		
-		
-		//______________________________________________________
-		//This code is just for testing but it shows how to retrieve text from a text field and also how to set the text.
-		
-		
-		
-		//somehow needs to update view though, so will probably need to be passed the right text box as well
 		
 	}
 	

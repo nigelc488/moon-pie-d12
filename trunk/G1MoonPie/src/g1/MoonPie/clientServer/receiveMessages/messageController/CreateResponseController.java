@@ -7,6 +7,7 @@ import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
+import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -47,15 +48,21 @@ public class CreateResponseController {
 		Event.getInstance().setID(id);
 		System.out.println("Created: id=" + id);
 		
+		//always need to sign in after creating (but only if server works so just leave this commented out
+		//SendMessageController.signInRequest(id, Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+		
+		//this is only used for the mock server not with the actual server
+		//if its an open event then you need to wait for other users
+		//if closed event then can start right now
 		if(!Event.getInstance().getIsOpen()){
-			//launch CHRIS SCREEN
-			//new CompleteDecisionController(Event.getInstance(), ProcessThreadMessages.getActivity());
 			
 			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
 			ProcessThreadMessages.getActivity().startActivity(intent);
 			
 		}
 		
+		
+		//not sure what this is for so not getting rid of it
 //		if(Event.getInstance().getIsOpen()){
 //			//launch waiting screen
 //			new CloseEventView(Event.getInstance(), ProcessThreadMessages.getActivity());

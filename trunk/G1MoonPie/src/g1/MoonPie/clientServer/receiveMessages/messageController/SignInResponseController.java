@@ -57,6 +57,8 @@ public class SignInResponseController {
 		
 		System.out.println("SignIn with id=" + id + " type=" + type + " question=" + question + " numChoices=" + numChoices + " numRounds=" + numRounds + " position=" + position);
 		
+		
+		//mock server returns not if not a valid (so already existing) id
 		if(!id.equals("no")){
 		
 		//convert from string to boolean
@@ -87,29 +89,21 @@ public class SignInResponseController {
 		
 
 		
-		//do this if open event
-		if(event.getIsOpen()){
+		//launch choice form if open event and you aren't the moderator
+		if(event.getIsOpen() && !(Event.getInstance().getUser().getPostion() == 0)){
 			
 			ChoiceFormView view = new ChoiceFormView(event, activity);		
 			view.setChoicesVisibility();
 		}
-		//do this if closed event
+		//launch add edge form
 		else{
-			//LAUNCH CHRIS WINDOW
-			//ProcessThreadMessages.getActivity().setContentView(R.layout.results);
-			//new CompleteDecisionActivity(Event.getInstance(), ProcessThreadMessages.getActivity());
+
 			
 			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
 			ProcessThreadMessages.getActivity().startActivity(intent);
 			
 		}
 		}else Toast.makeText(ProcessThreadMessages.getActivity(), "Not a Valid ID", Toast.LENGTH_LONG).show();
-
-		
-
-		//the following code should be executed after a response from the server
-		//new SignInController(event, activity, id, type, question, numChoices, numRounds, position);
-		//somehow needs to update view though, so will probably need to be passed the right text box as well
 		
 	}
 

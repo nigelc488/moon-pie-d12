@@ -33,20 +33,22 @@ public class JoinEventMessageController implements OnClickListener {
 
 		EditText eventIDText = (EditText) activity.findViewById(R.id.EventID);
 		String eventID = eventIDText.getText().toString();
-		if (eventID.equals("")){
+		EditText usernameText = (EditText) activity.findViewById(R.id.Username);
+		String username = usernameText.getText().toString();
+		EditText passwordText = (EditText) activity.findViewById(R.id.Password);
+		String password = passwordText.getText().toString();
+		
+		//it is ok to have a blank event if you are signing in as admin
+		if (eventID.equals("")  && !username.equals("admin")){
 			Toast.makeText(activity, "Please enter a value for the Event ID", Toast.LENGTH_SHORT).show();
 			valid = false;
 		}
 
-		EditText usernameText = (EditText) activity.findViewById(R.id.Username);
-		String username = usernameText.getText().toString();
+
 		if (username.equals("")){
 			Toast.makeText(activity, "Please enter a value for the username", Toast.LENGTH_SHORT).show();
 			valid = false;
 		}
-
-		EditText passwordText = (EditText) activity.findViewById(R.id.Password);
-		String password = passwordText.getText().toString();
 
 		if (valid){
 

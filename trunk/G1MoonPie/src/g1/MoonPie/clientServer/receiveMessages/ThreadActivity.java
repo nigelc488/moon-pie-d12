@@ -6,9 +6,8 @@ import android.os.Looper;
 import android.os.Message;
 
 /**
- * The thread used for communication with the server.  Needed because android didn't allow doing the communication in the main thread.  
+ * The thread used for communication with the server.  Used so the communications are received in a separate thread and then passed to the main thread.
  * Constructor has a handler simply to pass it to the client launcher which then passes it to protocol handler.
- * Need to find way to stop looper.
  * @author ncochran
  *
  */
@@ -43,7 +42,7 @@ public class ThreadActivity implements Runnable{
 			e.printStackTrace();
 			System.out.println("Connection Failed in thread");
 		}
-		System.out.println("begin looper");
+		//System.out.println("begin looper");
 		Looper.loop();
 		
 		
