@@ -1,10 +1,9 @@
 package g1.MoonPie.clientServer.receiveMessages;
 
-import java.nio.channels.ClosedByInterruptException;
+
 
 import org.w3c.dom.Node;
 
-import g1.MoonPie.R;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
@@ -21,7 +20,6 @@ import g1.MoonPie.clientServer.receiveMessages.messageController.SignInResponseC
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**

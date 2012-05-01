@@ -1,19 +1,13 @@
 package g1.MoonPie.clientServer.receiveMessages.messageController;
-import g1.MoonPie.CompleteDecisionActivity;
-import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.Model.Event;
-import g1.MoonPie.View.ChoiceFormView;
-import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import android.app.Activity;
-import android.content.Intent;
 
 /**
  * This class is used to process createResponse xml messages and call the necessary controller.

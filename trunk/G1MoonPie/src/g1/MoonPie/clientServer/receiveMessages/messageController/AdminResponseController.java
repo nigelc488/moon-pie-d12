@@ -42,7 +42,7 @@ public class AdminResponseController {
 		String key = EncodeXML.decodeString(map.getNamedItem("key").getNodeValue());
 		
 		System.out.println("Admin with key=" + key);
-		AdminChoicesView acv = new AdminChoicesView(activity, key);
+		new AdminChoicesView(activity, key);
 		entries.setKey(key);
 		
 	}

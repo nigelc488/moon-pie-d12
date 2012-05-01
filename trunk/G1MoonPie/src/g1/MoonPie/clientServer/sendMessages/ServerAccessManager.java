@@ -1,10 +1,7 @@
 package g1.MoonPie.clientServer.sendMessages;
 
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
 import android.widget.Toast;
-import g1.MoonPie.R;
 import g1.MoonPie.clientServer.heineman.client.ServerAccess;
 
 /**

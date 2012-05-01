@@ -37,17 +37,13 @@ public class ConnectResponseController {
 		Node child = response.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 		
-		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
-		
-		
 		//This id is not the event id.  This id shouldn't actually be used for anything.
-		//Event.getInstance().setID(id);
-	
-		//event.setID(id);
-		//System.out.println("Connected: id=" + id);
+		String id = EncodeXML.decodeString(map.getNamedItem("id").getNodeValue());
+		System.out.println("The connect ID is: " + id);
 		
-		//This is where you should call the ConnectController
-		//new ConnectController(id);
+		
+		
+
 		
 	}
 

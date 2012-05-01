@@ -7,14 +7,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.app.Activity;
-import android.widget.EditText;
-import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Entry;
 import g1.MoonPie.Model.Event;
-import g1.MoonPie.View.AdminView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
@@ -46,7 +43,6 @@ public class ReportResponseController {
 	public void process(MessageXML response){
 		//System.out.println("response: " + response );
 		Node child = response.contents.getFirstChild();
-		NamedNodeMap map = child.getAttributes();
 		
 		entries = new ArrayList<Entry>();
 		

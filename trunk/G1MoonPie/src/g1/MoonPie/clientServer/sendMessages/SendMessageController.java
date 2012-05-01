@@ -1,12 +1,10 @@
 package g1.MoonPie.clientServer.sendMessages;
 
-import java.util.ArrayList;
 
 import android.app.Activity;
 
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.EncryptPassword;
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**

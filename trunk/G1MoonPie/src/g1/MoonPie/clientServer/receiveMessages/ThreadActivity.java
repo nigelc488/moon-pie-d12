@@ -32,7 +32,7 @@ public class ThreadActivity implements Runnable{
 		Looper.prepare();
 		try {
         	//System.out.println("try connect");
-			ClientLauncher client = new ClientLauncher(handler);
+			new ClientLauncher(handler);
 			//System.out.println("Connected");
 		} catch (Exception e) {
 			Message msg = Message.obtain();

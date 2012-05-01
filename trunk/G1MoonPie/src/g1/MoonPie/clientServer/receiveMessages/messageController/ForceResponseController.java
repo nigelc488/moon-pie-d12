@@ -47,7 +47,7 @@ public class ForceResponseController {
 		
 		System.out.println("forced" + numberAffected);
 		//new AdminController(event, activity, key);
-		AdminDataContorller adc = new AdminDataContorller(activity, entries.getKey());
+		new AdminDataContorller(activity, entries.getKey());
 		
 		
 	}

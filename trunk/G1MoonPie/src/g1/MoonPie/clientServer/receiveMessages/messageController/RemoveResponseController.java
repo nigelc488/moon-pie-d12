@@ -50,7 +50,7 @@ public class RemoveResponseController {
 		
 		System.out.println("removed" + numberAffected);
 		//new AdminController(event, activity, key);
-		AdminDataContorller adc = new AdminDataContorller(activity, entries.getKey());
+		new AdminDataContorller(activity, entries.getKey());
 		
 		
 	}
