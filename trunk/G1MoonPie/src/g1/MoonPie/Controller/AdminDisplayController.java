@@ -55,12 +55,13 @@ public class AdminDisplayController implements OnClickListener{
 		if (checkedRadioButton == R.id.UncompletedEvent){
 			type = "open";
 			entries.setType(true);
+			System.out.println("Admin View created with Uncompleted Event Data");
 		}
 		else{
 			type = "closed";
 			entries.setType(false);
+			System.out.println("Admin View created with Completed Event Data");
 		}
-	
 		
 		AdminView av = new AdminView(activity, entries, type);
 		av.setTableValues();

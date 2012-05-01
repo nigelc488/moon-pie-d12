@@ -49,7 +49,7 @@ String key;
 		int DaysOld = Integer.parseInt(days.getText().toString());
 		SendMessageController smc = new SendMessageController();
 		smc.forceRequest(key, "", DaysOld);
-		
+		System.out.println("Complete Button clicked to compleate entries "+String.valueOf(DaysOld)+" days old");
 	}
 
 }

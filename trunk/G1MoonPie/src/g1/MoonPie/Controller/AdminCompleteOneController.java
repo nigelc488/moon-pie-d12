@@ -48,5 +48,8 @@ public class AdminCompleteOneController implements OnClickListener {
 			}
 			av.clearArray();
 			av.setTableValues();
+			System.out.println("Complete Button clicked to compleate selected entries");
+			System.out.println("Table reset");
+			
 		}
 }

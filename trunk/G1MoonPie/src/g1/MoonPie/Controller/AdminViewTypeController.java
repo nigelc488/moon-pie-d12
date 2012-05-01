@@ -78,6 +78,7 @@ public class AdminViewTypeController implements OnClickListener{
 	public void onClick(View v) {
 		AdminDataContorller adc = new AdminDataContorller(activity,key);
 		adc.requestData();
+		System.out.println("Radio Button Clicked");
 	}
 	
 	/**
@@ -104,6 +105,7 @@ public class AdminViewTypeController implements OnClickListener{
 		Remove = (Button) activity.findViewById(R.id.RemoveButton);
 		Remove.setVisibility(0);
 		Remove.setOnClickListener(new AdminRemoveController(activity, entries, key));
+		System.out.println("Remove Button set visable");
 		
 		Complete = (Button) activity.findViewById(R.id.CompleteButton);
 		Complete.setOnClickListener(new AdminCompleteController(activity, entries, key));
@@ -111,6 +113,7 @@ public class AdminViewTypeController implements OnClickListener{
 		Display = (Button) activity.findViewById(R.id.DisplayButton);
 		Display.setVisibility(0);
 		Display.setOnClickListener(new AdminDisplayController(activity, entries));
+		System.out.println("Display Button set visable");
 		
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
@@ -121,6 +124,7 @@ public class AdminViewTypeController implements OnClickListener{
 			Vis6 = (TextView) activity.findViewById(R.id.textVis6);
 			Vis6.setVisibility(0);
 			Complete.setVisibility(0);
+			System.out.println("Complete Button set visable");
 		}else{
 			EType.setText("Compeleted");
 		}
