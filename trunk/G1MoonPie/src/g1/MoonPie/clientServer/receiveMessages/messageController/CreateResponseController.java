@@ -54,7 +54,7 @@ public class CreateResponseController {
 		//this is only used for the mock server not with the actual server
 		//if its an open event then you need to wait for other users
 		//if closed event then can start right now
-		if(!Event.getInstance().getIsOpen()){
+		if(!Event.getInstance().isOpen()){
 			
 			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
 			ProcessThreadMessages.getActivity().startActivity(intent);

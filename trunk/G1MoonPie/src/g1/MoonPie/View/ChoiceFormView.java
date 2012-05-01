@@ -104,7 +104,7 @@ public class ChoiceFormView {
 
 		/*if the event is open, only set one text box and label visible, otherwise set the correct amount visible for the
 		 *moderator to be able to fill in all choices*/
-		if (event.getIsOpen()){
+		if (event.isOpen()){
 			textBoxes[0].setVisibility(0);
 			labels[0].setVisibility(0);
 		}

@@ -149,7 +149,7 @@ public class Event {
 	 * 
 	 * @return true if event is open, false if event is closed
 	 */
-	public boolean getIsOpen(){
+	public boolean isOpen(){
 		return isOpen;
 	}
 
