@@ -5,7 +5,7 @@ import android.widget.Toast;
 import g1.MoonPie.CompleteDecisionActivity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 /**This class modifies the number of lines in an event if the moderator closes it before all users have joined.

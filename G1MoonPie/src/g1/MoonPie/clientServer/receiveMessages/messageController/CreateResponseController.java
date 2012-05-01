@@ -6,7 +6,7 @@ import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 import org.w3c.dom.NamedNodeMap;

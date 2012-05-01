@@ -39,7 +39,7 @@ public class AddEdgeController {
 	public AddEdgeController (DecisionLinesForm d){
 		this.event = Event.getInstance();
 		this.drawView = d;
-		if(event.isOpen() == true){
+		if(event.isOpen() == true || !(Event.getInstance().getUser().getPostion() == 0)){
 			rounds = event.getNumRounds();
 		}else{
 			rounds = event.getTotalEdges();

@@ -18,7 +18,7 @@ import g1.MoonPie.Model.Line;
 import g1.MoonPie.View.ChoiceFormView;
 import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 /**
@@ -102,6 +102,7 @@ public class SignInResponseController {
 				NamedNodeMap map2 = node.getAttributes();
 
 				String choice = map2.getNamedItem("value").getNodeValue();
+				choice = EncodeXML.decodeString(choice);
 				int index = Integer.parseInt(map2.getNamedItem("index")
 						.getNodeValue());
 				Event.getInstance().getLines()[index].setChoice(choice);
@@ -134,7 +135,7 @@ public class SignInResponseController {
 					SendMessageController.addChoiceRequest(id, 1, "two");
 					SendMessageController.addChoiceRequest(id,2, "three");
 
-				 new CloseEventView(Event.getInstance(), ProcessThreadMessages2.getActivity());
+				 new CloseEventView(Event.getInstance(), ProcessThreadMessages.getActivity());
 			 }
 
 			// launch add edge form
@@ -142,13 +143,13 @@ public class SignInResponseController {
 			// if open event and all choices are there
 			else {
 
-				Intent intent = new Intent(ProcessThreadMessages2.getActivity(),
+				Intent intent = new Intent(ProcessThreadMessages.getActivity(),
 						DecisionLinesFormActivity.class);
-				ProcessThreadMessages2.getActivity().startActivity(intent);
+				ProcessThreadMessages.getActivity().startActivity(intent);
 
 			}
 		} else
-			Toast.makeText(ProcessThreadMessages2.getActivity(),
+			Toast.makeText(ProcessThreadMessages.getActivity(),
 					"Not a Valid ID", Toast.LENGTH_LONG).show();
 
 	}
