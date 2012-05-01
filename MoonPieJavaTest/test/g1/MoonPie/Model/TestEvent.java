@@ -79,7 +79,6 @@ public class TestEvent extends TestCase{
 		int numEdgesToTest = 4;
 		int[] heights = new int[numEdgesToTest];
 		int leftLinePos; int rightLinePos;
-		Edge[] edges = new Edge[numEdgesToTest];
 		for (int i=0; i<numEdgesToTest; i++){
 			if (i%2 == 0){
 				leftLinePos = 1;
