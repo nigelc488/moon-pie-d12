@@ -106,7 +106,7 @@ public class Event {
 	 */
 	public void setLines(Line[] lines) {
 		this.lines = lines;
-		numChoices = lines.length;
+		//numChoices = lines.length;
 	}
 
 	/**

@@ -6,7 +6,7 @@ import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.NewEventView;
 import g1.MoonPie.clientServer.heineman.client.ClientLauncher;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
 import g1.MoonPie.clientServer.receiveMessages.ThreadActivity;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import g1.MoonPie.clientServer.sendMessages.ServerAccessManager;
@@ -30,7 +30,7 @@ import android.widget.Toast;
 public class MoonPieActivity extends Activity {
 	Thread communicationThread;
 	SendMessageController send;
-	ProcessThreadMessages processThread;
+	ProcessThreadMessages2 processThread;
 	Event event;
 	Entries entries;
 	
@@ -50,7 +50,7 @@ public class MoonPieActivity extends Activity {
         
         try{
         //System.out.println("try thread");
-        	processThread = new ProcessThreadMessages(this, entries);
+        	processThread = new ProcessThreadMessages2(this, entries);
         	communicationThread = new Thread(new ThreadActivity(processThread));
         	communicationThread.start();
         	
@@ -62,6 +62,7 @@ public class MoonPieActivity extends Activity {
         Button newEventButton = (Button) findViewById(R.id.newButton);
         newEventButton.setOnClickListener(new NewEventListener(this , event)); 
         Button joinEventButton = (Button) findViewById(R.id.joinButton);
+        
         joinEventButton.setOnClickListener(new JoinEventListener(this)); 
        
     }
