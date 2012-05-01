@@ -162,7 +162,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			String question = "Why?";
 			int numChoices = 5;
 			int numRounds = 3;
-			int position = 3;
+			int position = 4;
 			
 			
 			if (id.equals("Open")){
@@ -171,6 +171,7 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 				choices[0] = "one";
 				choices[1] = "two";
 				choices[2] = "three";
+				choices[3] = "four";
 			}
 			//closed event
 			else if (id.equals("Closed")){
@@ -187,7 +188,8 @@ public class MoonPieProtocolHandler implements IProtocolHandler {
 			else if(id.equals("1234")){
 				if(Event.getInstance().getIsOpen()){
 					type = "open";
-				}else type = "closed";
+				}
+				else type = "closed";
 				numChoices = Event.getInstance().getNumChoices();
 				numRounds = Event.getInstance().getNumRounds();
 				question = Event.getInstance().getQuestion();
