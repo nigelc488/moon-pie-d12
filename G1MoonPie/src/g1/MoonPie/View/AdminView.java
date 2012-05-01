@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 /**
  * The Class AdminView.
+ * @author Catherine Coleman
  */
 public class AdminView {
 	
@@ -161,6 +162,10 @@ public class AdminView {
 //	}
 	
 	public void clearArray(){
+		int size = clicked.size();
+		for(int i=0; i < size;i++){
+			entries.removeEntry(clicked.get(i));
+		}
 		clicked.clear();
 	}
 

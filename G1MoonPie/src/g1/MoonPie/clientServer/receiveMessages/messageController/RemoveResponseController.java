@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 /**
  * This class is used to process removeResponse xml messages and call the necessary controller.
- * @author ncochran, catherinec
+ * @author ncochran
+ * @author Catherine Coleman
  *
  */
 public class RemoveResponseController {

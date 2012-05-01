@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminDataContorller.
- * @author catherinec
+ * @author Catherine Coleman
  */
 public class AdminDataContorller {
 	

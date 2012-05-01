@@ -14,7 +14,7 @@ import android.widget.TextView;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminDisplayController.
- * @author catherinec
+ * @author Catherine Coleman
  */
 public class AdminDisplayController implements OnClickListener{
 	

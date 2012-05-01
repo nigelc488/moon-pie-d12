@@ -18,7 +18,7 @@ import android.widget.RadioGroup;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminRemoveController.
- * @author catherinec
+ * @author Catherine Coleman
  */
 public class AdminRemoveController implements OnClickListener {
 
