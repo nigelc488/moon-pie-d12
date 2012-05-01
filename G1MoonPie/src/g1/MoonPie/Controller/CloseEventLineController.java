@@ -55,6 +55,6 @@ public class CloseEventLineController {
 			newLines[j].setChoice(currentLines[j].getChoice());
 		}
 		Event.getInstance().setLines(newLines);
-		//Event.getInstance().setNumChoices(lineCount);
+		Event.getInstance().setNumChoices(lineCount);
 	}
 }

@@ -19,9 +19,9 @@ public class Event {
 	private static Event instance = null;
 
 	/**Number of Users for the event.*/
-	int numChoices;
+	int numChoices = 0;
 	/**Number of rounds for the event.*/
-	int numRounds;
+	int numRounds = 0;
 	/**List of the lines for an event.*/
 	Line[] lines;
 	/**The event ID.*/
@@ -85,11 +85,14 @@ public class Event {
 	 * @param numC number of choices
 	 */
 	public void setNumChoices(int numC){
+		if(numChoices < 1){
 		numChoices = numC;
 		lines = new Line[numC];
 		for (int i = 0; i<numC; i++){
 			lines[i] = new Line(i);
 		}
+		}
+		else numChoices = numC;
 	}
 
 	/**
