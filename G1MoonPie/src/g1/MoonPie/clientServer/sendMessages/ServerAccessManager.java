@@ -38,6 +38,10 @@ public class ServerAccessManager {
 		}
 	}
 	
+	/**
+	 * Sets the activity to send toast messages to.
+	 * @param active Activity The Activity currently being viewed
+	 */
 	public static void setActivity(Activity active){
 		activity = active;
 	}
