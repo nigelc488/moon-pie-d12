@@ -49,8 +49,10 @@ public class AdminDataContorller {
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
 			type = "open";
+			System.out.println("Uncomplete event data requested from server");
 		}if (checkedRadioButton == R.id.CompletedEvent){
 			type= "closed";
+			System.out.println("Complete event data requested from server");
 		}
 		smc.reportRequest(key, type);
 	}

@@ -45,6 +45,7 @@ public class AdminTableController implements OnClickListener {
 		//TableRow temprow = (TableRow) activity.findViewById(id);
 		//temprow.setBackgroundColor(3355444);
 		av.setTableValues();
+		System.out.println("row"+String.valueOf(id)+ " has ben clicked");
 //		av.changeColor(id);
 
 	}

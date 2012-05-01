@@ -36,6 +36,7 @@ public class AdminBackController implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		AdminChoicesView acv = new AdminChoicesView(activity, entries.getKey());
+		System.out.println("Back button clicked");
 	}
 
 }

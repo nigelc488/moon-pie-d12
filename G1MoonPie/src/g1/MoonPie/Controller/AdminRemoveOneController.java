@@ -69,7 +69,10 @@ String type;
 				smc.removeRequest(entries.getKey(), entries.getEntry(clicked.get(i)).getId(), true, 0);
 			}
 		}
-			
+		
+		System.out.println("Remove Button clicked to compleate selected entries");
+		System.out.println("Table reset");
+		
 		av.clearArray();
 		av.setTableValues();
 	}

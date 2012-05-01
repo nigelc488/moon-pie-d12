@@ -60,8 +60,10 @@ String key;
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
 			smc.removeRequest(key, "", false, DaysOld);
+			System.out.println("Remove Button clicked to remove uncompleted entries "+String.valueOf(DaysOld)+" days old");
 		}else if(checkedRadioButton == R.id.CompletedEvent){
 			smc.removeRequest(key, "", true, DaysOld);
+			System.out.println("Remove Button clicked to remove completed entries "+String.valueOf(DaysOld)+" days old");
 		}
 		
 	}
