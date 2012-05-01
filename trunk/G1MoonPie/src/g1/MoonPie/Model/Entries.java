@@ -56,8 +56,8 @@ public class Entries {
 	 *
 	 * @param Id the id
 	 */
-	public void removeEntry (int Id){
-		entries.remove(Id);
+	public void removeEntry (Entry ent){
+		entries.remove(ent);
 	}
 	
 	/**

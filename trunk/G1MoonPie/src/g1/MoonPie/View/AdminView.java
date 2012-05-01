@@ -150,6 +150,11 @@ public class AdminView {
 		
 	}
 	
+	/**
+	 * Clicked.
+	 *
+	 * @param Id the id
+	 */
 	public void clicked(int Id){
 		if(!clicked.contains(Id)){
 			clicked.add(Id);
@@ -161,10 +166,13 @@ public class AdminView {
 //		row[Id].setBackgroundColor(0xff363636);
 //	}
 	
-	public void clearArray(){
+/**
+ * Clear array.
+ */
+public void clearArray(){
 		int size = clicked.size();
-		for(int i=0; i < size;i++){
-			entries.removeEntry(clicked.get(i));
+		for(int i=size; i > 0;i--){
+			entries.removeEntry(entries.getEntry(i));
 		}
 		clicked.clear();
 	}
