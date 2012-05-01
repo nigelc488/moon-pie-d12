@@ -126,6 +126,12 @@ public class AdminViewTypeController implements OnClickListener{
 			Complete.setVisibility(0);
 			System.out.println("Complete Button set visable");
 		}else{
+			EType.setText("Uncompeleted");
+			Vis5 = (TextView) activity.findViewById(R.id.textVis5);
+			Vis5.setVisibility(1);
+			Vis6 = (TextView) activity.findViewById(R.id.textVis6);
+			Vis6.setVisibility(1);
+			Complete.setVisibility(1);
 			EType.setText("Compeleted");
 		}
 	}
