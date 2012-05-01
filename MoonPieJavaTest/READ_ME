@@ -1,3 +1,2 @@
-Only the coverage for g1.MoonPie.clientServer.receiveMessages, g1.MoonPie.clientServer, 
-g1.MoonPie.clientServer.sendMessages, g1.MoonPie.clientServer.receiveMessages, and g1.MoonPie.Model should be considered for code coverage
-because the other files are almost exactly the same as Professor Heineman's code and therefore are not our responsibility to test.
+In the clientServer package, the packages client, server, and xml should not be counted for code coverage.  These are exactly Professor Heineman's code
+or slight modifications of it and therefore are outside the scope of testing for this project.
