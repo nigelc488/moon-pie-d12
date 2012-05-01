@@ -90,6 +90,17 @@ public class SendMessageController {
 	 * @param id String The id of the Event to change from open to closed
 	 */
 	public static void closeRequest(String id){
+		//this is to fake closing an open event
+		addChoiceRequest(id, 1, "two");
+		addChoiceRequest(id,2, "three");
+//		try {
+//			Thread.sleep(100);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
 		id = EncodeXML.encodeString(id);
 		String xmlString = MessageXML.requestHeader() + "<closeRequest id='" + id + "'/></request>";
 		MessageXML req = new MessageXML(xmlString);
