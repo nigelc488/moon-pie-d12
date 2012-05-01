@@ -2,11 +2,8 @@ package g1.MoonPie;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 import g1.MoonPie.R;
-import g1.MoonPie.Controller.AddChoiceController;
-import g1.MoonPie.Controller.CloseAppController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
@@ -59,8 +56,6 @@ public class CompleteDecisionActivity extends Activity{
 			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
 		
-		Button exitButton = (Button) findViewById(R.id.closeAppButton);
-		exitButton.setOnClickListener(new CloseAppController(activity));
 	}
 
 	@Override

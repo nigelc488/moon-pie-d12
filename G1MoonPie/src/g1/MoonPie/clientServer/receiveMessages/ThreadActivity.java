@@ -12,6 +12,7 @@ import android.os.Message;
  *
  */
 public class ThreadActivity implements Runnable{
+	static boolean interrupted = false;
 	
 	//Thread communicationThread;
 	Handler handler;
@@ -24,10 +25,23 @@ public class ThreadActivity implements Runnable{
 		this.handler = handler;
 	}
 	
+
 	
+	
+	
+	
+	public static boolean isInterrupted() {
+		return interrupted;
+	}
+
+	public static void setInterrupted(boolean interrupted) {
+		ThreadActivity.interrupted = interrupted;
+	}
+
 	@Override
 	public void run() {
-		//System.out.println("inside thread");
+
+		System.out.println("inside thread");
 		//new AddChoiceResponseController();
 		Looper.prepare();
 		try {
@@ -44,7 +58,10 @@ public class ThreadActivity implements Runnable{
 		}
 		//System.out.println("begin looper");
 		Looper.loop();
-		
+		if(!interrupted){
+		System.out.println("Close Communication Thread");
+		Looper.getMainLooper().quit();
+		}
 		
 	}
 }
