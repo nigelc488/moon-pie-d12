@@ -35,7 +35,6 @@ public class ClientLauncher {
 			System.exit(0);
 		}
 
-
 		String nigel = "130.215.29.32";
 		String serverGroup = "72.249.186.243";
 		String janine = "130.215.123.183";
