@@ -11,8 +11,6 @@ import g1.MoonPie.Controller.AdminRemoveOneController;
 import g1.MoonPie.Controller.AdminTableController;
 import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Controller.NewEventMessageController;
-import g1.MoonPie.Controller.NumChoicesListener;
-import g1.MoonPie.Controller.NumRoundsListener;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Entry;
 import android.app.Activity;

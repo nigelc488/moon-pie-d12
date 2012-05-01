@@ -3,8 +3,6 @@ package g1.MoonPie.View;
 import g1.MoonPie.R;
 import g1.MoonPie.Controller.JoinEventMessageController;
 import g1.MoonPie.Controller.NewEventListener;
-import g1.MoonPie.Controller.NumChoicesListener;
-import g1.MoonPie.Controller.NumRoundsListener;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
