@@ -47,8 +47,14 @@ public class AdminViewTypeController implements OnClickListener{
 	/** The Vis6. */
 	TextView Vis6;
 	
-	/** The days. */
+	/** The Vis7. */
+	TextView Vis7;
+	
+	/** The days to remove. */
 	EditText days;
+	
+	/** The days to complete. */
+	EditText days2;
 	
 	/** The Remove. */
 	Button Remove;
@@ -101,6 +107,7 @@ public class AdminViewTypeController implements OnClickListener{
 		days.setVisibility(0);
 		
 		EType = (TextView) activity.findViewById(R.id.texteventtype);
+		EType.setVisibility(0);
 		
 		Remove = (Button) activity.findViewById(R.id.RemoveButton);
 		Remove.setVisibility(0);
@@ -115,23 +122,29 @@ public class AdminViewTypeController implements OnClickListener{
 		Display.setOnClickListener(new AdminDisplayController(activity, entries));
 		System.out.println("Display Button set visable");
 		
+		Vis5 = (TextView) activity.findViewById(R.id.textVis5);
+		Vis6 = (TextView) activity.findViewById(R.id.textVis6);
+		Vis7 = (TextView) activity.findViewById(R.id.textVis7);
+		days2 = (EditText) activity.findViewById(R.id.EditDaysText2);
+		
 		RadioGroup EventType = (RadioGroup) activity.findViewById(R.id.EventType);
 		int checkedRadioButton = EventType.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.UncompletedEvent){
 			EType.setText("Uncompeleted");
-			Vis5 = (TextView) activity.findViewById(R.id.textVis5);
+			
 			Vis5.setVisibility(0);
-			Vis6 = (TextView) activity.findViewById(R.id.textVis6);
 			Vis6.setVisibility(0);
+			Vis7.setVisibility(0);
 			Complete.setVisibility(0);
+			days2.setVisibility(0);
 			System.out.println("Complete Button set visable");
 		}else{
-			EType.setText("Uncompeleted");
-			Vis5 = (TextView) activity.findViewById(R.id.textVis5);
-			Vis5.setVisibility(1);
-			Vis6 = (TextView) activity.findViewById(R.id.textVis6);
-			Vis6.setVisibility(1);
-			Complete.setVisibility(1);
+			Vis5.setVisibility(2);
+			Vis6.setVisibility(2);
+			Vis7.setVisibility(2);
+			days2.setVisibility(2);
+			Complete.setVisibility(2);
+			System.out.println("Complete Button set invisable");
 			EType.setText("Compeleted");
 		}
 	}
