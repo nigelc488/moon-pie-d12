@@ -2,7 +2,6 @@ package g1.MoonPie.View;
 
 import g1.MoonPie.R;
 import g1.MoonPie.Controller.AddChoiceController;
-import g1.MoonPie.Controller.JoinEventMessageController;
 import g1.MoonPie.Model.Event;
 import android.app.Activity;
 import android.widget.Button;
@@ -107,6 +106,8 @@ public class ChoiceFormView {
 		if (event.isOpen()){
 			textBoxes[0].setVisibility(0);
 			labels[0].setVisibility(0);
+			int choiceNum = Event.getInstance().getUser().getPostion() + 1;
+			labels[0].setText("Choice "+choiceNum+": ");
 		}
 		else{
 			for (int i = 0; i < event.getLines().length; i++){			
