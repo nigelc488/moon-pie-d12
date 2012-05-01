@@ -1,10 +1,12 @@
 package g1.MoonPie.Model;
 
 
-/**This class represents a User for a DecisionLines event, containing
+/**
+ * This class represents a User for a DecisionLines event, containing
  * a username, optional password, and number of edges remaining to add.
  * 
  * @author Eric Cobane
+ * @author jpizz
  *
  */
 public class User {
@@ -13,78 +15,91 @@ public class User {
 	String username;
 	/**The User's password(optional).*/
 	String password;
-	/**True if the user is the event moderator, false otherwise*/
+	/**Integer representing order in which the user joined the event*/
 	int position;
-
-	/**The number of edges the User has lft to ad.*/
-	int remaingEdges;
 	
 
-	/**Construct for a User, which contains a username, an optional password
+	/**
+	 * Construct for a User, which contains a username, an optional password
+	 * and the number of remaining edges for the user to add.
+	 * 
+	 * @param name		The username for the User
+	 * @param pw		The User's password (optional) 
+	 * @param position	The order in which the user joined the event	
+	 */
+	public User(String name, String pw, int position){
+		this.username = name;
+		this.password = pw;
+		this.position = position;
+	}
+	
+	/**
+	 * Construct for a User, which contains a username, an optional password
 	 * and the number of remaining edges for the user to add.
 	 * 
 	 * @param name		The username for the User
 	 * @param pw		The User's password (optional) 
 	 * @param remainingEdges	The number of edges the User has left to add.	
 	 */
-	public User(String name, String pw, int position){
-
-		this.username = name;
-		this.password = pw;
-		this.position = position;
-	}
-	
 	public User(String name, String pw){
 		this.username = name;
 		this.password = pw;
 	}
 
-	/**Checks to make sure the password entered by the User matches the 
-	 * password stored in the system for that user.
+	/**
+	 * Set the user's username
 	 * 
-	 * @param pw	The password entered by the User.
-	 * @return		True if the password is correct, else false.	
+	 * @param username String containing the user's username
 	 */
-	private boolean validatePassword(String pw){	//Made this private because its for a password, is that ok?
-
-		if(!pw.equals(this.password)){
-			return false;
-		}
-		else return true;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public int getPostion() {
-		return position;
-	}
-
-	public void setPostion(int postion) {
-		this.position = postion;
-	}
-
-	public int getRemaingEdges() {
-		return remaingEdges;
-	}
-
-	public void setRemaingEdges(int remaingEdges) {
-		this.remaingEdges = remaingEdges;
-	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	
+	/**
+	 * Get the user's username
+	 * 
+	 * @return String containing the user's username
+	 */
+	public String getUsername() {
+		return this.username;
+	}
+
+	/**
+	 * Set the user's optional password
+	 * 
+	 * @param password String containing the user's password
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
+	/**
+	 * Get the user's optional password
+	 * 
+	 * @return String containing the user's password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * Set the user's position in the event
+	 * 
+	 * @param postion Integer representing order in which the user joined the event
+	 */
+	public void setPostion(int postion) {
+		this.position = postion;
+	}
+	
+	/**
+	 * Get the user's position in the event
+	 * 
+	 * @return Integer representing order in which the user joined the event
+	 */
+	public int getPostion() {
+		return position;
+	}
+
+
 
 }

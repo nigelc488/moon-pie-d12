@@ -31,19 +31,6 @@ public class Edge implements Comparable<Edge>{
 		this.rightLine = rLine;
 		this.height = height;
 	}
-	
-	/**
-	 * Determine if an edge is the same as another
-	 * @param e Edge to compare to the current object
-	 * @return true if all values of an Edge are equal, false otherwise
-	 */
-	public boolean isEqual(Edge e){
-		if ((this.getHeight() == e.getHeight()) && (this.getLeftLine() == e.getLeftLine()) && (this.getRightLine() == e.getRightLine())){
-			return true;
-		}else{
-			return false;
-		}
-	}
 
 	/**
 	 * Getter for the height of the Edge
@@ -67,17 +54,6 @@ public class Edge implements Comparable<Edge>{
 	 */
 	public int getRightLine() {
 		return rightLine;
-	}
-	
-	/**
-	 * This method returns the Line of the Edge which is not specified.
-	 * @param line Line The line which is known/specified.
-	 * @return Line The line which is unknown/requested.
-	 */
-	public int getOtherLine(int line){
-		if(line == leftLine) return rightLine;
-		else if(line == rightLine) return leftLine;
-		else throw new IllegalArgumentException("This is not one of the lines of this edge.");
 	}
 	
 	/**
