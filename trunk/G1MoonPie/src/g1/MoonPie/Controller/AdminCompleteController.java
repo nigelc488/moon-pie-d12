@@ -3,11 +3,17 @@ package g1.MoonPie.Controller;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
+
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class AdminCompleteController.
  * @author Catherine Coleman
@@ -40,11 +46,17 @@ String key;
 	 */
 	@Override
 	public void onClick(View v) {
-		EditText days = (EditText) activity.findViewById(R.id.EditDaysText);
-		int DaysOld = Integer.parseInt(days.getText().toString());
-		SendMessageController smc = new SendMessageController();
-		smc.forceRequest(key, "", DaysOld);
-		System.out.println("Complete Button clicked to compleate entries "+String.valueOf(DaysOld)+" days old");
-	}
+		EditText days = (EditText) activity.findViewById(R.id.EditDaysText2);
+		
+		if(!days.getText().toString().equals(new String(""))){
+			int DaysOld = Integer.parseInt(days.getText().toString());
+			SendMessageController smc = new SendMessageController();
+			smc.forceRequest(key,"", DaysOld);
+			System.out.println("Complete Button clicked to compleate entries "+String.valueOf(DaysOld)+" days old");
+	
+		}else
+			Toast.makeText(activity, "Enter a Number", Toast.LENGTH_SHORT).show();
+		}
+		
 
 }
