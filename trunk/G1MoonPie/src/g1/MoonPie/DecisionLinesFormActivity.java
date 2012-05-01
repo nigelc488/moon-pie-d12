@@ -3,7 +3,7 @@ package g1.MoonPie;
 import g1.MoonPie.Controller.AddEdgeController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.View.DecisionLinesForm;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -70,7 +70,7 @@ public class DecisionLinesFormActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		event = Event.getInstance();
-		ProcessThreadMessages.setActivity(this);
+		ProcessThreadMessages2.setActivity(this);
 		DecisionLinesForm.setContext(this);
 		drawView = DecisionLinesForm.getInstance();
 		addEdge = new AddEdgeController(drawView);
@@ -124,7 +124,7 @@ public class DecisionLinesFormActivity extends Activity {
 						System.out.println("Finished Adding Edges");
 						Toast.makeText(context, "No more edges needed", Toast.LENGTH_SHORT).show();
 
-						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
+						Intent intent = new Intent(ProcessThreadMessages2.getActivity(), CompleteDecisionActivity.class);
 						startActivity(intent);	
 					}
 				}

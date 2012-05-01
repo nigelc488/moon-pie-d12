@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
 
 
 /**This class is used to calculate the final decision for an event and display it on results.xml GUI.
@@ -56,7 +56,7 @@ public class CompleteDecisionActivity extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		ProcessThreadMessages.setActivity(this);
+		ProcessThreadMessages2.setActivity(this);
 		calculateDecision();
 	}
 }

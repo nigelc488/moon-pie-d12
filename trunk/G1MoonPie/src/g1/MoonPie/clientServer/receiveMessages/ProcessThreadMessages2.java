@@ -8,7 +8,7 @@ import g1.MoonPie.R;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
+import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController2;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddEdgeResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AdminResponseController;
 import g1.MoonPie.clientServer.receiveMessages.messageController.CloseResponseController;
@@ -30,7 +30,7 @@ import android.widget.Toast;
  * @author ncochran
  *
  */
-public class ProcessThreadMessages extends Handler{
+public class ProcessThreadMessages2 extends Handler{
 	MessageXML message;
 	Event event;
 	static Activity activity;
@@ -41,8 +41,8 @@ public class ProcessThreadMessages extends Handler{
 	 * @param event Event The Event for the application used to access model objects
 	 * @param activity Activity The activity for the application used to access GUI objects
 	 */
-	public ProcessThreadMessages(Activity activity, Entries entries){
-		ProcessThreadMessages.activity = activity;
+	public ProcessThreadMessages2(Activity activity, Entries entries){
+		ProcessThreadMessages2.activity = activity;
 		this.entries = entries;
 	}
 	
@@ -74,7 +74,7 @@ public class ProcessThreadMessages extends Handler{
 		if(type.equals("addChoiceResponse")){
 			//Done
 			System.out.println(type);
-			new AddChoiceResponseController(event, activity).process(response);
+			new AddChoiceResponseController2(Event.getInstance(), ProcessThreadMessages2.getActivity()).process(response);
 		}
 		else if(type.equals("addEdgeResponse")){
 			//Done
@@ -84,7 +84,7 @@ public class ProcessThreadMessages extends Handler{
 		else if(type.equals("closeResponse")){
 			//Done
 			System.out.println(type);
-			new CloseResponseController(Event.getInstance(), ProcessThreadMessages.getActivity()).process(response);
+			new CloseResponseController(Event.getInstance(), ProcessThreadMessages2.getActivity()).process(response);
 		}
 		else if(type.equals("connectResponse")){
 			//Done
