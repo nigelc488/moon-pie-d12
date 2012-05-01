@@ -5,24 +5,22 @@ import org.w3c.dom.Node;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.EditText;
-import android.widget.TextView;
+
 
 import g1.MoonPie.DecisionLinesFormActivity;
-import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.Controller.AddChoiceController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 /**
  * This controller is used to parse the addChoiceResponse and then call the add choice controller.
  * @author ncochran
  *
  */
-public class AddChoiceResponseController2 {
+public class AddChoiceResponseController {
 	Activity activity;
 	Event event;
 	
@@ -31,7 +29,7 @@ public class AddChoiceResponseController2 {
 	 * @param event Event The event used to access model objects
 	 * @param activity The activity used to access GUI objects
 	 */
-	public AddChoiceResponseController2(Event event, Activity activity){
+	public AddChoiceResponseController(Event event, Activity activity){
 		this.event = event;
 		this.activity = activity;
 	}
@@ -68,9 +66,9 @@ public class AddChoiceResponseController2 {
 		}
 		
 		if(lineCount == Event.getInstance().getNumChoices()){
-			Intent intent = new Intent(ProcessThreadMessages2.getActivity(),
+			Intent intent = new Intent(ProcessThreadMessages.getActivity(),
 					DecisionLinesFormActivity.class);
-			ProcessThreadMessages2.getActivity().startActivity(intent);
+			ProcessThreadMessages.getActivity().startActivity(intent);
 		}
 		
 		

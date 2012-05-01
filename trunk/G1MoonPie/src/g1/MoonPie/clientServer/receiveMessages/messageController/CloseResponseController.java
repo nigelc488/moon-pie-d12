@@ -4,7 +4,7 @@ import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
-import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages2;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -53,10 +53,10 @@ public class CloseResponseController {
 		}
 		
 		if(lineCount > 2){
-		Intent intent = new Intent(ProcessThreadMessages2.getActivity(), DecisionLinesFormActivity.class);
-		ProcessThreadMessages2.getActivity().startActivity(intent);
+		Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
+		ProcessThreadMessages.getActivity().startActivity(intent);
 		}else{
-			Toast.makeText(ProcessThreadMessages2.getActivity(), "There are only " + (lineCount) + " Choices.  Need at least 3.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(ProcessThreadMessages.getActivity(), "There are only " + (lineCount) + " Choices.  Need at least 3.", Toast.LENGTH_SHORT).show();
 			System.out.println("Too few");
 		}
 		
