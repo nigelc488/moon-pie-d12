@@ -191,10 +191,11 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 					System.out.println("blank choice selected");
 					Toast.makeText(activity, "Choice "+choiceNum+" is empty, please complete", Toast.LENGTH_SHORT).show();
 				}else{
-					System.out.println("duplicate choice");
+					
 					Toast.makeText(activity, "Choice "+choiceNum+" is a duplicate, please change it", Toast.LENGTH_SHORT).show();
 				}
 				return choices;
+				
 			}
 		}
 		return choices;
