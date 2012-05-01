@@ -14,6 +14,7 @@ import java.util.HashSet;
  */
 
 public class Event {
+	/**Singleton instance of event */
 	private static Event instance = null;
 
 	/**Number of Users for the event.*/
@@ -21,77 +22,47 @@ public class Event {
 	/**Number of rounds for the event.*/
 	int numRounds;
 	/**List of the lines for an event.*/
-	Line[] lines; //change to array
+	Line[] lines;
 	/**The event ID.*/
 	String ID;
-	/** States if an event is open or closed */
+	/**True if an event is open, false if it is closed */
 	boolean isOpen = false;
 	/**The Question for the event*/
 	String question;
+	/**The local user of the event*/
 	User user;
 	
 	
-	
-
-
-
-	/**Construct for a DecisionLines Event.
-	 * 
-	 * @param numberOfChoices		The number of Users
-	 * @param numberOfRounds	The number of Rounds
-	 */
-//	public Event(int numberOfChoices, int numberOfRounds, String question, boolean isOpen){
-//		this.numChoices = numberOfChoices;
-//		this.numRounds = numberOfRounds;
-//		lines = new Line[numberOfChoices];
-//		for (int i = 0; i<numberOfChoices; i++){
-//			lines[i] = new Line(i);
-//		}	
-//		this.question = question;
-//		this.isOpen = isOpen;
-//	}
 
 	/**
 	 * This constructor does not take in any variables but instantiates the lines, edges, results, number of rounds, and number of choices.
 	 */
-
 	protected Event(){
 		numRounds = 0;
 		numChoices = 0;
 	}
 	
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-	
-	public void setLines(Line[] lines) {
-		this.lines = lines;
-	}
-
 	/**
-	 * getter for isOpen
+	 * Set the singleton instance of the event
+	 * 
+	 * @param event Event that the singleton is set to
 	 */
-	public boolean getIsOpen(){
-		return isOpen;
+	public void setInstance(Event event){
+		instance = event;
 	}
 	
 	/**
-	 * Sets the availability of the Event
-	 * True, open
-	 * false, closed
-	 * default, closed
+	 * Get the singleton instance of the event
+	 * @return the singleton instance of the Event
 	 */
-	public void closeEvent(){
-		this.isOpen = false;
+	public static Event getInstance(){
+	if(instance == null) instance = new Event();
+	return instance;
 	}
 
-	
 	/**
 	 * Set the number of rounds in an event
+	 * 
 	 * @param numR number of rounds
 	 */
 	public void setNumRounds(int numR){
@@ -99,8 +70,18 @@ public class Event {
 	}
 	
 	/**
-	 * Set the number of users in an event
-	 * @param numC number of users
+	 * Get the number of rounds in an event
+	 * 
+	 * @return numRounds integer representing number of rounds in an event
+	 */
+	public int getNumRounds(){
+		return numRounds;
+	}
+	
+	/**
+	 * Set the number of choices in an event
+	 * 
+	 * @param numC number of choices
 	 */
 	public void setNumChoices(int numC){
 		numChoices = numC;
@@ -109,14 +90,7 @@ public class Event {
 			lines[i] = new Line(i);
 		}
 	}
-	
-	/**
-	 * Get the number of rounds in an event
-	 */
-	public int getNumRounds(){
-		return numRounds;
-	}
-	
+
 	/**
 	 * Get the number of choices in an event
 	 */
@@ -125,22 +99,99 @@ public class Event {
 	}
 	
 	/**
-	 * Get the number of users in an event
+	 * Set the lines to a new array of lines and update the number of choices accordingly
+	 * 
+	 * @param lines Array containing new lines for the event
 	 */
-	public int getNumUsers(){
-		return numChoices;//users.size();
+	public void setLines(Line[] lines) {
+		this.lines = lines;
+		numChoices = lines.length;
 	}
-	
+
 	/**
-	 * Getter for the array of Lines in the Event
+	 * Get the array of Lines in the Event
+	 * 
 	 * @return Array containing all of the lines
 	 */
 	public Line[] getLines(){
 		return lines;
 	}
+
+	/**
+	 * Set the ID for an event
+	 * 
+	 * @param iD String containing the event's ID
+	 */
+	public void setID(String iD) {
+		ID = iD;
+	}
+
+	/**
+	 * Get the ID for an event
+	 * 
+	 * @return String conataining the event's ID
+	 */
+	public String getID() {
+		return ID;
+	}
+
+	/**
+	 * Set whether or not an event is open
+	 * 
+	 * @param isOpen boolean true when event is open, false when event is closed
+	 */
+	public void setOpen(boolean isOpen) {
+		this.isOpen = isOpen;
+	}
 	
 	/**
-	 * Getter for the total number of edges allowed in the event
+	 * Get whether or not an event is open
+	 * 
+	 * @return true if event is open, false if event is closed
+	 */
+	public boolean getIsOpen(){
+		return isOpen;
+	}
+
+	/**
+	 * Set the event's question
+	 * 
+	 * @param question String containing the question of the event
+	 */
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	/**
+	 * Get the event's question
+	 * 
+	 * @return String containing the question of the event
+	 */
+	public String getQuestion() {
+		return question;
+	}
+
+	/**
+	 * Get the local user of the event
+	 * 
+	 * @return User representing the local user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * Set the local user of the event
+	 * 
+	 * @param user User representing the local user
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * Get the total number of edges allowed in the event
+	 * 
 	 * @return int representing the total edges possible in the event
 	 */
 	public int getTotalEdges(){
@@ -148,7 +199,7 @@ public class Event {
 	}
 	
 	/**
-	 * Getter for the number of Edges in an Event
+	 * Get the current number of Edges in an Event
 	 * @return int representing the number of edges
 	 */
 	public int getNumEdges(){
@@ -159,7 +210,8 @@ public class Event {
 	}
 	
 	/**
-	 * Getter for a complete ArrayList containing all of the Edges in an Event
+	 * Get a complete ArrayList containing all of the Edges in an Event
+	 * 
 	 * @return the ArrayList of all the Event's Edges
 	 */
 	public ArrayList<Edge> getEdges(){
@@ -167,26 +219,16 @@ public class Event {
 		for (int i = 0; i<lines.length; i++){
 			allEdges.addAll(lines[i].getEdges());
 		}
-	    return allEdges;
-	}
-	
-	/**
-	 * Getter for an ArrayList containing all of the Edges for a given Line
-	 * @param linePos the position of the Line containing the desired Edges
-	 * @return an ArrayList of all of the Edges connected to the given Line
-	 */
-	public ArrayList<Edge> getEdges(int linePos){
-		ArrayList<Edge> allEdges = new ArrayList<Edge>(); 
-		allEdges.addAll(lines[linePos].getEdges());
 		HashSet<Edge> edgesNoDoubles = new HashSet<Edge>();
 		edgesNoDoubles.addAll(allEdges);
 		allEdges.removeAll(allEdges);
 		allEdges.addAll(edgesNoDoubles);
 	    return allEdges;
 	}
-	
+
 	/**
 	 * Add an Edge to the appropriate Lines
+	 * 
 	 * @param height int for the height of the edge
 	 * @param leftLinePos int for the position of the line to the left of the edge
 	 * @param rightLinePos int for the position of the line to the right of the edge
@@ -196,133 +238,16 @@ public class Event {
 		lines[leftLinePos].addEdge(e);
 		lines[rightLinePos].addEdge(e);
 	}
-	
-	/**
-	 * Retrieve a list of the heights of all edges connected to two Lines
-	 * @param leftLinePos the position of the left line
-	 * @param rightLinePos the position of the right line
-	 * @return an ArrayList containing integers of the heights of all of the edges connected to the two given lines
-	 */
-	public ArrayList<Integer> getEdgeHeights(int leftLinePos, int rightLinePos){
-		ArrayList<Integer> heights = new ArrayList<Integer>();
-		ArrayList<Edge> allEdges = this.getEdges(leftLinePos);
-		allEdges.addAll(this.getEdges(rightLinePos));
-		for (int i = 0; i < allEdges.size(); i++){
-			  heights.add(allEdges.get(i).getHeight());
-		}
-		return heights;
-	}
-	
-	/**
-	 * This method checks to see if the given string is unique (not empty and not already a choice).
-	 * @param choice The string to be checked.
-	 * @return boolean If the string does not match any of the current choices then this method returns true.  If it is the same as another choice then it returns false.
-	 */
-	public boolean checkValidChoice(String choice){
-		boolean valid = true;
-		
-		// checks to see if the passed string is null
-		if(choice.isEmpty()){
-			valid = false;
-			//alert users somehow
-		}else{
-			//converts the choice to lower case for consistency
-			choice = choice.toLowerCase();
-			//this for loop first checks to see if the string in the line is null, if not, it compares to see if the two are equal
-			for (int i = 0; i < lines.length; i++) {
-				if(lines[i].choice != null  && !lines[i].choice.isEmpty()){
-					valid = !lines[i].getChoice().toLowerCase().equals(choice);
-					if(!valid){
-						//alert user somehow
-						return valid;
-					}
-				}
-			}		
-		}
-		return valid;
-	}
-	
-	/**
-	 * This method checks to see if all of the choices have been entered successfully.
-	 * @return boolean Returns true if all choices are full.  If they are not, returns false.
-	 */
-	public boolean checkChoicesFull(){
-		boolean full = false;
-		for (int i = 0; i < lines.length; i++) {
-			if(lines[i].choice == null){
-				full = false;
-				break;
-			}
-			else full = true;
-		}
-		return full;
-	}
 
 	/**
-	 * This method determines the order of the specified Choices based upon the added Edges.
-	 * The algorithm determines the order by descending each Vertical Line until it encounters a horizontal Edge.  It then follows this Edge to the next vertical Line.
-	 * It then descends this Line to the next Edge, following this pattern until there are no more Edges to be traveled.  The position of the Line it ends on is the final result
-	 * for that Choice.  It does this for each Choice.  The results are displayed in the console.
+	 * Checks if an edge is valid (not adjacent to any neighboring edges
+	 * 
+	 * @param height int representing the height of the edge
+	 * @param leftLinePos int representing the left line position 
+	 * @param rightLinePos int representing the right lin position
+	 * 
+	 * @return true if the edge is valid, false otherwise
 	 */
-	public String[] calculateResults(){
-		ArrayList<Edge> noDouble = new ArrayList<Edge>();
-		String[] results = new String[lines.length];
-		int startLine; int currentLine;
-		ArrayList<Edge> allEdges = getEdges();
-		Collections.sort(allEdges);
-		for (int i = 0; i < allEdges.size(); i++) {
-			if(i%2 == 0){
-				noDouble.add(allEdges.get(i));
-			}
-			System.out.println("look here");
-			
-		}
-		
-		//this is a short comment so you understand wtf i did...
-		
-		for (int i = 0; i < lines.length; i++){
-			startLine = i;
-			currentLine = startLine;
-			for (int j = 0; j < noDouble.size(); j++){
-				if (noDouble.get(j).getLeftLine()==currentLine){
-					currentLine = noDouble.get(j).getRightLine();
-				} else if (noDouble.get(j).getRightLine()==currentLine){
-					currentLine = noDouble.get(j).getLeftLine();
-				}
-			}
-			results[currentLine] = getLines()[startLine].getChoice();
-		}
-		return results;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public static Event getInstance(){
-	if(instance == null) instance = new Event();
-	return instance;
-	}
-	
-	public void setInstance(Event event){
-		instance = event;
-	}
-	
 	public boolean checkValidEdge(int height, int leftLinePos, int rightLinePos){
 		boolean valid = true;
 
@@ -343,11 +268,65 @@ public class Event {
 				}
 			}
 		}
-
+		return valid;
+	}
+	
+	/**
+	 * Checks to see if the given string is unique (not empty and not already a choice)
+	 * 
+	 * @param choice The string to be checked.
+	 * @return boolean If the string does not match any of the current choices then this method returns true.  If it is the same as another choice then it returns false.
+	 */
+	public boolean checkValidChoice(String choice){
+		boolean valid = true;
+		
+		// checks to see if the passed string is null
+		if(choice.isEmpty()){
+			valid = false;
+		}else{
+			//converts the choice to lower case for consistency
+			choice = choice.toLowerCase();
+			//this for loop first checks to see if the string in the line is null, if not, it compares to see if the two are equal
+			for (int i = 0; i < lines.length; i++) {
+				if(lines[i].choice != null  && !lines[i].choice.isEmpty()){
+					valid = !lines[i].getChoice().toLowerCase().equals(choice);
+					if(!valid){
+						return valid;
+					}
+				}
+			}		
+		}
 		return valid;
 	}
 
+	/**
+	 * This method determines the order of the specified Choices based upon the added Edges.
+	 * The algorithm determines the order by descending each Vertical Line until it encounters a horizontal Edge.  It then follows this Edge to the next vertical Line.
+	 * It then descends this Line to the next Edge, following this pattern until there are no more Edges to be traveled.  The position of the Line it ends on is the final result
+	 * for that Choice.  It does this for each Choice.
+	 * 
+	 * @return array of Strings containing the title for each choice is the order that the decision lines algorithm determines the results
+	 */
+	public String[] calculateResults(){
+		String[] results = new String[lines.length];
+		int startLine; int currentLine;
+		ArrayList<Edge> allEdges = getEdges();
+		Collections.sort(allEdges);
 
-	
-	
+		for (int i = 0; i < lines.length; i++){
+			startLine = i;
+			currentLine = startLine;
+			for (int j = 0; j < allEdges.size(); j++){
+				if (allEdges.get(j).getLeftLine()==currentLine){
+					currentLine = allEdges.get(j).getRightLine();
+				} else if (allEdges.get(j).getRightLine()==currentLine){
+					currentLine = allEdges.get(j).getLeftLine();
+				}
+			}
+			results[currentLine] = getLines()[startLine].getChoice();
+		}
+		return results;
+	}
+
+
 }
