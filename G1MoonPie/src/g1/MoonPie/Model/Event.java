@@ -16,7 +16,7 @@ import java.util.HashSet;
  
 public class Event {
 	/**Singleton instance of event */
-	private static Event instance = null;
+	private static Event instance = new Event();
 
 	/**Number of Users for the event.*/
 	int numChoices = 0;
@@ -44,21 +44,11 @@ public class Event {
 	}
 	
 	/**
-	 * Set the singleton instance of the event
-	 * 
-	 * @param event Event that the singleton is set to
-	 */
-	public void setInstance(Event event){
-		instance = event;
-	}
-	
-	/**
 	 * Get the singleton instance of the event
 	 * @return the singleton instance of the Event
 	 */
 	public static Event getInstance(){
-	if(instance == null) instance = new Event();
-	return instance;
+		return instance;
 	}
 
 	/**
