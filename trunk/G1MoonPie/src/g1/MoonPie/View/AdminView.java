@@ -101,14 +101,14 @@ public class AdminView {
 		rowtitle.addView(dates);
 		
 		EntryData.addView(rowtitle);
-		
+		if(size != 0){
 		row = new TableRow [size];
 		TextView[] eID = new TextView [size];
 		TextView[] type = new TextView [size];
 		TextView[] numChoices = new TextView [size];
 		TextView[] numRounds = new TextView [size];
 		TextView[] Date = new TextView [size];
-		for(int i =0; i < size; i++){
+		for(int i = 0; i < size; i++){
 			row[i]= new TableRow(activity);
 			eID[i] = new TextView(activity);
 			eID[i].setText(entries.getEntry(i).getId());
@@ -132,6 +132,7 @@ public class AdminView {
 			}
 			EntryData.addView(row[i]);
 			
+		}
 		}
 		
 		Button bRemove = (Button) activity.findViewById(R.id.bRemove);
@@ -172,7 +173,7 @@ public class AdminView {
 public void clearArray(){
 		int size = clicked.size();
 		for(int i=size; i > 0;i--){
-			entries.removeEntry(entries.getEntry(i));
+			entries.removeEntry(entries.getEntry(i - 1));
 		}
 		clicked.clear();
 	}
