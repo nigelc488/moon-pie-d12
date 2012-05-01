@@ -1,9 +1,7 @@
 package g1.MoonPie.View;
-
+ 
 import g1.MoonPie.Controller.AddEdgeController;
-import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
-import java.util.ArrayList;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
