@@ -30,6 +30,7 @@ public class JoinEventListener implements OnClickListener {
 	 */
 	@Override
 	public void onClick(View v) {
+		System.out.println("createJoinEvent button clicked");
 		new JoinEventView(activity);
 	}
 

@@ -43,12 +43,14 @@ public class NewEventMessageController implements OnClickListener {
 	 */
 	@Override
 	public void onClick(View v) {
+		System.out.println("create join event button selected");
 		boolean valid = true;
 		
 		//Get values from form and check if they are valid
 		EditText questionText = (EditText) activity.findViewById(R.id.question);
 		String question = questionText.getText().toString();
 		if (question.equals("")){
+			System.out.println("blank question");
 			Toast.makeText(activity, "Please enter a value for the question", Toast.LENGTH_SHORT).show();
 			valid = false;
 		}
@@ -57,27 +59,33 @@ public class NewEventMessageController implements OnClickListener {
 		RadioGroup availability = (RadioGroup) activity.findViewById(R.id.availability);
 		int checkedRadioButton = availability.getCheckedRadioButtonId();
 		if (checkedRadioButton == R.id.openEvent){
+			System.out.println("radio button on Open");
 			isOpen = true;
 		}
 		else{
+			System.out.println("radio button on closed");
 			isOpen = false;
 		}
 
 		Spinner choicesSpinner = (Spinner) activity.findViewById(R.id.numChoices);
 		Spinner roundsSpinner = (Spinner) activity.findViewById(R.id.numRounds);
 		int numChoices = Integer.parseInt(choicesSpinner.getSelectedItem().toString());
+		System.out.println("numChoices = "+numChoices);
 		int numRounds = Integer.parseInt(roundsSpinner.getSelectedItem().toString());
-
+		System.out.println("numRounds = "+numRounds);
 		EditText usernameText = (EditText) activity.findViewById(R.id.username);
 		String username = usernameText.getText().toString();
+		System.out.println("username = "+ username);
 		if (username.equals("")){
+			System.out.println("Blank username");
 			Toast.makeText(activity, "Please enter a value for the username", Toast.LENGTH_SHORT).show();
 			valid = false;
 		}
 
 		EditText passwordText = (EditText) activity.findViewById(R.id.password);
 		String password = passwordText.getText().toString();
-
+		System.out.println("password = "+password);
+		
 		//If there are errors do nothing else, but if everything is valid send the appropriate messages to the server
 		if (valid){
 			//Update the event to the values from the form
@@ -89,6 +97,8 @@ public class NewEventMessageController implements OnClickListener {
 			Event.getInstance().setQuestion(question);
 
 			//Set the view to the choice form view
+			
+			System.out.println("vaild new event");
 			ChoiceFormView view = new ChoiceFormView(Event.getInstance(), activity);		
 			view.setChoicesVisibility();
 		}

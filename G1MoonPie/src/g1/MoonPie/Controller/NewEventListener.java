@@ -44,6 +44,7 @@ public class NewEventListener implements OnClickListener {
 	 */
 	@Override
 	public void onClick(View v) {
+		System.out.println("create new event button Pressed");
 		new NewEventView(event, activity);		
 	}
 
