@@ -20,7 +20,7 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 /**
  * This class is used to process reportResponse xml messages and call the necessary controller.
  * @author ncochran
- *
+ * @author Catherine Coleman
  */
 public class ReportResponseController {
 	Event event;

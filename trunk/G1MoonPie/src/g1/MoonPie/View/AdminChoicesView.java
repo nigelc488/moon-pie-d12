@@ -16,6 +16,7 @@ import android.widget.Spinner;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminChoicesView.
+ * @author Catherine Coleman
  */
 public class AdminChoicesView extends Activity {
 	

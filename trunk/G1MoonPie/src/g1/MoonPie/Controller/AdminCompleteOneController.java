@@ -12,7 +12,7 @@ import android.view.View.OnClickListener;
 
 /**
  * The Class AdminCompleteOneController.
- * @author catherinec
+ * @author Catherine Coleman
  */
 public class AdminCompleteOneController implements OnClickListener {
 	

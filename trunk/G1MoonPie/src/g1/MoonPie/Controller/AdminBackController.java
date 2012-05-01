@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminBackController.
- * @author catherinec
+ * @author Catherine Coleman
  */
 public class AdminBackController implements OnClickListener {
 	

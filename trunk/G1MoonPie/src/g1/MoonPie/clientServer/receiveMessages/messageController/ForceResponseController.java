@@ -12,7 +12,8 @@ import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 
 /**
  * This class is used to process forceResponse xml messages and call the necessary controller.
- * @author ncochran, catherinec
+ * @author ncochran
+ * @author Catherine Coleman
  *
  */
 public class ForceResponseController {
