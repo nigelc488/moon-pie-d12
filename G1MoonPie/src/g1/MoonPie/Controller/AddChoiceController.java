@@ -118,8 +118,8 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		if(namesValid){
 			//if moderator then send create request
 			if(Event.getInstance().getUser().getPostion() == 0){
-				SendMessageController.createRequest(Event.getInstance().getIsOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
-				if (!Event.getInstance().getIsOpen()){
+				SendMessageController.createRequest(Event.getInstance().isOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
+				if (!Event.getInstance().isOpen()){
 					for (int i = 0; i < Event.getInstance().getLines().length; i++){
 						Event.getInstance().getLines()[i].setChoice(choices[i]);
 					}
@@ -137,7 +137,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 				}
 				SendMessageController.addChoiceRequest(Event.getInstance().getID(), Event.getInstance().getUser().getPostion(), choice);
 			}
-			if (event.getIsOpen()) new CloseEventView(event, activity);
+			if (event.isOpen()) new CloseEventView(event, activity);
 		}
 	}
 
@@ -150,7 +150,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		String[] choices;
 
 		// if the event is open
-		if(Event.getInstance().getIsOpen()){
+		if(Event.getInstance().isOpen()){
 			choices = new String[1];
 		}
 		//if it is closed, it will check to see if there are any duplicates

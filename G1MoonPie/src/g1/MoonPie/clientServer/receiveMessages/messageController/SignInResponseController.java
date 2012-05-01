@@ -90,7 +90,7 @@ public class SignInResponseController {
 
 		
 		//launch choice form if open event and you aren't the moderator
-		if(event.getIsOpen() && !(Event.getInstance().getUser().getPostion() == 0)){
+		if(event.isOpen() && !(Event.getInstance().getUser().getPostion() == 0)){
 			
 			ChoiceFormView view = new ChoiceFormView(event, activity);		
 			view.setChoicesVisibility();

@@ -40,7 +40,7 @@ public class AddEdgeController {
 		this.event = Event.getInstance();
 		this.drawView = d;
 		
-		if(event.getIsOpen() == true){
+		if(event.isOpen() == true){
 			rounds = event.getNumRounds();
 		}
 		else{
