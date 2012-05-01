@@ -118,17 +118,22 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 		if(namesValid){
 			//if moderator then send create request
 			if(Event.getInstance().getUser().getPostion() == 0){
+				System.out.println("The user is logged in as a moderator, message is sent to create an Event");
 				SendMessageController.createRequest(Event.getInstance().isOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
 				if (!Event.getInstance().isOpen()){
+					System.out.println("Event is closed and is adding all choices ");
 					for (int i = 0; i < Event.getInstance().getLines().length; i++){
+						System.out.println("choice:"+ i +" has been added to the event");
 						Event.getInstance().getLines()[i].setChoice(choices[i]);
 					}
 				}else{
+					System.out.println("Event is open and sends the users only choice");
 					Event.getInstance().getLines()[0].setChoice(choices[0]);
 				}
 			}
 			//if not moderator then send add choice request
 			else{
+				System.out.println("The user is NOT a moderator, event is open and sends users choice");
 				if(choices.length > 1){
 					System.out.println("ERROR SOMETHING IS BAD");
 					choice = null;
@@ -141,6 +146,7 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			//we don't have an id yet so shouldnt launch this until get a create response
 			if (event.isOpen() && !(Event.getInstance().getID()==null)) new CloseEventView(event, activity);
 
+			System.out.println("event is so a new CloseEventView is created");
 		}
 	}
 
@@ -154,10 +160,12 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 
 		// if the event is open
 		if(Event.getInstance().isOpen()){
+			System.out.println("getting the ");
 			choices = new String[1];
 		}
 		//if it is closed, it will check to see if there are any duplicates
 		else choices = new String[Event.getInstance().getNumChoices()];
+		System.out.println("event is closed, checking if any choices are duplicates");
 		ArrayList<String> linesWithDuplicates = new ArrayList<String>();
 		HashSet<String> linesNoDuplicates = new HashSet<String>();
 		for (int i = 0; i < choices.length; i++){
@@ -180,8 +188,10 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			}else{
 				namesValid = false;
 				if (namedLine.equals("")){
+					System.out.println("blank choice selected");
 					Toast.makeText(activity, "Choice "+choiceNum+" is empty, please complete", Toast.LENGTH_SHORT).show();
 				}else{
+					System.out.println("duplicate choice");
 					Toast.makeText(activity, "Choice "+choiceNum+" is a duplicate, please change it", Toast.LENGTH_SHORT).show();
 				}
 				return choices;
