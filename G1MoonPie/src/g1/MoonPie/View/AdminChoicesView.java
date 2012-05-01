@@ -5,8 +5,6 @@ import g1.MoonPie.Controller.AdminDisplayController;
 import g1.MoonPie.Controller.AdminRemoveController;
 import g1.MoonPie.Controller.AdminViewTypeController;
 import g1.MoonPie.Controller.NewEventMessageController;
-import g1.MoonPie.Controller.NumChoicesListener;
-import g1.MoonPie.Controller.NumRoundsListener;
 import g1.MoonPie.Model.Entries;
 import android.app.Activity;
 import android.widget.ArrayAdapter;

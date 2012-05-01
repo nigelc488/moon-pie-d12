@@ -3,8 +3,6 @@ package g1.MoonPie.View;
 import g1.MoonPie.R;
 import g1.MoonPie.Controller.JoinEventMessageController;
 import g1.MoonPie.Controller.NewEventMessageController;
-import g1.MoonPie.Controller.NumChoicesListener;
-import g1.MoonPie.Controller.NumRoundsListener;
 import g1.MoonPie.Model.Event;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
@@ -35,14 +33,12 @@ public NewEventView(Event event,Activity activity){
     ArrayAdapter<CharSequence> choicesAdapter = ArrayAdapter.createFromResource(activity, R.array.choices_array, android.R.layout.simple_spinner_item);
     choicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     choicesSpinner.setAdapter(choicesAdapter);
-    choicesSpinner.setOnItemSelectedListener(new NumChoicesListener());
     
     //add listener for numrounds drop down
     Spinner roundsSpinner = (Spinner) activity.findViewById(R.id.numRounds);
     ArrayAdapter<CharSequence> roundsAdapter = ArrayAdapter.createFromResource(activity, R.array.choices_array, android.R.layout.simple_spinner_item);
     roundsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     roundsSpinner.setAdapter(roundsAdapter);
-    roundsSpinner.setOnItemSelectedListener(new NumRoundsListener());
     
 	Button newEventButton = (Button) activity.findViewById(R.id.nextButton);
     newEventButton.setOnClickListener(new NewEventMessageController(event, activity));
