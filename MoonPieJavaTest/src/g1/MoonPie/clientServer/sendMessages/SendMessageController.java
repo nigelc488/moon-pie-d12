@@ -2,7 +2,6 @@ package g1.MoonPie.clientServer.sendMessages;
 
 import java.util.ArrayList;
 
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.EncodeXML;
 import g1.MoonPie.clientServer.EncryptPassword;
 import g1.MoonPie.clientServer.xml.MessageXML;
@@ -99,7 +98,7 @@ public class SendMessageController {
 	 * @param password String The password of the person creating the event.  The password is encrypted using SHA1 before being sent to the server.
 	 * @param event The event to be created.  This is used to gain access to the choices for the event.
 	 */
-	public static MessageXML createRequest(String type, String question, int numChoices, int numRounds, String userName, String password, Event event){
+	public static MessageXML createRequest(String type, String question, int numChoices, int numRounds, String userName, String password, String[] choices){
 		//NEED TO FIGURE OUT WHAT INDEX SHOULD BE
 		//dont need to do password
 		type = EncodeXML.encodeString(type);
@@ -110,8 +109,8 @@ public class SendMessageController {
 		String xmlString = MessageXML.requestHeader() + "<createRequest type='" + type + "' " + "question='" + question + "' " + "numChoices='" + numChoices + "' " + "numRounds='" + numRounds+ "'>";
 		//setup choices
 		//may need some code to handle when open event and therefore just 1 choice
-		for (int i = 0; i < numChoices; i++) {
-			String choice = "<choice value='" + EncodeXML.encodeString(event.getLines()[i].getChoice()) + "' " + "index='" + i + "'/>";
+		for (int i = 0; i < choices.length; i++) {
+			String choice = "<choice value='" + EncodeXML.encodeString(choices[i]) + "' " + "index='" + i + "'/>";
 			xmlString += choice;
 		} 
 		String passwordXML = "";

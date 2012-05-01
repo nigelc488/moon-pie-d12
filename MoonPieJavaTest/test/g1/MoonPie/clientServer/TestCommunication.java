@@ -4,7 +4,6 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import junit.framework.TestCase;
-import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.client.ClientLauncher;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.receiveMessages.messageController.AddChoiceResponseController;
@@ -57,9 +56,11 @@ public class TestCommunication extends TestCase {
 	
 	public void testCreate(){
 		CreateResponseController create = new CreateResponseController();
-		Event event = new Event(5, 3);
-		event.getLines()[0].setChoice("first's choice");
-		MessageXML request = SendMessageController.createRequest("open", "who am < I", 5, 3, "nigel>", "password", event);
+		
+		String [] choice = new String[1];
+		
+		choice[0] = "first's choice";
+		MessageXML request = SendMessageController.createRequest("open", "who am < I", 5, 3, "nigel>", "password", choice);
 		
 		Node child = request.contents.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
