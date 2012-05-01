@@ -66,6 +66,7 @@ public class AddEdgeController {
 				j++;
 			}
 		}
+		System.out.println("Found Left Line.");
 		return left;
 	}
 	
@@ -89,6 +90,7 @@ public class AddEdgeController {
 				j++;
 			}
 		}
+		System.out.println("Found Right Line.");
 		return right;
 	}
 
@@ -102,6 +104,7 @@ public class AddEdgeController {
 	public void AddEdge(int hght, int lLine, int rLine){ 
 			SendMessageController.addEdgeRequest(Event.getInstance().getID(), lLine, rLine, hght);
 			drawView.postInvalidate();
+			System.out.println("Redrew Canvas.");
 	}
 
 	/**
@@ -113,6 +116,7 @@ public class AddEdgeController {
 	public int scaleHeight(float f){
 		int scaledHeight;
 		scaledHeight = (int) (((100)*(4)*(f-(drawView.offset+60)))/((3)*drawView.getHeight()));
+		System.out.println("Scaled Height.");
 		return scaledHeight;
 	}
 
@@ -125,6 +129,7 @@ public class AddEdgeController {
 	public int unscaleHeight(int i){
 		int unscaledHeight;
 		unscaledHeight = (((event.getEdges().get(i).getHeight()*(3)*(drawView.getHeight()))/((100)*(4)))+(drawView.offset+60));
+		System.out.println("Unscaled Height.");
 		return unscaledHeight;
 
 	}
@@ -138,6 +143,7 @@ public class AddEdgeController {
 	public int scaledLeftLine(int i){
 		int scaledLeftLine;
 		scaledLeftLine = ((event.getEdges().get(i).getLeftLine()+1)*(drawView.getWidth()/(event.getNumChoices()+1)));
+		System.out.println("Scaled Left Line");
 		return scaledLeftLine;
 	}
 
@@ -150,6 +156,7 @@ public class AddEdgeController {
 	public int scaledRightLine(int i){
 		int scaledRightLine;
 		scaledRightLine = ((event.getEdges().get(i).getRightLine()+1)*(drawView.getWidth()/(event.getNumChoices()+1)));
+		System.out.println("Scaled Right Line.");
 		return scaledRightLine;
 	}
 }

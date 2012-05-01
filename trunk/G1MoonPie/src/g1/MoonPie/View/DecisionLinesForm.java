@@ -64,10 +64,12 @@ public class DecisionLinesForm extends View {
 		canvas.drawText(event.getQuestion(), center, offset+10, paint);	
 		for (int i = 0; i < event.getNumChoices(); i++){
 			int xpos = (i+1)*(width/(event.getNumChoices() +1));
-			canvas.drawText(event.getLines()[i].getChoice(), xpos, offset+40, paint);	
+			canvas.drawText(event.getLines()[i].getChoice(), xpos, offset+40, paint);
 			canvas.drawLine(xpos, offset+60, xpos, offset + 60 + lineHeight, paint);
-
 		}
+		System.out.println("Choices Added to Canvas.");
+		System.out.println("Lines Added to Canvas.");
+		
 		for (int i = 0; i < event.getEdges().size(); i++) {
 			event.getEdges().get(i);
 
@@ -76,6 +78,7 @@ public class DecisionLinesForm extends View {
 			int unscaledHeight = addEdge.unscaleHeight(i);
 
 			canvas.drawLine(rescaledLeftLine, unscaledHeight, rescaledRightLine, unscaledHeight, paint);
+			System.out.println("Edge has been added to Canvas.");
 		}
 	}
 

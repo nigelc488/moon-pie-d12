@@ -269,6 +269,7 @@ public class Event {
 				}
 			}
 		}
+		System.out.println("Check Valid Edge = " + valid);
 		return valid;
 	}
 	
