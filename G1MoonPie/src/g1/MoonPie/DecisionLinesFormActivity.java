@@ -85,41 +85,44 @@ public class DecisionLinesFormActivity extends Activity {
 		 * else calls short toaster error message
 		 */
 		drawView.setOnTouchListener(new View.OnTouchListener() {
-			Context context = getApplicationContext();
-			CharSequence invalidEdgeErrorMsg = "This is an invalid edge. Try Again.";
-			CharSequence finishedAddingEdgesMsg = "No more edges needed";			
+			Context context = getApplicationContext();			
  
 			public boolean onTouch(View v, MotionEvent me) {
 				int action = me.getAction();
 				if (action == MotionEvent.ACTION_DOWN) {
+					System.out.println("MotionEvent = ACTION_DOWN");
 					edgeXPos = (int) me.getX();	
 					edgeHeight = addEdge.scaleHeight(me.getY());
-					int duration = Toast.LENGTH_SHORT;
-
+					
 					if(event.getNumEdges() < addEdge.rounds){
 						if(edgeHeight < 0 | edgeHeight > 100 
 								| edgeXPos < ((event.getLines()[0].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1))) 
 								| edgeXPos > ((event.getLines()[event.getNumChoices()-1].getxPosition()+1)*(drawView.getWidth()/(event.getNumChoices() +1)))
 								){
+							Toast.makeText(context, "This is an invalid edge. Try Again.", Toast.LENGTH_SHORT).show();
 							System.out.println("This is an invalid edge. Try Again.");
-							Toast.makeText(context, invalidEdgeErrorMsg, duration).show();
 						}else{  
 							left = addEdge.findLeftLine(edgeXPos);
 							right = addEdge.findRightLine(edgeXPos);
 							if(event.checkValidEdge(edgeHeight, left, right) == true){
 								addEdge.AddEdge(edgeHeight, left, right);
+								System.out.println("Edge has been Added");
 								if((addEdge.rounds - (event.getNumEdges()+1))== 0){
 									Toast.makeText(context, "Touch Anywhere To Continue", Toast.LENGTH_LONG).show();
+									System.out.println("Finished Adding Edges.");
+									System.out.println("Touch Anywhere to Continue to Results Screen.");
 								}else{
-									Toast.makeText(context, ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining"), duration).show();
+									Toast.makeText(context, ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining"), Toast.LENGTH_SHORT).show();
+									System.out.println("Number of Edges still required:" + (addEdge.rounds - (event.getNumEdges()+1)));
 								}
 							}else{
-								Toast.makeText(context, invalidEdgeErrorMsg, duration).show();
+								System.out.println("This is an invalid edge. Try Again.");
+								Toast.makeText(context, "This is an invalid edge. Try Again.", Toast.LENGTH_SHORT).show();
 							}
 						}
 					}else{
-						System.out.println("finished adding edges");
-						Toast.makeText(context, finishedAddingEdgesMsg, duration).show();
+						System.out.println("Finished Adding Edges");
+						Toast.makeText(context, "No more edges needed", Toast.LENGTH_SHORT).show();
 
 						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
 						startActivity(intent);	
