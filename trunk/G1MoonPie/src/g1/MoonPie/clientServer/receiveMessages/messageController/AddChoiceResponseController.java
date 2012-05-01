@@ -46,7 +46,8 @@ public class AddChoiceResponseController {
 		System.out.println("Add Choice: Line: " + line + " choice: " + choice);
 		
 		//This is where you should call the addChoiceController
-		new AddChoiceController(event, activity);
+		Event.getInstance().getLines()[line].setChoice(choice);
+		//new AddChoiceController(event, activity);
 		
 	}
 }

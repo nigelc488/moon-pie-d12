@@ -41,10 +41,11 @@ public class CloseResponseController {
 		//System.out.println("Close the event");
 		
 		Line[] currentLines;
-		currentLines = event.getLines();
+		currentLines = Event.getInstance().getLines();
 		
-		int lineCount = 0;
+		int lineCount = 1;
 		
+		//check to see how many choices
 		for(int i=0; i<currentLines.length; i++){
 			if(!currentLines[i].getChoice().equals("")){
 				lineCount++;
@@ -55,7 +56,7 @@ public class CloseResponseController {
 		Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
 		ProcessThreadMessages.getActivity().startActivity(intent);
 		}else{
-			Toast.makeText(ProcessThreadMessages.getActivity(), "There are only " + (lineCount+1) + " Choices.  Need at least 3.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(ProcessThreadMessages.getActivity(), "There are only " + (lineCount) + " Choices.  Need at least 3.", Toast.LENGTH_SHORT).show();
 			System.out.println("Too few");
 		}
 		

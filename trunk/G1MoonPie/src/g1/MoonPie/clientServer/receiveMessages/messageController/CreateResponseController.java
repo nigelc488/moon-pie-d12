@@ -49,17 +49,18 @@ public class CreateResponseController {
 		System.out.println("Created: id=" + id);
 		
 		//always need to sign in after creating (but only if server works so just leave this commented out
-		//SendMessageController.signInRequest(id, Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
+		SendMessageController.signInRequest(id, Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword());
 		
 		//this is only used for the mock server not with the actual server
 		//if its an open event then you need to wait for other users
 		//if closed event then can start right now
-		if(!Event.getInstance().isOpen()){
-			
-			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
-			ProcessThreadMessages.getActivity().startActivity(intent);
-			
-		}
+
+//		if(!Event.getInstance().isOpen()){
+//			
+//			Intent intent = new Intent(ProcessThreadMessages.getActivity(), DecisionLinesFormActivity.class);
+//			ProcessThreadMessages.getActivity().startActivity(intent);
+//			
+//		}
 		
 		
 		//not sure what this is for so not getting rid of it
