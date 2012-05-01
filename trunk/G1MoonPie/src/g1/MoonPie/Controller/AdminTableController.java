@@ -10,6 +10,7 @@ import android.widget.TableRow;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminTableController.
+ * @author catherinec
  */
 public class AdminTableController implements OnClickListener {
 	

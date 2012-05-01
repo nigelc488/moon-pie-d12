@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminCompleteController.
+ * @author catherinec
  */
 public class AdminCompleteController implements OnClickListener{
 

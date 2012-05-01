@@ -13,6 +13,7 @@ import android.widget.TextView;
 // TODO: Auto-generated Javadoc
 /**
  * The Class AdminViewTypeController.
+ * @author catherinec
  */
 public class AdminViewTypeController implements OnClickListener{
 	
