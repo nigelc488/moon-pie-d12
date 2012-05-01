@@ -5,6 +5,7 @@ import java.util.ArrayList;
 // TODO: Auto-generated Javadoc
 /**
  * The Class Entries.
+ * @author Catherine Coleman
  */
 public class Entries {
 	
@@ -48,6 +49,15 @@ public class Entries {
 	 */
 	public ArrayList<Entry> getEntires(){
 		return entries;
+	}
+	
+	/**
+	 * Removes the entry.
+	 *
+	 * @param Id the id
+	 */
+	public void removeEntry (int Id){
+		entries.remove(Id);
 	}
 	
 	/**

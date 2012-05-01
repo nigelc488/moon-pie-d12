@@ -3,7 +3,7 @@ package g1.MoonPie.Model;
 /**
  * This class is used to store the entry information when an admin generates a report.
  * @author ncochran
- *
+ * @author Catherine Coleman
  */
 public class Entry {
 	
