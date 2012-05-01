@@ -3,7 +3,6 @@ package g1.MoonPie.clientServer.receiveMessages.messageController;
 import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
-import g1.MoonPie.View.EventView;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
