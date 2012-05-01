@@ -2,8 +2,11 @@ package g1.MoonPie;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import g1.MoonPie.R;
+import g1.MoonPie.Controller.AddChoiceController;
+import g1.MoonPie.Controller.CloseAppController;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
@@ -27,6 +30,10 @@ public class CompleteDecisionActivity extends Activity{
 
 		setContentView(R.layout.results);
 
+		//sets the results question
+		int question = R.id.resultsLabel;
+		TextView questionLabel = (TextView) findViewById(question);
+		questionLabel.setText(event.getQuestion());
 
 		//get the array representing the ordered choice results
 		String[] results = event.calculateResults();
@@ -51,6 +58,9 @@ public class CompleteDecisionActivity extends Activity{
 			choiceLabels[i] = (TextView) findViewById(choiceID[i]);
 			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
+		
+		Button exitButton = (Button) findViewById(R.id.closeAppButton);
+		exitButton.setOnClickListener(new CloseAppController(activity));
 	}
 
 	@Override
