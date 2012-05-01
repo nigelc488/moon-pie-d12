@@ -71,8 +71,6 @@ public class AddChoiceResponseController {
 			ProcessThreadMessages.getActivity().startActivity(intent);
 		}
 		
-		
-		
 		new AddChoiceController(event, activity);
 		
 	}
