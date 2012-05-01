@@ -10,9 +10,10 @@ import java.util.HashSet;
  * @author Janine Pizzimenti
  * @author Nigel Cochran
  * @author J Lowrey
+ * @author Chris Berthelette
  *
  */
-
+ 
 public class Event {
 	/**Singleton instance of event */
 	private static Event instance = null;
@@ -238,7 +239,7 @@ public class Event {
 		lines[leftLinePos].addEdge(e);
 		lines[rightLinePos].addEdge(e);
 	}
-
+ 
 	/**
 	 * Checks if an edge is valid (not adjacent to any neighboring edges
 	 * 
