@@ -1,7 +1,6 @@
 package g1.MoonPie.Model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 /**This class represents a choice Line for a DecisionLines Event.
@@ -66,13 +65,6 @@ public class Line {
 	 */
 	public void addEdge(Edge e){
 		edges.add(e);
-	}
-	
-	/**
-	 * This method sorts the Edges from lowest to highest based upon height.
-	 */
-	public void sortEdges(){
-		Collections.sort(edges);
 	}
 	
 	/**

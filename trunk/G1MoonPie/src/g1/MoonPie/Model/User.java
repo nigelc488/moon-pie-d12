@@ -39,7 +39,6 @@ public class User {
 	 * 
 	 * @param name		The username for the User
 	 * @param pw		The User's password (optional) 
-	 * @param remainingEdges	The number of edges the User has left to add.	
 	 */
 	public User(String name, String pw){
 		this.username = name;
