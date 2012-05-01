@@ -6,12 +6,9 @@ import g1.MoonPie.View.AdminView;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AdminDisplayController.
  * @author Catherine Coleman

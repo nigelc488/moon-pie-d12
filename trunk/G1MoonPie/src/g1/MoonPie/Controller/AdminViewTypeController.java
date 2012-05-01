@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AdminViewTypeController.
  * @author Catherine Coleman

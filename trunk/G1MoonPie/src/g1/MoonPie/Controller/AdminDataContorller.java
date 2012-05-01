@@ -6,7 +6,6 @@ import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.app.Activity;
 import android.widget.RadioGroup;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AdminDataContorller.
  * @author Catherine Coleman
