@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AdminBackController.
  * @author Catherine Coleman

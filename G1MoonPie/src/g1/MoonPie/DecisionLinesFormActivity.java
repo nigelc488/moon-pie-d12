@@ -30,7 +30,7 @@ public class DecisionLinesFormActivity extends Activity {
 
 	/** Declares AddEdgeController. */
 	AddEdgeController addEdge;
-	//TODO
+
 	/** Declares Event. */
 	Event event;
 
@@ -108,7 +108,7 @@ public class DecisionLinesFormActivity extends Activity {
 								addEdge.AddEdge(edgeHeight, left, right);
 								System.out.println("Edge has been Added");
 								if((addEdge.rounds - (event.getNumEdges()+1))== 0){
-									Toast.makeText(context, "Touch Anywhere To Continue", Toast.LENGTH_LONG).show();
+									Toast.makeText(context, "Touch Anywhere To View Results", Toast.LENGTH_LONG).show();
 									System.out.println("Finished Adding Edges.");
 									System.out.println("Touch Anywhere to Continue to Results Screen.");
 								}else{
@@ -122,8 +122,6 @@ public class DecisionLinesFormActivity extends Activity {
 						}
 					}else{
 						System.out.println("Finished Adding Edges");
-						Toast.makeText(context, "No more edges needed", Toast.LENGTH_SHORT).show();
-
 						Intent intent = new Intent(ProcessThreadMessages.getActivity(), CompleteDecisionActivity.class);
 						startActivity(intent);	
 					}

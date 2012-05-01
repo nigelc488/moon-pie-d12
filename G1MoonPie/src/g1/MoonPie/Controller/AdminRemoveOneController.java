@@ -2,18 +2,13 @@ package g1.MoonPie.Controller;
 
 import java.util.ArrayList;
 
-import g1.MoonPie.R;
 import g1.MoonPie.Model.Entries;
-import g1.MoonPie.Model.Entry;
 import g1.MoonPie.View.AdminView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class AdminRemoveOneController.
  * @author Catherine Coleman

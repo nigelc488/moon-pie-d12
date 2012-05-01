@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,7 +11,6 @@ import android.widget.Toast;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
-import g1.MoonPie.Model.User;
 import g1.MoonPie.View.CloseEventView;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
