@@ -5,10 +5,6 @@ import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.clientServer.heineman.xml.MessageXML;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
-
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.widget.Toast;

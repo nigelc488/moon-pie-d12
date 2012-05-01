@@ -28,7 +28,9 @@ public class MoonPieClientMessageHandler implements IMessageHandler {
 	public void process(MessageXML response) {
 		Message msg = Message.obtain();
 		msg.obj = response;
-		boolean worked = childHandler.sendMessage(msg);
+		childHandler.sendMessage(msg);
+		
+		//boolean worked = childHandler.sendMessage(msg);
 		//System.out.println("Was the thread message sent?: " + worked);
 		//System.out.println("Received in child thread:" + response);
 		

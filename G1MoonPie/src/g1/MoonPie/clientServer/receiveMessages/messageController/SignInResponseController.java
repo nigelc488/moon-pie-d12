@@ -6,13 +6,9 @@ import org.w3c.dom.NodeList;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.EditText;
 import android.widget.Toast;
-import g1.MoonPie.CompleteDecisionActivity;
 import g1.MoonPie.DecisionLinesFormActivity;
-import g1.MoonPie.R;
 import g1.MoonPie.clientServer.EncodeXML;
-import g1.MoonPie.Model.Edge;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.View.ChoiceFormView;
@@ -57,7 +53,6 @@ public class SignInResponseController {
 	 */
 	public void process(MessageXML response) {
 		Node child = response.contents.getFirstChild();
-		Node childChild = child.getFirstChild();
 		NamedNodeMap map = child.getAttributes();
 
 		String id = EncodeXML.decodeString(map.getNamedItem("id")
