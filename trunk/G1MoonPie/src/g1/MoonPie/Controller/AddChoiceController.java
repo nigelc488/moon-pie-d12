@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import g1.MoonPie.DecisionLinesFormActivity;
 import g1.MoonPie.R;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.Model.Global;
 import g1.MoonPie.Model.Line;
 import g1.MoonPie.View.CloseEventView;
+import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
 /**This class is called when attempting to add choices to an event.
@@ -115,7 +119,16 @@ public class AddChoiceController implements android.view.View.OnClickListener{
 			//if moderator then send create request
 			if(Event.getInstance().getUser().getPostion() == 0){
 				System.out.println("The user is logged in as a moderator, message is sent to create an Event");
+				
+				if (!Global.getSTANDALONE()){
 				SendMessageController.createRequest(Event.getInstance().isOpen(), Event.getInstance().getQuestion(), Event.getInstance().getNumChoices(), Event.getInstance().getNumRounds(), Event.getInstance().getUser().getUsername(), Event.getInstance().getUser().getPassword(), choices);
+				}
+				else {
+					Intent intent = new Intent(ProcessThreadMessages.getActivity(),
+							DecisionLinesFormActivity.class);
+					ProcessThreadMessages.getActivity().startActivity(intent);
+				}
+				
 				if (!Event.getInstance().isOpen()){
 					System.out.println("Event is closed and is adding all choices ");
 					for (int i = 0; i < Event.getInstance().getLines().length; i++){

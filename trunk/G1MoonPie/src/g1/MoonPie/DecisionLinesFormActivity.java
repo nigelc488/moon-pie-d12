@@ -107,12 +107,12 @@ public class DecisionLinesFormActivity extends Activity {
 							if(event.checkValidEdge(edgeHeight, left, right) == true){
 								addEdge.AddEdge(edgeHeight, left, right);
 								System.out.println("Edge has been Added");
-								if((addEdge.rounds - (event.getNumEdges()+1))== 0){
+								if((addEdge.rounds - (event.getNumEdges()+1)) < 0){
 									Toast.makeText(context, "Touch Anywhere To View Results", Toast.LENGTH_LONG).show();
 									System.out.println("Finished Adding Edges.");
 									System.out.println("Touch Anywhere to Continue to Results Screen.");
 								}else{
-									Toast.makeText(context, ((addEdge.rounds - (event.getNumEdges()+1)) + " remaining"), Toast.LENGTH_SHORT).show();
+									Toast.makeText(context, ((addEdge.rounds - (event.getNumEdges())) + " remaining"), Toast.LENGTH_SHORT).show();
 									System.out.println("Number of Edges still required:" + (addEdge.rounds - (event.getNumEdges()+1)));
 								}
 							}else{

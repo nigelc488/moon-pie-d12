@@ -50,6 +50,10 @@ public class Event {
 	public static Event getInstance(){
 		return instance;
 	}
+	
+	public static void setInstance(){
+		instance = new Event();
+	}
 
 	/**
 	 * Set the number of rounds in an event

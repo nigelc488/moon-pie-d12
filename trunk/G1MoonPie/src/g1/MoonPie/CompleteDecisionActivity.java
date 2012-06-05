@@ -1,9 +1,13 @@
 package g1.MoonPie;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import g1.MoonPie.R;
+import g1.MoonPie.Controller.NewEventListener;
+import g1.MoonPie.Controller.StartNewEventListener;
 import g1.MoonPie.Model.Event;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 
@@ -26,6 +30,9 @@ public class CompleteDecisionActivity extends Activity{
 		event = Event.getInstance();
 
 		setContentView(R.layout.results);
+		
+        Button newEventButton = (Button) findViewById(R.id.newEvent);
+        newEventButton.setOnClickListener(new StartNewEventListener());
 
 		//sets the results question
 		int question = R.id.resultsLabel;
@@ -55,6 +62,8 @@ public class CompleteDecisionActivity extends Activity{
 			choiceLabels[i] = (TextView) findViewById(choiceID[i]);
 			choiceLabels[i].setText((i + 1) + ")"+ "  " + results[i]);
 		}
+		
+		System.out.println("Total Edges = " + Event.getInstance().getTotalEdges());
 		
 	}
 

@@ -3,6 +3,7 @@ package g1.MoonPie;
 import g1.MoonPie.Controller.*;
 import g1.MoonPie.Model.Entries;
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.Model.Global;
 import g1.MoonPie.clientServer.receiveMessages.ProcessThreadMessages;
 import g1.MoonPie.clientServer.receiveMessages.ThreadActivity;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
@@ -36,24 +37,33 @@ public class MoonPieActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         entries = new Entries();
-        ServerAccessManager.setActivity(this);
         
-        try{
-        //System.out.println("try thread");
+        //only run if want client server
+        if (!Global.getSTANDALONE()){
+        	ServerAccessManager.setActivity(this);
+        	try{
+        		//System.out.println("try thread");
+        		processThread = new ProcessThreadMessages(this, entries);
+        		communicationThread = new Thread(new ThreadActivity(processThread));
+        		communicationThread.start();
+
+        	}
+        	catch (Exception e){
+        		e.printStackTrace();
+        	}
+        }
+        else{
         	processThread = new ProcessThreadMessages(this, entries);
-        	communicationThread = new Thread(new ThreadActivity(processThread));
-        	communicationThread.start();
-        	
+        	ProcessThreadMessages.setActivity(this);
         }
-        catch (Exception e){
-        	e.printStackTrace();
-        }
+        
         setContentView(R.layout.welcome);
         Button newEventButton = (Button) findViewById(R.id.newButton);
-        newEventButton.setOnClickListener(new NewEventListener(this , event)); 
-        Button joinEventButton = (Button) findViewById(R.id.joinButton);
+        newEventButton.setOnClickListener(new NewEventListener(this , event));
         
-        joinEventButton.setOnClickListener(new JoinEventListener(this)); 
+        //can be used with welcome_old.xml
+       // Button joinEventButton = (Button) findViewById(R.id.joinButton);  
+        //joinEventButton.setOnClickListener(new JoinEventListener(this)); 
        
     }
     
