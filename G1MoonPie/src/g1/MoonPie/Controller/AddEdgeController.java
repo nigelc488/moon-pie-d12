@@ -1,6 +1,7 @@
 package g1.MoonPie.Controller;
 
 import g1.MoonPie.Model.Event;
+import g1.MoonPie.Model.Global;
 import g1.MoonPie.View.DecisionLinesForm;
 import g1.MoonPie.clientServer.sendMessages.SendMessageController;
 
@@ -102,7 +103,14 @@ public class AddEdgeController {
 	 * @param rLine the right line inputed when the function is called to create a new edge.
 	 */
 	public void AddEdge(int hght, int lLine, int rLine){ 
+			
+		if(!Global.getSTANDALONE()){
 			SendMessageController.addEdgeRequest(Event.getInstance().getID(), lLine, rLine, hght);
+		}
+		else {
+			Event.getInstance().addEdge(hght, lLine, rLine);
+			DecisionLinesForm.getInstance().postInvalidate();
+		}
 			drawView.postInvalidate();
 			System.out.println("Redrew Canvas.");
 	}

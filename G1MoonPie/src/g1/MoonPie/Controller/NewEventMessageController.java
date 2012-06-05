@@ -56,16 +56,19 @@ public class NewEventMessageController implements OnClickListener {
 		}
 
 		boolean isOpen;
-		RadioGroup availability = (RadioGroup) activity.findViewById(R.id.availability);
-		int checkedRadioButton = availability.getCheckedRadioButtonId();
-		if (checkedRadioButton == R.id.openEvent){
-			System.out.println("radio button on Open");
-			isOpen = true;
-		}
-		else{
-			System.out.println("radio button on closed");
-			isOpen = false;
-		}
+		
+		isOpen = false;
+		//can be used with new_event_form_old.xml
+//		RadioGroup availability = (RadioGroup) activity.findViewById(R.id.availability);
+//		int checkedRadioButton = availability.getCheckedRadioButtonId();
+//		if (checkedRadioButton == R.id.openEvent){
+//			System.out.println("radio button on Open");
+//			isOpen = true;
+//		}
+//		else{
+//			System.out.println("radio button on closed");
+//			isOpen = false;
+//		}
 
 		Spinner choicesSpinner = (Spinner) activity.findViewById(R.id.numChoices);
 		Spinner roundsSpinner = (Spinner) activity.findViewById(R.id.numRounds);
@@ -73,8 +76,12 @@ public class NewEventMessageController implements OnClickListener {
 		System.out.println("numChoices = "+numChoices);
 		int numRounds = Integer.parseInt(roundsSpinner.getSelectedItem().toString());
 		System.out.println("numRounds = "+numRounds);
-		EditText usernameText = (EditText) activity.findViewById(R.id.username);
-		String username = usernameText.getText().toString();
+		
+	//can be changed if use new_event_form_old.xml
+//		EditText usernameText = (EditText) activity.findViewById(R.id.username);
+//		String username = usernameText.getText().toString();
+		String username = "Nigel";
+		
 		System.out.println("username = "+ username);
 		if (username.equals("")){
 			System.out.println("Blank username");
@@ -82,8 +89,11 @@ public class NewEventMessageController implements OnClickListener {
 			valid = false;
 		}
 
-		EditText passwordText = (EditText) activity.findViewById(R.id.password);
-		String password = passwordText.getText().toString();
+		
+		//can be changed if use new_event_form_old.xml
+//		EditText passwordText = (EditText) activity.findViewById(R.id.password);
+//		String password = passwordText.getText().toString();
+		String password = "greenRobot";
 		System.out.println("password = "+password);
 		
 		//If there are errors do nothing else, but if everything is valid send the appropriate messages to the server
